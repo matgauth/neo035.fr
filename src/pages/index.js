@@ -29,11 +29,11 @@ const IndexPage = () => (
         <div className="container">
           <header>
             <h2 className="alt">
-              Hi! I'm <strong>Anubhav</strong>
+              Salut! Je suis <strong>Neo035</strong>
               <br />
-              Web developer
+              Super youtubeurre
             </h2>
-            <p>I have made few things check it out.</p>
+            <p>Bienvenue à toi, ô noble visiteur, sur mon site web personnel !</p>
           </header>
 
           <footer>

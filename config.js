@@ -8,8 +8,8 @@ module.exports = {
   manifestDisplay: 'standalone',
   manifestIcon: 'src/assets/img/website-icon.png',
   pathPrefix: `/`,
-  authorName: 'Mathieu Gauthier',
-  heading: 'Bienvenue à toi, ô noble visiteur, sur mon site web personnel !',
+  authorName: 'Neo035',
+  heading: 'Super youtubeurre',
   // social
   socialLinks: [
     {
