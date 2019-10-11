@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
-import PageFooter from '../components/PageFooter';
-import SideBar from '../components/SideBar';
+import Layout from '@components/layout';
+import PageFooter from '@components/footer';
+import SideBar from '@components/sidebar';
+import Scroll from '@components/scroll';
 
 import pic2 from '../assets/images/pic02.jpg';
 import pic3 from '../assets/images/pic03.jpg';
@@ -11,7 +12,6 @@ import pic5 from '../assets/images/pic05.jpg';
 import pic6 from '../assets/images/pic06.jpg';
 import pic7 from '../assets/images/pic07.jpg';
 import pic8 from '../assets/images/pic08.jpg';
-import Scroll from '../components/Scroll';
 
 const sections = [
   { id: 'top', name: 'Intro', icon: 'fa-home' },

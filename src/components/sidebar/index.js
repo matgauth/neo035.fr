@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Footer from './Footer';
-import Header from './Header';
-import Nav from './Nav';
-import TopNav from './TopNav';
-import config from '../../../config';
+import Footer from './footer';
+import Header from './header';
+import Nav from './nav';
+import TopNav from './top-nav';
+import config from '@config';
 const pic = require('../../assets/images/avatar.png');
 
 export default function SideBar({ sections = [] }) {

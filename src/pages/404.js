@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
-import SideBar from '../components/SideBar';
+import Layout from '@components/layout';
+import SideBar from '@components/sidebar';
 
 const IndexPage = () => (
   <Layout>

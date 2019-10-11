@@ -1,3 +1,4 @@
+const path = require('path');
 const config = require('./config');
 
 module.exports = {
@@ -7,6 +8,16 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          '@config': path.resolve(__dirname, 'config'),
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@static': path.resolve(__dirname, 'static/'),
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
