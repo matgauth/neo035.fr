@@ -9,6 +9,7 @@ module.exports = {
   manifestIcon: 'src/assets/img/website-icon.png',
   pathPrefix: `/`,
   authorName: 'Neo035',
+  channelId: 'UCGd3WlRm5s_NVLIqCefLMpA',
   heading: 'Super youtubeurre',
   // social
   socialLinks: [
