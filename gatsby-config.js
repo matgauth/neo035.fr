@@ -98,9 +98,9 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) =>
               allMarkdownRemark.edges.map(
-                ({ node: { frontmatter, html, fields } }) => ({
+                ({ node: { frontmatter, html, excerpt, fields } }) => ({
                   title: frontmatter.title,
-                  description: frontmatter.description,
+                  description: excerpt,
                   date: frontmatter.date,
                   url: site.siteMetadata.siteUrl + fields.slug,
                   guid: site.siteMetadata.siteUrl + fields.slug,
@@ -117,18 +117,14 @@ module.exports = {
                 edges {
                   node {
                     html
+                    excerpt(pruneLength: 150)
                     fields { 
                       slug
                       locale 
                     }
                     frontmatter {
-                      tags
                       title
-                      authors {
-                        firstname
-                        lastname
-                      }
-                      description
+                      link
                       date
                     }
                   }
