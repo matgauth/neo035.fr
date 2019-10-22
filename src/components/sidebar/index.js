@@ -1,40 +1,45 @@
 import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+
 import Footer from './footer';
 import Header from './header';
 import Nav from './nav';
 import TopNav from './top-nav';
-import config from '@config';
-const pic = require('../../assets/images/avatar.png');
 
 export default function SideBar({ sections = [] }) {
   const [headerOpen, toggleHeader] = useState(false);
+  const {
+    site: {
+      siteMetadata: { titleAlt, headline, logo, socialLinks },
+    },
+  } = useStaticQuery(query);
   return (
     <div className={`${headerOpen ? 'header-visible' : ' '}`}>
-      <TopNav
-        title={config.authorName}
-        onMenuClick={() => toggleHeader(!headerOpen)}
-      />
+      <TopNav title={titleAlt} onMenuClick={() => toggleHeader(!headerOpen)} />
       <div id="header">
         <div className="top">
-          <Header
-            avatar={pic}
-            title={config.authorName}
-            heading={config.heading}
-          />
+          <Header avatar={logo} title={titleAlt} heading={headline} />
           <Nav sections={sections} />
         </div>
-        <Footer socialLinks={config.socialLinks} />
+        <Footer socialLinks={socialLinks} />
       </div>
-
-      {/* <section id="header">
-        <Header
-          avatar={pic}
-          title={config.authorName}
-          heading={config.heading}
-        />
-        <Nav sections={sections} />
-        <Footer socialLinks={config.socialLinks} />
-      </section> */}
     </div>
   );
 }
+
+const query = graphql`
+  query Sidebar {
+    site {
+      siteMetadata {
+        titleAlt
+        headline
+        logo
+        socialLinks {
+          icon
+          name
+          url
+        }
+      }
+    }
+  }
+`;

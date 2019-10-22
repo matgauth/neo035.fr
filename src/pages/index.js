@@ -1,9 +1,12 @@
 import React, { useReducer } from 'react';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import useForm from 'react-hook-form';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
+import Modal from '@components/modal';
 import PageFooter from '@components/footer';
 import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
@@ -67,43 +70,41 @@ const Videos = () => {
     };
   }, []);
 
-  if (state.isLoading) {
-    return (
-      <div className="modal">
+  if (state.isError) {
+    return <p>Une erreur est survenue</p>;
+  }
+  return (
+    <>
+      <Modal isOpen={state.isLoading}>
         <div className="folding-cube">
           <div className="cube1 cube"></div>
           <div className="cube2 cube"></div>
           <div className="cube4 cube"></div>
           <div className="cube3 cube"></div>
         </div>
+      </Modal>
+      <div className="container">
+        <header>
+          <h2>{videos.title}</h2>
+        </header>
+        <p>{videos.description}</p>
+        <div className="row">
+          {state.data.length > 0 &&
+            state.data.map(video => (
+              <div key={video.id} className="col-4 col-12-mobile">
+                <article className="item">
+                  <a href="/#" className="image fit">
+                    <img src={video.thumbnail} alt="" />
+                  </a>
+                  <header>
+                    <h3>{video.title}</h3>
+                  </header>
+                </article>
+              </div>
+            ))}
+        </div>
       </div>
-    );
-  }
-  if (state.isError) {
-    return <p>Une erreur est survenue</p>;
-  }
-  return (
-    <div className="container">
-      <header>
-        <h2>{videos.title}</h2>
-      </header>
-      <p>{videos.description}</p>
-      <div className="row">
-        {state.data.length > 0 &&
-          state.data.map(video => (
-            <div key={video.id} className="col-4 col-12-mobile">
-              <article className="item">
-                <a href="/#" className="image fit">
-                  <img src={video.thumbnail} alt="" />
-                </a>
-                <header>
-                  <h3>{video.title}</h3>
-                </header>
-              </article>
-            </div>
-          ))}
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -136,25 +137,43 @@ const Events = ({ data }) => {
   );
 };
 
-const encode = data => {
-  return Object.keys(data)
+const encode = data =>
+  Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
-};
 
 const ContactForm = () => {
   const { register, handleSubmit, errors } = useForm();
+
+  const setError = id => err => {
+    toast.update(id, {
+      render: `Hmmm... Le code n'est pas bon ! C'est sur l'invitation ;-)`,
+      type: toast.TYPE.ERROR,
+      autoClose: 5000,
+    });
+  };
+
+  const setSuccess = id => () =>
+    toast.update(id, {
+      render: `Bravo ! C'était le bon code. Bonne visite !`,
+      type: toast.TYPE.SUCCESS,
+      autoClose: 3000,
+    });
+
+  const setLoading = () =>
+    toast(`Avec de la patience, on vient à bout de tout...`, {
+      type: toast.TYPE.WARNING,
+      autoClose: false,
+    });
+
   const onSubmit = data => {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        ...data,
-      }),
-    })
-      .then(() => navigate(`/thank-you`))
-      .catch(error => alert(error));
+    let toastId = setLoading();
+    axios
+      .post('/', encode({ 'form-name': 'contact', ...data }), {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      })
+      .then(setSuccess(toastId))
+      .catch(setError(toastId));
   };
   return (
     <form
@@ -229,7 +248,6 @@ const IndexPage = ({
   },
 }) => {
   const [{ home, events, videos, faq, partners, contact }] = useTranslations();
-
   const sections = [
     { id: 'top', name: home.nav, icon: 'fa-home' },
     { id: 'events', name: events.nav, icon: 'fa-calendar' },

@@ -42,7 +42,9 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-hook-form": "^3.24.1",
+    "react-modal": "^3.10.1",
     "react-scrollspy": "^3.4.0",
+    "react-toastify": "^5.4.0",
     "showdown": "^1.9.0",
     "smoothscroll-polyfill": "^0.4.4"
   },

@@ -8,9 +8,10 @@ module.exports = {
     defaultDescription: `Neo035`,
     headline: `Neo035`,
     author: `Mathieu Gauthier <mathieugauthier.fr>`,
-    logo: `/icons/apple-touch-icon.png`,
+    logo: `/icons/avatar.png`,
     siteUrl: `https://www.neo035.fr`,
     pathPrefix: config.pathPrefix,
+    socialLinks: config.socialLinks,
   },
   plugins: [
     {

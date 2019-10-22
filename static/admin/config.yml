@@ -4,7 +4,7 @@ backend:
 
 display_url: https://neo035.fr
 
-logo_url: /icons/logo.svg
+logo_url: /icons/avatar.png
 
 media_folder: static/img
 public_folder: /img

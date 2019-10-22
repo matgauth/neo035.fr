@@ -1,4 +1,4 @@
 [build.environment]
 NODE_OPTIONS = "--max_old_space_size=4096"
 YARN_FLAGS = "--no-ignore-optional"
-YARN_VERSION = "1.17.3"
+YARN_VERSION = "1.19.1"

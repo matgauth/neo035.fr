@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { toast, Slide } from 'react-toastify';
 
 import SEO from './seo';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
+toast.configure({ position: `bottom-center`, transition: Slide });
 
 export const LocaleContext = React.createContext();
 
