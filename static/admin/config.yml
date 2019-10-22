@@ -112,20 +112,47 @@ collections:
         label: 'French'
         file: 'src/translations/fr.json'
         fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
-          - { label: 'Show me', name: 'showMe', widget: 'string' }
-          - { label: 'Home', name: 'home', widget: 'string' }
-          - label: 'Videos'
-            name: 'videos'
+          - label: 'Home'
+            name: 'home'
             widget: 'object'
             fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
+              - { label: 'Show me', name: 'showMe', widget: 'string' }
           - label: 'events'
             name: 'events'
             widget: 'object'
             fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'Videos'
+            name: 'videos'
+            widget: 'object'
+            fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'FAQ'
+            name: 'faq'
+            widget: 'object'
+            fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'Partners'
+            name: 'partners'
+            widget: 'object'
+            fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'Contact'
+            name: 'contact'
+            widget: 'object'
+            fields:
+              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'edescription', widget: 'string' }
           - label: 'Page Metadata'
