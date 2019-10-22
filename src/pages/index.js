@@ -1,25 +1,18 @@
 import React, { useReducer } from 'react';
+import Img from 'gatsby-image';
+import BackgroundImage from 'gatsby-background-image';
+import { graphql, navigate } from 'gatsby';
+import useForm from 'react-hook-form';
 
-import Layout from '@components/layout';
 import PageFooter from '@components/footer';
 import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
+import useTranslations from '@hooks/use-translations';
 
-import pic8 from '../assets/images/pic08.jpg';
-
-import { createVideoNodesFromChannelId } from '../utils';
-import config from '../../config';
+import { createVideoNodesFromChannelId } from '@utils';
+import config from '@config';
 
 const apiKey = process.env.GASTBY_YOUTUBE_API_KEY;
-
-const sections = [
-  { id: 'top', name: 'Accueil', icon: 'fa-home' },
-  { id: 'events', name: 'Evénements', icon: 'fa-calendar' },
-  { id: 'videos', name: 'Vidéos', icon: 'fa-youtube-play' },
-  { id: 'faq', name: 'FAQ', icon: 'fa-question' },
-  { id: 'partners', name: 'Mes partenaires', icon: 'fa-group' },
-  { id: 'contact', name: 'Me contacter', icon: 'fa-envelope' },
-];
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -48,6 +41,7 @@ const reducer = (state, action) => {
 };
 
 const Videos = () => {
+  const [{ videos }] = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
     isError: false,
@@ -75,11 +69,13 @@ const Videos = () => {
 
   if (state.isLoading) {
     return (
-      <div className="folding-cube">
-        <div className="cube1 cube"></div>
-        <div className="cube2 cube"></div>
-        <div className="cube4 cube"></div>
-        <div className="cube3 cube"></div>
+      <div className="modal">
+        <div className="folding-cube">
+          <div className="cube1 cube"></div>
+          <div className="cube2 cube"></div>
+          <div className="cube4 cube"></div>
+          <div className="cube3 cube"></div>
+        </div>
       </div>
     );
   }
@@ -87,80 +83,201 @@ const Videos = () => {
     return <p>Une erreur est survenue</p>;
   }
   return (
-    <section id="videos" className="two">
-      <div className="container">
-        <header>
-          <h2>Vidéos</h2>
-        </header>
-
-        <p>
-          Life will feel it is always a great need for eu valley, the valley CNN
-          ridiculous smile at any time chat mainstream clinical homes. Mauris
-          floor was very warm and we need it. One customer now nibh Bureau dark
-          pools behavior.
-        </p>
-
-        <div className="row">
-          {state.data.length > 0 &&
-            state.data.map(video => (
-              <div key={video.id} className="col-4 col-12-mobile">
-                <article className="item">
-                  <a href="/#" className="image fit">
-                    <img src={video.thumbnail.url} alt="" />
-                  </a>
-                  <header>
-                    <h3>{video.title}</h3>
-                  </header>
-                </article>
-              </div>
-            ))}
-        </div>
+    <div className="container">
+      <header>
+        <h2>{videos.title}</h2>
+      </header>
+      <p>{videos.description}</p>
+      <div className="row">
+        {state.data.length > 0 &&
+          state.data.map(video => (
+            <div key={video.id} className="col-4 col-12-mobile">
+              <article className="item">
+                <a href="/#" className="image fit">
+                  <img src={video.thumbnail} alt="" />
+                </a>
+                <header>
+                  <h3>{video.title}</h3>
+                </header>
+              </article>
+            </div>
+          ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-const IndexPage = () => {
+const Events = ({ data }) => {
+  const [{ events }] = useTranslations();
   return (
-    <Layout>
+    <div className="container">
+      <header>
+        <h2>{events.title}</h2>
+      </header>
+      {data.map(({ node: { frontmatter, id, html } }) => {
+        return (
+          <article key={id} className="item">
+            <div className="row">
+              <div className="col-3 col-12-mobile">
+                <Img
+                  fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                  alt={frontmatter.title}
+                />
+              </div>
+              <div
+                className="col-9 col-12-mobile"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+};
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
+
+const ContactForm = () => {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        ...data,
+      }),
+    })
+      .then(() => navigate(`/thank-you`))
+      .catch(error => alert(error));
+  };
+  return (
+    <form
+      name="contact"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <div hidden>
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </div>
+      <div className="row">
+        <div className="col-4 col-12-mobile">
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            ref={register({
+              required: 'Required',
+            })}
+          />
+          {errors.name && errors.name.message}
+        </div>
+        <div className="col-4 col-12-mobile">
+          <input
+            type="text"
+            name="age"
+            placeholder="Age"
+            ref={register({
+              required: 'Required',
+              pattern: {
+                value: /^[0-9]{2}$/,
+                message: 'invalid age',
+              },
+            })}
+          />
+          {errors.age && errors.age.message}
+        </div>
+        <div className="col-4 col-12-mobile">
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            ref={register({
+              required: 'Required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'invalid email address',
+              },
+            })}
+          />
+          {errors.email && errors.email.message}
+        </div>
+        <div className="col-12">
+          <textarea name="message" placeholder="Message" />
+        </div>
+        <div className="col-12">
+          <input type="submit" value="Send Message" />
+        </div>
+      </div>
+    </form>
+  );
+};
+
+const IndexPage = ({
+  data: {
+    bg,
+    allMarkdownRemark: { edges },
+  },
+}) => {
+  const [{ home, events, videos, faq, partners, contact }] = useTranslations();
+
+  const sections = [
+    { id: 'top', name: home.nav, icon: 'fa-home' },
+    { id: 'events', name: events.nav, icon: 'fa-calendar' },
+    { id: 'videos', name: videos.nav, icon: 'fa-youtube-play' },
+    { id: 'faq', name: faq.nav, icon: 'fa-question' },
+    { id: 'partners', name: partners.nav, icon: 'fa-group' },
+    { id: 'contact', name: contact.nav, icon: 'fa-envelope' },
+  ];
+  return (
+    <>
       <SideBar sections={sections} />
 
       <div id="main">
-        <section id="top" className="one dark cover">
+        <BackgroundImage
+          Tag="section"
+          id="top"
+          title="background"
+          className="dark cover"
+          role="img"
+          aria-label="background"
+          fluid={bg.childImageSharp.fluid}
+        >
           <div className="container">
             <header>
-              <h2 className="alt">
-                Salut! Je suis <strong>Neo035</strong>
-                <br />
-                Super youtubeurre
-              </h2>
-              <p>
-                Bienvenue à toi, ô noble visiteur, sur mon site web personnel !
-              </p>
+              <h2 className="alt">{home.title}</h2>
+              <p>{home.subtitle}</p>
             </header>
 
             <footer>
-              <Scroll type="id" element={'portfolio'}>
-                <a href="#videos" className="button">
-                  Show me
+              <Scroll type="id" element="events">
+                <a href="#events" className="button">
+                  {home.showMe}
                 </a>
               </Scroll>
             </footer>
           </div>
+        </BackgroundImage>
+        <section id="events" className="two">
+          <Events data={edges} />
         </section>
-
-        <Videos />
-
-        <section id="about" className="three">
+        <section id="videos" className="three">
+          <Videos />
+        </section>
+        <section id="faq" className="four">
           <div className="container">
             <header>
-              <h2>About Me</h2>
+              <h2>{faq.title}</h2>
             </header>
-
-            <a href="/#" className="image featured">
-              <img src={pic8} alt="" />
-            </a>
-
             <p>
               Developers football competition in diameter big price to layer the
               pot. Chavez ultricies care who wants to CNN. Lobortis elementum
@@ -172,11 +289,26 @@ const IndexPage = () => {
             </p>
           </div>
         </section>
-
+        <section id="partners" className="three">
+          <div className="container">
+            <header>
+              <h2>{partners.title}</h2>
+            </header>
+            <p>
+              Developers football competition in diameter big price to layer the
+              pot. Chavez ultricies care who wants to CNN. Lobortis elementum
+              aliquet eget a den of which they do not hold it in hatred
+              developers nor the mountains of the deposit slip. The element of
+              time, sem ante ullamcorper dolor nulla quam placerat viverra
+              environment is not with our customers. Free makeup and skirt until
+              the mouse or partners or to decorate each targeted.
+            </p>
+          </div>
+        </section>
         <section id="contact" className="four">
           <div className="container">
             <header>
-              <h2>Contact</h2>
+              <h2>{contact.title}</h2>
             </header>
 
             <p>
@@ -187,29 +319,50 @@ const IndexPage = () => {
               enhanced. Mauris pot innovative care for my pain.
             </p>
 
-            <form method="post" action="#">
-              <div className="row">
-                <div className="col-6 col-12-mobile">
-                  <input type="text" name="name" placeholder="Name" />
-                </div>
-                <div className="col-6 col-12-mobile">
-                  <input type="text" name="email" placeholder="Email" />
-                </div>
-                <div className="col-12">
-                  <textarea name="message" placeholder="Message" />
-                </div>
-                <div className="col-12">
-                  <input type="submit" value="Send Message" />
-                </div>
-              </div>
-            </form>
+            <ContactForm />
           </div>
         </section>
       </div>
 
       <PageFooter />
-    </Layout>
+    </>
   );
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query Events($locale: String!) {
+    bg: file(relativePath: { eq: "bg.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        fields: { slug: { regex: "/^(/events/)/" }, locale: { eq: $locale } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 400, traceSVG: { color: "#1a214d" }) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+            title
+            link
+          }
+        }
+      }
+    }
+  }
+`;

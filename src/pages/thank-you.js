@@ -10,8 +10,7 @@ const IndexPage = () => (
         <section>
           <div className="container">
             <section>
-              <h1>NOT FOUND</h1>
-              <p>Not a valid URL</p>
+              <h1>Je te tiens au courant</h1>
             </section>
           </div>
         </section>

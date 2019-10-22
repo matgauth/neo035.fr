@@ -1,67 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
 
-import '../assets/sass/main.scss';
+import SEO from './seo';
 
-class Layout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPreloaded: true,
-    };
-  }
+export const LocaleContext = React.createContext();
 
-  componentDidMount() {
-    this.timeoutId = setTimeout(() => {
-      this.setState({ isPreloaded: false });
-    }, 100);
-  }
-
-  componentWillUnmount() {
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
-    }
-  }
-
-  render() {
-    const { children } = this.props;
-    const { isPreloaded } = this.state;
-    return (
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                title
-              }
-            }
-          }
-        `}
-        render={data => (
-          <>
-            <Helmet
-              title={data.site.siteMetadata.title}
-              meta={[
-                { name: 'description', content: 'Eventually' },
-                { name: 'keywords', content: 'site, web' },
-              ]}
-            >
-              <html lang="en" />
-            </Helmet>
-            <div className={isPreloaded ? 'main-body is-preload' : 'main-body'}>
-              {children}
-            </div>
-          </>
-        )}
-      />
-    );
-  }
-}
+const Layout = ({
+  children,
+  location: { pathname },
+  pageContext: { locale, dateFormat },
+}) => (
+  <LocaleContext.Provider value={{ locale, dateFormat }}>
+    <SEO lang={locale} pathname={pathname} />
+    <main className="main-body">{children}</main>
+  </LocaleContext.Provider>
+);
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default Layout;

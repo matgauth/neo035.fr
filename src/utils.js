@@ -1,34 +1,19 @@
 import axios from 'axios';
-import get from 'lodash.get';
+import { map, path, prop } from 'ramda';
 
-const normalizeRecords = (items = []) =>
-  items.map(item => ({
-    id: get(item, 'id'),
-    publishedAt: get(item, 'snippet.publishedAt'),
-    title: get(item, 'snippet.title'),
-    description: get(item, 'snippet.description'),
-    videoId: get(item, 'contentDetails.videoId'),
-    privacyStatus: get(item, 'status.privacyStatus'),
-    channelId: get(item, 'snippet.channelId'),
-    channelTitle: get(item, 'snippet.channelTitle'),
-    thumbnail: get(
-      item,
-      'snippet.thumbnails.maxres',
-      get(
-        item,
-        'snippet.thumbnails.standard',
-        get(
-          item,
-          'snippet.thumbnails.high',
-          get(
-            item,
-            'snippet.thumbnails.medium',
-            get(item, 'snippet.thumbnails.default')
-          )
-        )
-      )
-    ),
-  }));
+const normalizeRecord = rec => ({
+  id: prop('id', rec),
+  publishedAt: path(['snippet', 'publishedAt'], rec),
+  title: path(['snippet', 'title'], rec),
+  description: path(['snippet', 'description'], rec),
+  videoId: path(['contentDetails', 'videoId'], rec),
+  privacyStatus: path(['status', 'privacyStatus'], rec),
+  channelId: path(['snippet', 'channelId'], rec),
+  channelTitle: path(['snippet', 'channelTitle'], rec),
+  thumbnail: path(['snippet', 'thumbnails', 'maxres', 'url'], rec),
+});
+
+const normalizeRecords = map(normalizeRecord);
 
 const getApi = () => {
   const rateLimit = 500;
@@ -74,9 +59,9 @@ export const createVideoNodesFromChannelId = async (
 
   const channelData = channelResp.data.items[0];
   if (!!channelData) {
-    const uploadsId = get(
-      channelData,
-      'contentDetails.relatedPlaylists.uploads'
+    const uploadsId = path(
+      ['contentDetails', 'relatedPlaylists', 'uploads'],
+      channelData
     );
     let pageSize = maxVideos;
     const part = 'snippet,contentDetails,status';
@@ -108,3 +93,5 @@ export const createVideoNodesFromChannelId = async (
   }
   return normalizeRecords(videos);
 };
+
+export const str = JSON.stringify;

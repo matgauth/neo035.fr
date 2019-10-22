@@ -1,0 +1,39 @@
+{
+  "home": {
+    "nav": "Accueil",
+    "title": "Hello je suis Neo035",
+    "description": "Super youtubeurre",
+    "showMe": "Montre-moi comme il est beau !"
+  },
+  "events": {
+    "nav": "Evénements",
+    "title": "Evénements",
+    "description": "Lorem ipsum"
+  },
+  "videos": {
+    "nav": "Vidéos",
+    "title": "Vidéos",
+    "description": "Lorem ipsum"
+  },
+  "faq": {
+    "nav": "FAQ",
+    "title": "FAQ",
+    "description": "Lorem ipsum"
+  },
+  "partners": {
+    "nav": "Partenaires",
+    "title": "Mes partenaires",
+    "description": "Lorem ipsum"
+  },
+  "contact": {
+    "nav": "Contact",
+    "title": "Contacte-moi !",
+    "description": "Lorem ipsum"
+  },
+  "pageMetadata": {
+    "home": {
+      "title": "Accueil",
+      "description": ""
+    }
+  }
+}

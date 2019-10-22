@@ -1,0 +1,144 @@
+backend:
+  name: git-gateway
+  branch: master
+
+display_url: https://neo035.fr
+
+logo_url: /icons/logo.svg
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'config'
+    label: 'Configuration'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'toml'
+        label: 'Netlify TOML'
+        description: 'The netlify.toml file is your configuration file on how Netlify will build and deploy your site — including redirects, branch and context specific settings, and much more.'
+        file: 'netlify.toml'
+        fields:
+          - label: 'Build'
+            name: 'build'
+            widget: 'object'
+            fields:
+              - label: 'Environment'
+                name: 'environment'
+                widget: 'object'
+                fields:
+                  - {
+                      label: 'Yarn version',
+                      name: 'YARN_VERSION',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Yarn flags',
+                      name: 'YARN_FLAGS',
+                      widget: 'string',
+                    }
+                  - {
+                      label: 'Node options',
+                      name: 'NODE_OPTIONS',
+                      widget: 'string',
+                    }
+          - label: 'Redirects'
+            name: 'redirects'
+            label_singular: 'redirection'
+            widget: 'list'
+            fields:
+              - { label: 'From', name: 'from', widget: 'string' }
+              - { label: 'To', name: 'to', widget: 'string' }
+              - label: 'Status'
+                name: 'status'
+                widget: 'select'
+                default: 301
+                options:
+                  - { label: 'Moved Permanently (301)', value: 301 }
+                  - { label: 'Found (302)', value: 302 }
+                  - { label: 'Not Found (404)', value: 404 }
+                  - { label: 'OK (200)', value: 200 }
+                hint: 'The default HTTP status code is 301, but you can define a different one.'
+              - label: 'Force'
+                name: 'force'
+                widget: 'boolean'
+                default: true
+                hint: "By default, redirects won't be applied if there's a file with the same path as the one defined in the `from` property. Setting `force` to `true` will make the redirect rule take precedence over any existing files."
+      - name: 'json'
+        label: 'Configuration'
+        file: 'config.json'
+        fields:
+          - { label: 'Site Title', name: 'siteTitle', widget: 'string' }
+          - { label: 'Name', name: 'manifestName', widget: 'string' }
+          - { label: 'Short Name', name: 'manifestShortName', widget: 'string' }
+          - {
+              label: 'Start Url',
+              name: 'manifestStartUrl',
+              widget: 'hidden',
+              default: '/',
+            }
+          - {
+              label: 'Theme Color',
+              name: 'manifestThemeColor',
+              widget: 'string',
+            }
+          - { label: 'Display', name: 'manifestDisplay', widget: 'string' }
+          - { label: 'Icon', name: 'manifestIcon', widget: 'image' }
+          - {
+              label: 'Prefix',
+              name: 'pathPrefix',
+              widget: 'hidden',
+              default: '/',
+            }
+          - { label: 'Owner Name', name: 'ownerName', widget: 'string' }
+          - { label: 'Channel ID', name: 'channelId', widget: 'string' }
+          - { label: 'Heading', name: 'heading', widget: 'string' }
+          - label: 'Social Links'
+            name: 'socialLinks'
+            widget: 'list'
+            fields:
+              - { label: 'Icon', name: 'icon', widget: 'string' }
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'URL', name: 'url', widget: 'string' }
+  - name: 'translations'
+    label: 'Translations'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'french'
+        label: 'French'
+        file: 'src/translations/fr.json'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
+          - { label: 'Show me', name: 'showMe', widget: 'string' }
+          - { label: 'Home', name: 'home', widget: 'string' }
+          - label: 'Videos'
+            name: 'videos'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'events'
+            name: 'events'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'edescription', widget: 'string' }
+          - label: 'Page Metadata'
+            name: 'pageMetadata'
+            widget: 'object'
+            fields:
+              - label: 'Home'
+                name: 'home'
+                widget: 'object'
+                fields:
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'string',
+                    }

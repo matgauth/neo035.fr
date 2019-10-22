@@ -6,26 +6,23 @@ const Element = props => {
   return props.children;
 };
 
-class Scroll extends React.Component {
-  static propTypes = {
-    type: PropTypes.string,
-    element: PropTypes.string,
-    offset: PropTypes.number,
-    timeout: PropTypes.number,
-    children: PropTypes.node.isRequired,
+const Scroll = ({ type, element, offset, timeout, children }) => {
+  const scrollTo = (element, offSet = 0, timeout = null) => {
+    const elemPos = element
+      ? element.getBoundingClientRect().top + window.pageYOffset
+      : 0;
+    if (timeout) {
+      setTimeout(() => {
+        window.scroll({ top: elemPos + offSet, left: 0, behavior: 'smooth' });
+      }, timeout);
+    } else {
+      window.scroll({ top: elemPos + offSet, left: 0, behavior: 'smooth' });
+    }
   };
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
-  }
-  componentDidMount() {
-    smoothscroll.polyfill();
-  }
-  handleClick(e) {
+  const handleClick = e => {
     e.preventDefault();
     let elem = 0;
     let scroll = true;
-    const { type, element, offset, timeout } = this.props;
     if (type && element) {
       switch (type) {
         case 'class':
@@ -40,32 +37,29 @@ class Scroll extends React.Component {
       }
     }
     scroll
-      ? this.scrollTo(elem, offset, timeout)
-      : console.log(`Element not found: ${element}`); // eslint-disable-line
-  }
-  scrollTo(element, offSet = 0, timeout = null) {
-    const elemPos = element
-      ? element.getBoundingClientRect().top + window.pageYOffset
-      : 0;
-    if (timeout) {
-      setTimeout(() => {
-        window.scroll({ top: elemPos + offSet, left: 0, behavior: 'smooth' });
-      }, timeout);
-    } else {
-      window.scroll({ top: elemPos + offSet, left: 0, behavior: 'smooth' });
-    }
-  }
-  render() {
-    return (
-      <Element>
-        {typeof this.props.children === 'object' ? (
-          React.cloneElement(this.props.children, { onClick: this.handleClick })
-        ) : (
-          <span onClick={this.handleClick}>{this.props.children}</span>
-        )}
-      </Element>
-    );
-  }
-}
+      ? scrollTo(elem, offset, timeout)
+      : console.log(`Element not found: ${element}`);
+  };
+  React.useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
+  return (
+    <Element>
+      {typeof children === 'object' ? (
+        React.cloneElement(children, { onClick: handleClick })
+      ) : (
+        <span onClick={handleClick}>{children}</span>
+      )}
+    </Element>
+  );
+};
+
+Scroll.propTypes = {
+  type: PropTypes.string,
+  element: PropTypes.string,
+  offset: PropTypes.number,
+  timeout: PropTypes.number,
+  children: PropTypes.node.isRequired,
+};
 
 export default Scroll;
