@@ -6,7 +6,7 @@
   "manifestBackgroundColor": "#663399",
   "manifestThemeColor": "#663399",
   "manifestDisplay": "standalone",
-  "manifestIcon": "static/icons/avatar.png",
+  "manifestIcon": "static/img/avatar.png",
   "pathPrefix": "/",
   "ownerName": "Rémi Bourboulon",
   "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",

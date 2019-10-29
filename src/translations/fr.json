@@ -3,7 +3,7 @@
     "nav": "Accueil",
     "title": "Hello je suis Neo035",
     "description": "Super youtubeurre",
-    "showMe": "Montre-moi comme il est beau !"
+    "showMe": "Montre-moi sa beauté !"
   },
   "events": {
     "nav": "Evénements",
@@ -28,11 +28,32 @@
   "contact": {
     "nav": "Contact",
     "title": "Contacte-moi !",
-    "description": "Lorem ipsum"
+    "description": "Lorem ipsum",
+    "form": {
+      "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
+      "success": "J'ai bien reçu ton message ;-)",
+      "loading": "Chargement de l'infini...",
+      "name": "Ton nom",
+      "age": "Age",
+      "mail": "Adresse mail",
+      "message": "Ecris-moi un petit mot...",
+      "required": "Requis",
+      "invalidAge": "Âge invalide",
+      "invalidMail": "Email invalide",
+      "submit": "Et hop envoyé !"
+    }
+  },
+  "footer": {
+    "legalNotices": "Mentions légales",
+    "copyright": "Tous droits réservés, images, vidéos et textes. Toute reproduction partielle ou complète est interdite."
   },
   "pageMetadata": {
     "home": {
       "title": "Accueil",
+      "description": ""
+    },
+    "legalNotices": {
+      "title": "Mentions légales",
       "description": ""
     }
   }

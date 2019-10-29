@@ -56,9 +56,30 @@ const query = graphql`
               nav
               title
               description
+              form {
+                error
+                success
+                loading
+                name
+                age
+                mail
+                message
+                required
+                invalidAge
+                invalidMail
+                submit
+              }
+            }
+            footer {
+              legalNotices
+              copyright
             }
             pageMetadata {
               home {
+                title
+                description
+              }
+              legalNotices {
                 title
                 description
               }

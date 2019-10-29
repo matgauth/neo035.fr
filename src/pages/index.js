@@ -10,6 +10,7 @@ import Modal from '@components/modal';
 import PageFooter from '@components/footer';
 import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
+import HTML from '@components/inner-html';
 import useTranslations from '@hooks/use-translations';
 
 import { createVideoNodesFromChannelId } from '@utils';
@@ -44,7 +45,7 @@ const reducer = (state, action) => {
 };
 
 const Videos = () => {
-  const [{ videos }] = useTranslations();
+  const [{ videos, contact }] = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
     isError: false,
@@ -71,7 +72,7 @@ const Videos = () => {
   }, []);
 
   if (state.isError) {
-    return <p>Une erreur est survenue</p>;
+    return <p>{contact.form.error}</p>;
   }
   return (
     <>
@@ -87,18 +88,20 @@ const Videos = () => {
         <header>
           <h2>{videos.title}</h2>
         </header>
-        <p>{videos.description}</p>
+        <HTML markdown={videos.description} />
         <div className="row">
           {state.data.length > 0 &&
             state.data.map(video => (
               <div key={video.id} className="col-4 col-12-mobile">
                 <article className="item">
-                  <a href="/#" className="image fit">
-                    <img src={video.thumbnail} alt="" />
+                  <a
+                    href={`https://youtube.com/watch?v=${video.videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="image fit"
+                  >
+                    <img src={video.thumbnail} alt={video.title} />
                   </a>
-                  <header>
-                    <h3>{video.title}</h3>
-                  </header>
                 </article>
               </div>
             ))}
@@ -115,15 +118,55 @@ const Events = ({ data }) => {
       <header>
         <h2>{events.title}</h2>
       </header>
+      <HTML markdown={events.description} />
       {data.map(({ node: { frontmatter, id, html } }) => {
         return (
           <article key={id} className="item">
+            <span className="ribbon">{frontmatter.date}</span>
+            <a
+              href={frontmatter.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img
+                style={{ maxWidth: 600, margin: `24px auto` }}
+                fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                alt={frontmatter.title}
+              />
+            </a>
+            <span dangerouslySetInnerHTML={{ __html: html }} />
+          </article>
+        );
+      })}
+    </div>
+  );
+};
+
+const Faq = ({ data }) => {
+  const [{ faq }] = useTranslations();
+  return (
+    <div className="container">
+      <header>
+        <h2>{faq.title}</h2>
+      </header>
+      <HTML markdown={faq.description} />
+      {data.map(({ node: { frontmatter, id, html } }) => {
+        return (
+          <article key={id}>
             <div className="row">
               <div className="col-3 col-12-mobile">
-                <Img
-                  fluid={frontmatter.thumbnail.childImageSharp.fluid}
-                  alt={frontmatter.title}
-                />
+                <div className="item">
+                  <a
+                    href={frontmatter.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Img
+                      fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                      alt={frontmatter.title}
+                    />
+                  </a>
+                </div>
               </div>
               <div
                 className="col-9 col-12-mobile"
@@ -137,6 +180,31 @@ const Events = ({ data }) => {
   );
 };
 
+const getLink = name => `http://${name.split(/[0-9]{2}_/)[1]}`;
+
+const Partners = ({ data }) => {
+  const [{ partners }] = useTranslations();
+  return (
+    <div className="container">
+      <header>
+        <h2>{partners.title}</h2>
+      </header>
+      <HTML markdown={partners.description} />
+      <div className="row">
+        {data.map(({ node: { childImageSharp, id, name } }) => (
+          <div key={id} className="col-3 col-12-mobile">
+            <article className="item">
+              <a href={getLink(name)} target="_blank" rel="noopener noreferrer">
+                <Img fluid={childImageSharp.fluid} alt={name} />
+              </a>
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const encode = data =>
   Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -144,10 +212,12 @@ const encode = data =>
 
 const ContactForm = () => {
   const { register, handleSubmit, errors } = useForm();
+  const [{ contact }] = useTranslations();
 
   const setError = id => err => {
+    console.log('Error for DEV: ', err);
     toast.update(id, {
-      render: `Hmmm... Le code n'est pas bon ! C'est sur l'invitation ;-)`,
+      render: contact.form.error,
       type: toast.TYPE.ERROR,
       autoClose: 5000,
     });
@@ -155,13 +225,13 @@ const ContactForm = () => {
 
   const setSuccess = id => () =>
     toast.update(id, {
-      render: `Bravo ! C'était le bon code. Bonne visite !`,
+      render: contact.form.success,
       type: toast.TYPE.SUCCESS,
       autoClose: 3000,
     });
 
   const setLoading = () =>
-    toast(`Avec de la patience, on vient à bout de tout...`, {
+    toast(contact.form.loading, {
       type: toast.TYPE.WARNING,
       autoClose: false,
     });
@@ -193,48 +263,55 @@ const ContactForm = () => {
           <input
             type="text"
             name="name"
-            placeholder="Name"
-            ref={register({
-              required: 'Required',
-            })}
+            placeholder={contact.form.name}
+            ref={register({ required: contact.form.required })}
           />
-          {errors.name && errors.name.message}
+          {errors.name && <span className="error">{errors.name.message}</span>}
         </div>
         <div className="col-4 col-12-mobile">
           <input
             type="text"
             name="age"
-            placeholder="Age"
+            placeholder={contact.form.age}
             ref={register({
-              required: 'Required',
+              required: contact.form.required,
               pattern: {
                 value: /^[0-9]{2}$/,
-                message: 'invalid age',
+                message: contact.form.invalidAge,
               },
             })}
           />
-          {errors.age && errors.age.message}
+          {errors.age && <span className="error">{errors.age.message}</span>}
         </div>
         <div className="col-4 col-12-mobile">
           <input
             type="text"
             name="email"
-            placeholder="Email"
+            placeholder={contact.form.mail}
             ref={register({
-              required: 'Required',
+              required: contact.form.required,
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'invalid email address',
+                message: contact.form.invalidMail,
               },
             })}
           />
-          {errors.email && errors.email.message}
+          {errors.email && (
+            <span className="error">{errors.email.message}</span>
+          )}
         </div>
         <div className="col-12">
-          <textarea name="message" placeholder="Message" />
+          <textarea
+            name="message"
+            placeholder={contact.form.message}
+            ref={register({ required: contact.form.required })}
+          />
+          {errors.message && (
+            <span className="error">{errors.message.message}</span>
+          )}
         </div>
         <div className="col-12">
-          <input type="submit" value="Send Message" />
+          <input type="submit" value={contact.form.submit} />
         </div>
       </div>
     </form>
@@ -244,7 +321,9 @@ const ContactForm = () => {
 const IndexPage = ({
   data: {
     bg,
-    allMarkdownRemark: { edges },
+    events: { edges: eventItems },
+    faq: { edges: faqItems },
+    partners: { edges: partnerItems },
   },
 }) => {
   const [{ home, events, videos, faq, partners, contact }] = useTranslations();
@@ -273,7 +352,7 @@ const IndexPage = ({
           <div className="container">
             <header>
               <h2 className="alt">{home.title}</h2>
-              <p>{home.subtitle}</p>
+              <HTML markdown={home.description} />
             </header>
 
             <footer>
@@ -286,57 +365,23 @@ const IndexPage = ({
           </div>
         </BackgroundImage>
         <section id="events" className="two">
-          <Events data={edges} />
+          <Events data={eventItems} />
         </section>
         <section id="videos" className="three">
           <Videos />
         </section>
         <section id="faq" className="four">
-          <div className="container">
-            <header>
-              <h2>{faq.title}</h2>
-            </header>
-            <p>
-              Developers football competition in diameter big price to layer the
-              pot. Chavez ultricies care who wants to CNN. Lobortis elementum
-              aliquet eget a den of which they do not hold it in hatred
-              developers nor the mountains of the deposit slip. The element of
-              time, sem ante ullamcorper dolor nulla quam placerat viverra
-              environment is not with our customers. Free makeup and skirt until
-              the mouse or partners or to decorate each targeted.
-            </p>
-          </div>
+          <Faq data={faqItems} />
         </section>
         <section id="partners" className="three">
-          <div className="container">
-            <header>
-              <h2>{partners.title}</h2>
-            </header>
-            <p>
-              Developers football competition in diameter big price to layer the
-              pot. Chavez ultricies care who wants to CNN. Lobortis elementum
-              aliquet eget a den of which they do not hold it in hatred
-              developers nor the mountains of the deposit slip. The element of
-              time, sem ante ullamcorper dolor nulla quam placerat viverra
-              environment is not with our customers. Free makeup and skirt until
-              the mouse or partners or to decorate each targeted.
-            </p>
-          </div>
+          <Partners data={partnerItems} />
         </section>
         <section id="contact" className="four">
           <div className="container">
             <header>
               <h2>{contact.title}</h2>
             </header>
-
-            <p>
-              The element of time, sem ante ullamcorper dolor nulla quam
-              placerat viverra environment is not with our customers. Free
-              makeup and skirt until the mouse. Japan this innovative and
-              ultricies carton salad clinical ridiculous now passes from
-              enhanced. Mauris pot innovative care for my pain.
-            </p>
-
+            <HTML markdown={contact.description} />
             <ContactForm />
           </div>
         </section>
@@ -353,12 +398,29 @@ export const query = graphql`
   query Events($locale: String!) {
     bg: file(relativePath: { eq: "bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid_withWebp
+        fluid(maxWidth: 1920, traceSVG: { color: "#222629" }) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
-    allMarkdownRemark(
+    partners: allFile(
+      filter: {name: {regex: "/^[0-9]{2}_www.[^ \"]+$/"}}
+      sort: { fields: name }
+    ) {
+      edges {
+        node {
+          id
+          name
+          ext
+          childImageSharp {
+            fluid(maxWidth: 400, traceSVG: { color: "#222629" }) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+    }
+    events: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fields: { slug: { regex: "/^(/events/)/" }, locale: { eq: $locale } }
@@ -369,9 +431,33 @@ export const query = graphql`
           id
           html
           frontmatter {
+            date(formatString: "DD MMMM YYYY", locale: $locale)
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 400, traceSVG: { color: "#1a214d" }) {
+                fluid(maxWidth: 600, traceSVG: { color: "#222629" }) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+            title
+            link
+          }
+        }
+      }
+    }
+    faq: allMarkdownRemark(
+      filter: {
+        fields: { slug: { regex: "/^(/faq/)/" }, locale: { eq: $locale } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 480, traceSVG: { color: "#222629" }) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }

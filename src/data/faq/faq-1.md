@@ -1,6 +1,6 @@
 ---
 date: 2019-02-28T23:40:32.169Z
-thumbnail: /img/jtf.png
+thumbnail: /img/faq1.jpg
 title: Evénement
 link: https://example.com
 ---

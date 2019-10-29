@@ -22,7 +22,6 @@ const HTML = ({
         content={manifestThemeColor}
       />
       <meta name="apple-mobile-web-app-title" content={manifestName} />
-      <link rel="shortcut icon" href="/icons/favicon.png" />
       {headComponents}
     </head>
     <body {...bodyAttributes}>
