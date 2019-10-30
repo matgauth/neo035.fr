@@ -16,7 +16,7 @@ import useTranslations from '@hooks/use-translations';
 import { createVideoNodesFromChannelId } from '@utils';
 import config from '@config';
 
-const apiKey = process.env.GASTBY_YOUTUBE_API_KEY;
+const apiKey = process.env.GATSBY_YT_APIKEY;
 
 const reducer = (state, action) => {
   switch (action.type) {
