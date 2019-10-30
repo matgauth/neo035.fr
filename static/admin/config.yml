@@ -140,7 +140,10 @@ collections:
             fields:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
+              - { label: 'Show me', name: 'showMe', widget: 'string' }
+              - { label: 'Questions', name: 'questions', widget: 'string' }
+              - { label: 'Time', name: 'time', widget: 'string' }
           - label: 'Partners'
             name: 'partners'
             widget: 'object'
@@ -220,28 +223,34 @@ collections:
                       name: 'description',
                       widget: 'string',
                     }
-  - name: "events"
-    label: "Events"
-    label_singular: "event"
-    folder: "src/data/events"
+  - name: 'events'
+    label: 'Events'
+    label_singular: 'event'
+    folder: 'src/data/events'
     create: true
     editor:
       preview: false
     fields:
-      - {label: "Publish date", name: "date", widget: "date"}
-      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "External link", name: "link", widget: "string"}
-      - {label: "Description", name: "body", widget: "markdown"}
-  - name: "faq"
-    label: "FAQ"
-    label_singular: "faq"
-    folder: "src/data/faq"
+      - { label: 'Date', name: 'date', widget: 'date' }
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'External link', name: 'link', widget: 'string' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'faq'
+    label: 'FAQ'
+    label_singular: 'faq'
+    folder: 'src/data/faq'
     create: true
     editor:
       preview: false
     fields:
-      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Youtube Link", name: "link", widget: "string"}
-      - {label: "Description", name: "body", widget: "markdown"}
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Youtube Link', name: 'link', widget: 'string' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
+      - label: 'Questions'
+        name: 'link'
+        widget: 'list'
+        fields:
+          - { label: 'Label', name: 'label', widget: 'string' }
+          - { label: 'Time', name: 'time', widget: 'string' }

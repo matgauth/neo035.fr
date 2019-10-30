@@ -46,6 +46,9 @@ const query = graphql`
               nav
               title
               description
+              showMe
+              questions
+              time
             }
             partners {
               nav

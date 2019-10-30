@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import useForm from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -43,6 +43,16 @@ const reducer = (state, action) => {
       throw new Error();
   }
 };
+
+/*
+Playlist:
+Airsoft guns videos review
+Uniforms videos review
+Luftwaffe uniforms
+DENIX
+Les tutos de Neo
+Court métrages
+*/
 
 const Videos = () => {
   const [{ videos, contact }] = useTranslations();
@@ -142,7 +152,7 @@ const Events = ({ data }) => {
   );
 };
 
-const Faq = ({ data }) => {
+const Faq = () => {
   const [{ faq }] = useTranslations();
   return (
     <div className="container">
@@ -150,32 +160,9 @@ const Faq = ({ data }) => {
         <h2>{faq.title}</h2>
       </header>
       <HTML markdown={faq.description} />
-      {data.map(({ node: { frontmatter, id, html } }) => {
-        return (
-          <article key={id}>
-            <div className="row">
-              <div className="col-3 col-12-mobile">
-                <div className="item">
-                  <a
-                    href={frontmatter.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Img
-                      fluid={frontmatter.thumbnail.childImageSharp.fluid}
-                      alt={frontmatter.title}
-                    />
-                  </a>
-                </div>
-              </div>
-              <div
-                className="col-9 col-12-mobile"
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
-            </div>
-          </article>
-        );
-      })}
+      <Link to="/faq" className="button primary">
+        {faq.showMe}
+      </Link>
     </div>
   );
 };
@@ -322,7 +309,6 @@ const IndexPage = ({
   data: {
     bg,
     events: { edges: eventItems },
-    faq: { edges: faqItems },
     partners: { edges: partnerItems },
   },
 }) => {
@@ -371,7 +357,7 @@ const IndexPage = ({
           <Videos />
         </section>
         <section id="faq" className="four">
-          <Faq data={faqItems} />
+          <Faq />
         </section>
         <section id="partners" className="three">
           <Partners data={partnerItems} />
@@ -435,29 +421,6 @@ export const query = graphql`
             thumbnail {
               childImageSharp {
                 fluid(maxWidth: 600, traceSVG: { color: "#222629" }) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-            title
-            link
-          }
-        }
-      }
-    }
-    faq: allMarkdownRemark(
-      filter: {
-        fields: { slug: { regex: "/^(/faq/)/" }, locale: { eq: $locale } }
-      }
-    ) {
-      edges {
-        node {
-          id
-          html
-          frontmatter {
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 480, traceSVG: { color: "#222629" }) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }

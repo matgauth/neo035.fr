@@ -18,7 +18,10 @@
   "faq": {
     "nav": "FAQ",
     "title": "FAQ",
-    "description": "Lorem ipsum"
+    "description": "Lorem ipsum",
+    "showMe": "Toutes les FAQ sont ici !",
+    "questions": "Questions",
+    "time": "Temps"
   },
   "partners": {
     "nav": "Partenaires",
