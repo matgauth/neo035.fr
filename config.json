@@ -1,16 +1,7 @@
 {
-  "siteTitle": "Site de Neo035",
-  "manifestName": "Neo035",
-  "manifestShortName": "Neo035",
-  "manifestStartUrl": "/",
-  "manifestBackgroundColor": "#663399",
-  "manifestThemeColor": "#663399",
-  "manifestDisplay": "standalone",
-  "manifestIcon": "static/img/avatar.png",
-  "pathPrefix": "/",
-  "ownerName": "Rémi Bourboulon",
-  "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",
   "heading": "Super youtubeurre",
+  "manifestIcon": "/img/avatar.png",
+  "manifestThemeColor": "#663399",
   "socialLinks": [
     {
       "icon": "fa-youtube",
@@ -21,11 +12,14 @@
       "icon": "fa-facebook",
       "name": "Facebook",
       "url": "https://www.facebook.com/pages/Neo035/49210667325"
-    },
-    {
-      "icon": "fa-envelope-o",
-      "name": "Email",
-      "url": "mailto:neo035@live.fr"
     }
-  ]
+  ],
+  "siteTitle": "Site de Neo035",
+  "manifestDisplay": "standalone",
+  "pathPrefix": "/",
+  "manifestShortName": "Neo035",
+  "manifestName": "Neo035",
+  "manifestStartUrl": "/",
+  "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",
+  "ownerName": "Rémi Bourboulon"
 }
