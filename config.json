@@ -1,6 +1,6 @@
 {
-  "heading": "Bienvenue sur mon site web pour découvrir mon activité !",
-  "manifestIcon": "static/img/avatar.png",
+  "heading": "Super youtubeurre",
+  "manifestIcon": "/img/avatar.png",
   "manifestThemeColor": "#663399",
   "socialLinks": [
     {
@@ -12,11 +12,6 @@
       "icon": "fa-facebook",
       "name": "Facebook",
       "url": "https://www.facebook.com/pages/Neo035/49210667325"
-    },
-    {
-      "icon": "fa-envelope-o",
-      "name": "Email",
-      "url": "mailto:neo035@live.fr"
     }
   ],
   "siteTitle": "Site de Neo035",
