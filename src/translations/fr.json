@@ -1,24 +1,24 @@
 {
   "home": {
     "nav": "Accueil",
-    "title": "Hello je suis Neo035",
-    "description": "Super youtubeurre",
-    "showMe": "Montre-moi sa beauté !"
+    "title": "Bienvenue sur le site de Neo035",
+    "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
+    "showMe": "Ici, vous retrouverez mes activités en marge de mes vidéos YouTube !"
   },
   "events": {
     "nav": "Evénements",
     "title": "Evénements",
-    "description": "Lorem ipsum"
+    "edescription": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
   },
   "videos": {
     "nav": "Vidéos",
     "title": "Vidéos",
-    "description": "Lorem ipsum"
+    "edescription": "Voici une sélection de mes meilleurs vidéos !"
   },
   "faq": {
     "nav": "FAQ",
     "title": "FAQ",
-    "description": "Lorem ipsum",
+    "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !",
     "showMe": "Toutes les FAQ sont ici !",
     "questions": "Questions",
     "time": "Temps"
@@ -26,24 +26,24 @@
   "partners": {
     "nav": "Partenaires",
     "title": "Mes partenaires",
-    "description": "Lorem ipsum"
+    "edescription": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
   },
   "contact": {
     "nav": "Contact",
     "title": "Contacte-moi !",
-    "description": "Lorem ipsum",
+    "edescription": "Tu veux me soumettre une info, me poser une question ou tout simplement me donner ton soutien?",
     "form": {
-      "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
       "success": "J'ai bien reçu ton message ;-)",
-      "loading": "Chargement de l'infini...",
+      "message": "Écris-moi un petit mot...",
+      "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
+      "invalidAge": "Âge invalide, il faut des CHIFFRES !",
       "name": "Ton nom",
-      "age": "Age",
-      "mail": "Adresse mail",
-      "message": "Ecris-moi un petit mot...",
-      "required": "Requis",
-      "invalidAge": "Âge invalide",
       "invalidMail": "Email invalide",
-      "submit": "Et hop envoyé !"
+      "mail": "Ton adresse mail",
+      "submit": "Et hop envoyé !",
+      "loading": "Chargement de l'infini...",
+      "age": "Age",
+      "required": "Requis"
     }
   },
   "footer": {
@@ -53,11 +53,11 @@
   "pageMetadata": {
     "home": {
       "title": "Accueil",
-      "description": ""
+      "description": "Page de Neo035"
     },
     "legalNotices": {
       "title": "Mentions légales",
-      "description": ""
+      "description": "Mentions légales"
     }
   }
 }
