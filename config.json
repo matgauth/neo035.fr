@@ -1,5 +1,5 @@
 {
-  "heading": "Super youtubeurre",
+  "heading": "Découvrez mes activités airsoft et reconstitution sur YouTube",
   "manifestIcon": "/img/avatar.png",
   "manifestThemeColor": "#663399",
   "socialLinks": [
@@ -12,6 +12,11 @@
       "icon": "fa-facebook",
       "name": "Facebook",
       "url": "https://www.facebook.com/pages/Neo035/49210667325"
+    },
+    {
+      "icon": "fa-instagram",
+      "name": "Instagram",
+      "url": "http://instagram.com/neo035"
     }
   ],
   "siteTitle": "Site de Neo035",
