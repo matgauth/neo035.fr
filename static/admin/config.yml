@@ -6,6 +6,8 @@ display_url: https://neo035.fr
 
 logo_url: /img/logo.png
 
+publish_mode: editorial_workflow
+
 media_folder: static/img
 public_folder: /img
 
@@ -249,7 +251,7 @@ collections:
       - { label: 'Youtube Link', name: 'link', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
       - label: 'Questions'
-        name: 'link'
+        name: 'questions'
         widget: 'list'
         fields:
           - { label: 'Label', name: 'label', widget: 'string' }
