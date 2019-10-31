@@ -1,19 +1,51 @@
 import axios from 'axios';
-import { map, path, prop } from 'ramda';
+import { map, path, prop, toLower } from 'ramda';
+import config from '@config';
 
-const normalizeRecord = rec => ({
+const normalizePlaylistRecord = rec => ({
   id: prop('id', rec),
   publishedAt: path(['snippet', 'publishedAt'], rec),
   title: path(['snippet', 'title'], rec),
-  description: path(['snippet', 'description'], rec),
-  videoId: path(['contentDetails', 'videoId'], rec),
-  privacyStatus: path(['status', 'privacyStatus'], rec),
+  videoCount: path(['contentDetails', 'itemCount'], rec),
   channelId: path(['snippet', 'channelId'], rec),
   channelTitle: path(['snippet', 'channelTitle'], rec),
-  thumbnail: path(['snippet', 'thumbnails', 'maxres', 'url'], rec),
+  thumbnail: path(['snippet', 'thumbnails', 'standard', 'url'], rec),
 });
 
-const normalizeRecords = map(normalizeRecord);
+const normalizePlaylistRecords = map(normalizePlaylistRecord);
+
+const parseQuestions = (description, videoId) => {
+  const getYoutubeLink = (sec, min) =>
+    `https://www.youtube.com/watch?v=${videoId}&t=${
+      min ? `${min}m` : ``
+    }${sec}s`;
+  return description
+    .split('\n')
+    .filter(line => line.match(/[0-9]{1,2}:[0-9]{1,2}$/))
+    .map(line => {
+      const [label, time] = line.split`? `;
+      const [min, sec] = time.split`:`;
+      return {
+        label: `${label} ?`,
+        time: { text: time, link: getYoutubeLink(sec, min) },
+      };
+    });
+};
+
+const normalizeVideoRecord = rec => {
+  const videoId = path(['contentDetails', 'videoId'], rec);
+  const description = path(['snippet', 'description'], rec);
+  return {
+    id: prop('id', rec),
+    publishedAt: path(['contentDetails', 'videoPublishedAt'], rec),
+    title: path(['snippet', 'title'], rec),
+    questions: parseQuestions(description, videoId),
+    videoId,
+    thumbnail: path(['snippet', 'thumbnails', 'standard', 'url'], rec),
+  };
+};
+
+const normalizeVideoRecords = map(normalizeVideoRecord);
 
 const getApi = () => {
   const rateLimit = 500;
@@ -41,57 +73,64 @@ const getApi = () => {
   return api;
 };
 
-export const createVideoNodesFromChannelId = async (
-  channelId,
+export const getPlaylistsFromChannelId = async (channelId, apiKey) => {
+  const api = getApi();
+  const part = 'snippet,contentDetails';
+
+  const res = await api.get('playlists', {
+    params: {
+      part,
+      channelId,
+      maxResults: 18,
+      key: apiKey,
+    },
+  });
+  const playlistsFromConfig = config.playlists.map(toLower);
+  const filteredRecords = res.data.items.filter(item => {
+    const title = toLower(item.snippet.title);
+    return playlistsFromConfig.includes(title);
+  });
+  return normalizePlaylistRecords(filteredRecords);
+};
+
+export const getVideosFromPlaylistId = async (
+  playlistId,
   apiKey,
   maxVideos = 15
 ) => {
   const api = getApi();
   let videos = [];
 
-  const channelResp = await api.get('channels', {
+  let pageSize = maxVideos;
+  const part = 'snippet,contentDetails';
+
+  let videoResp = await api.get('playlistItems', {
     params: {
-      part: 'contentDetails',
-      id: channelId,
+      part,
+      maxResults: pageSize,
+      playlistId,
       key: apiKey,
     },
   });
+  videos.push(...videoResp.data.items);
 
-  const channelData = channelResp.data.items[0];
-  if (!!channelData) {
-    const uploadsId = path(
-      ['contentDetails', 'relatedPlaylists', 'uploads'],
-      channelData
-    );
-    let pageSize = maxVideos;
-    const part = 'snippet,contentDetails,status';
-
-    let videoResp = await api.get('playlistItems', {
+  while (videoResp.data.nextPageToken && videos.length < maxVideos) {
+    pageSize = maxVideos - videos.length;
+    let nextPageToken = videoResp.data.nextPageToken;
+    videoResp = await api.get('playlistItems', {
       params: {
         part,
         maxResults: pageSize,
-        playlistId: uploadsId,
+        playlistId,
+        pageToken: nextPageToken,
         key: apiKey,
       },
     });
     videos.push(...videoResp.data.items);
-
-    while (videoResp.data.nextPageToken && videos.length < maxVideos) {
-      pageSize = maxVideos - videos.length;
-      let nextPageToken = videoResp.data.nextPageToken;
-      videoResp = await api.get('playlistItems', {
-        params: {
-          part,
-          maxResults: pageSize,
-          playlistId: uploadsId,
-          pageToken: nextPageToken,
-          key: apiKey,
-        },
-      });
-      videos.push(...videoResp.data.items);
-    }
   }
-  return normalizeRecords(videos);
+  console.log(videos);
+
+  return normalizeVideoRecords(videos);
 };
 
 export const str = JSON.stringify;

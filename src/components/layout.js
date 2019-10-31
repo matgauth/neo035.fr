@@ -6,7 +6,7 @@ import SEO from './seo';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 
-toast.configure({ position: `bottom-right`, transition: Slide });
+toast.configure({ position: `top-right`, transition: Slide });
 
 export const LocaleContext = React.createContext();
 

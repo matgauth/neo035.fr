@@ -5,15 +5,15 @@ import { graphql, Link } from 'gatsby';
 import useForm from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import ContentLoader from 'react-content-loader';
 
-import Modal from '@components/modal';
 import PageFooter from '@components/footer';
 import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
 import HTML from '@components/inner-html';
 import useTranslations from '@hooks/use-translations';
 
-import { createVideoNodesFromChannelId } from '@utils';
+import { getPlaylistsFromChannelId } from '@utils';
 import config from '@config';
 
 const apiKey = process.env.GATSBY_YT_APIKEY;
@@ -44,16 +44,6 @@ const reducer = (state, action) => {
   }
 };
 
-/*
-Playlist:
-Airsoft guns videos review
-Uniforms videos review
-Luftwaffe uniforms
-DENIX
-Les tutos de Neo
-Court métrages
-*/
-
 const Videos = () => {
   const [{ videos, contact }] = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
@@ -66,7 +56,7 @@ const Videos = () => {
     const fetchVideos = async () => {
       dispatch({ type: 'FETCH_INIT' });
       try {
-        const result = await createVideoNodesFromChannelId(
+        const result = await getPlaylistsFromChannelId(
           config.channelId,
           apiKey
         );
@@ -81,43 +71,63 @@ const Videos = () => {
     };
   }, []);
 
-  if (state.isError) {
-    return <p>{contact.form.error}</p>;
-  }
   return (
-    <>
-      <Modal isOpen={state.isLoading}>
-        <div className="folding-cube">
-          <div className="cube1 cube"></div>
-          <div className="cube2 cube"></div>
-          <div className="cube4 cube"></div>
-          <div className="cube3 cube"></div>
-        </div>
-      </Modal>
-      <div className="container">
-        <header>
-          <h2>{videos.title}</h2>
-        </header>
-        <HTML markdown={videos.description} />
-        <div className="row">
-          {state.data.length > 0 &&
-            state.data.map(video => (
-              <div key={video.id} className="col-4 col-12-mobile">
-                <article className="item">
-                  <a
-                    href={`https://youtube.com/watch?v=${video.videoId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="image fit"
-                  >
-                    <img src={video.thumbnail} alt={video.title} />
-                  </a>
-                </article>
+    <div className="container">
+      <header>
+        <h2>{videos.title}</h2>
+      </header>
+      <HTML markdown={videos.description} />
+      <div className="row">
+        {state.isLoading &&
+          config.playlists.map(item => {
+            return (
+              <div key={item} className="col-4 col-6-wide col-12-mobile">
+                <ContentLoader
+                  height={400}
+                  width={400}
+                  speed={2}
+                  primaryColor="#fdfdfd"
+                  secondaryColor="#f9f9f9"
+                >
+                  <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
+                </ContentLoader>
               </div>
-            ))}
-        </div>
+            );
+          })}
+        {state.isError && <p className="error">{contact.form.error}</p>}
+        {state.data.length > 0 &&
+          state.data.map(playlist => (
+            <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
+              <article className="item">
+                <span className="ribbon">
+                  {playlist.videoCount}{' '}
+                  <span className="icon fa-video-camera" />
+                </span>
+                <a
+                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={playlist.thumbnail}
+                    alt={playlist.title}
+                    className="image fit"
+                  />
+                </a>
+                <h3>{playlist.title}</h3>
+                <a
+                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Voir la playlist complète{' '}
+                  <span className="icon fa-arrow-right" />
+                </a>
+              </article>
+            </div>
+          ))}
       </div>
-    </>
+    </div>
   );
 };
 
@@ -198,8 +208,8 @@ const encode = data =>
     .join('&');
 
 const ContactForm = () => {
-  const { register, handleSubmit, errors } = useForm();
   const [{ contact }] = useTranslations();
+  const { register, handleSubmit, errors } = useForm();
 
   const setError = id => err => {
     console.log('Error for DEV: ', err);
@@ -337,7 +347,7 @@ const IndexPage = ({
         >
           <div className="container">
             <header>
-              <h2 className="alt">{home.title}</h2>
+              <h1 className="alt">{home.title}</h1>
               <HTML markdown={home.description} />
             </header>
 
@@ -350,19 +360,19 @@ const IndexPage = ({
             </footer>
           </div>
         </BackgroundImage>
-        <section id="events" className="two">
+        <section id="events" className="alt-1">
           <Events data={eventItems} />
         </section>
-        <section id="videos" className="three">
+        <section id="videos" className="alt-2">
           <Videos />
         </section>
-        <section id="faq" className="four">
+        <section id="faq" className="alt-1">
           <Faq />
         </section>
-        <section id="partners" className="three">
+        <section id="partners" className="alt-2">
           <Partners data={partnerItems} />
         </section>
-        <section id="contact" className="four">
+        <section id="contact" className="alt-1">
           <div className="container">
             <header>
               <h2>{contact.title}</h2>
@@ -399,7 +409,7 @@ export const query = graphql`
           name
           ext
           childImageSharp {
-            fluid(maxWidth: 400, traceSVG: { color: "#222629" }) {
+            fluid(maxWidth: 500, traceSVG: { color: "#222629" }) {
               ...GatsbyImageSharpFluid_tracedSVG
             }
           }

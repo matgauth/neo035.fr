@@ -47,6 +47,8 @@ const query = graphql`
               title
               description
               showMe
+              publishedAt
+              searchPlaceholder
               questions
               time
             }

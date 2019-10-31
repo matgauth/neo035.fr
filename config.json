@@ -26,5 +26,14 @@
   "manifestName": "Neo035",
   "manifestStartUrl": "/",
   "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",
-  "ownerName": "Rémi Bourboulon"
+  "ownerName": "Rémi Bourboulon",
+  "playlists": [
+    "Airsoft guns videos review",
+    "Uniforms videos review",
+    "Luftwaffe uniforms",
+    "DENIX",
+    "Les tutos de Neo",
+    "Court métrages"
+  ],
+  "faqPlaylistId": "PLMrEpvgeaYU17y8se3HRw-M7gdXt1qQFn"
 }
