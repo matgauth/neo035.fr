@@ -31,7 +31,6 @@ const FAQ = ({
         </button>
       </div>
       {filteredFaqItems.map(({ node: { frontmatter, id, html } }) => {
-        console.log(frontmatter.questions);
         return (
           <article key={id}>
             <div className="row">
