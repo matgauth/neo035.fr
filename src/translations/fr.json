@@ -8,12 +8,12 @@
   "events": {
     "nav": "Evénements",
     "title": "Evénements",
-    "edescription": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
+    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
   },
   "videos": {
     "nav": "Vidéos",
     "title": "Vidéos",
-    "edescription": "Voici une sélection de mes meilleurs vidéos !"
+    "description": "Voici une sélection de mes meilleurs vidéos !"
   },
   "faq": {
     "nav": "FAQ",
@@ -26,12 +26,12 @@
   "partners": {
     "nav": "Partenaires",
     "title": "Mes partenaires",
-    "edescription": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
+    "description": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
   },
   "contact": {
     "nav": "Contact",
     "title": "Contacte-moi !",
-    "edescription": "Tu veux me soumettre une info, me poser une question ou tout simplement me donner ton soutien?",
+    "description": "Tu veux me soumettre une info, me poser une question ou tout simplement me donner ton soutien?",
     "form": {
       "success": "J'ai bien reçu ton message ;-)",
       "message": "Écris-moi un petit mot...",

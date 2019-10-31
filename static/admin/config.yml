@@ -126,14 +126,14 @@ collections:
             fields:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'Videos'
             name: 'videos'
             widget: 'object'
             fields:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'
@@ -150,14 +150,14 @@ collections:
             fields:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'Contact'
             name: 'contact'
             widget: 'object'
             fields:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'edescription', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
               - label: 'Form'
                 name: 'form'
                 widget: 'object'
