@@ -10,7 +10,7 @@ const normalizePlaylistRecord = rec => ({
   videoCount: path(['contentDetails', 'itemCount'], rec),
   channelId: path(['snippet', 'channelId'], rec),
   channelTitle: path(['snippet', 'channelTitle'], rec),
-  thumbnail: path(['snippet', 'thumbnails', 'standard', 'url'], rec),
+  thumbnail: path(['snippet', 'thumbnails', 'high', 'url'], rec),
 });
 
 const normalizePlaylistRecords = map(normalizePlaylistRecord);
@@ -42,7 +42,7 @@ const normalizeVideoRecord = rec => {
     title: path(['snippet', 'title'], rec),
     questions: parseQuestions(description, videoId),
     videoId,
-    thumbnail: path(['snippet', 'thumbnails', 'standard', 'url'], rec),
+    thumbnail: path(['snippet', 'thumbnails', 'high', 'url'], rec),
   };
 };
 

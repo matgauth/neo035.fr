@@ -78,6 +78,7 @@ const Videos = () => {
         <h2>{videos.title}</h2>
       </header>
       <HTML markdown={videos.description} />
+      {state.isError && <p className="error">{contact.form.error}</p>}
       <div className="row">
         {state.isLoading &&
           config.playlists.map(item => {
@@ -95,7 +96,6 @@ const Videos = () => {
               </div>
             );
           })}
-        {state.isError && <p className="error">{contact.form.error}</p>}
         {state.data.length > 0 &&
           state.data.map(playlist => (
             <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
@@ -339,6 +339,7 @@ const ContactForm = () => {
 const IndexPage = ({
   data: {
     bg,
+    avatar,
     events: { edges: eventItems },
     partners: { edges: partnerItems },
   },

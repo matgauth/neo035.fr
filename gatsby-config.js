@@ -5,8 +5,8 @@ module.exports = {
   siteMetadata: {
     defaultTitle: config.siteTitle,
     titleAlt: `Neo035`,
-    defaultDescription: `Neo035`,
-    headline: `Neo035`,
+    jobTitle: config.jobTitle,
+    defaultDescription: config.heading,
     author: `Mathieu Gauthier <mathieugauthier.fr>`,
     logo: `/img/avatar.png`,
     siteUrl: `https://www.neo035.fr`,
@@ -88,7 +88,6 @@ module.exports = {
               siteMetadata {
                 defaultTitle
                 defaultDescription
-                headline
                 author
                 siteUrl
               }
@@ -140,7 +139,7 @@ module.exports = {
                 site: { siteMetadata },
               },
             }) => ({
-              title: siteMetadata.headline,
+              title: siteMetadata.defaultTitle,
               description: siteMetadata.defaultDescription,
               feed_url: siteMetadata.siteUrl + `/events.xml`,
               site_url: siteMetadata.siteUrl,

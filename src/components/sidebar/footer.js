@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import l from '@i18n';
 
-export default function Footer({ socialLinks = [] }) {
+const locales = Object.keys(l);
+
+export default function Footer() {
+  const {
+    site: {
+      siteMetadata: { socialLinks },
+    },
+  } = useStaticQuery(query);
   return (
     <div className="bottom">
       <ul className="icons">
@@ -26,15 +34,33 @@ export default function Footer({ socialLinks = [] }) {
           ];
         })}
         <li>
-          <Link to="/" className="icon" hrefLang="fr">
-            FR
-          </Link>{' '}
-          /{' '}
-          <Link to="/en" className="icon" hrefLang="en">
-            EN
-          </Link>
+          {locales.map((lang, i) => [
+            <Link
+              key={lang}
+              to={`/${l[lang].default ? `` : l[lang].path}`}
+              className="icon"
+              hrefLang={lang}
+            >
+              {lang.toUpperCase()}
+            </Link>,
+            i < locales.length - 1 && ` / `,
+          ])}
         </li>
       </ul>
     </div>
   );
 }
+
+const query = graphql`
+  query Footer {
+    site {
+      siteMetadata {
+        socialLinks {
+          icon
+          name
+          url
+        }
+      }
+    }
+  }
+`;

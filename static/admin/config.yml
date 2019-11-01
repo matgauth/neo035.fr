@@ -11,6 +11,10 @@ publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
 
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+
 collections:
   - name: 'config'
     label: 'Configuration'
@@ -73,6 +77,7 @@ collections:
         file: 'config.json'
         fields:
           - { label: 'Site Title', name: 'siteTitle', widget: 'string' }
+          - { label: 'Job Title', name: 'jobTitle', widget: 'string' }
           - { label: 'Name', name: 'manifestName', widget: 'string' }
           - { label: 'Short Name', name: 'manifestShortName', widget: 'string' }
           - {
@@ -119,153 +124,120 @@ collections:
             }
   - name: 'translations'
     label: 'Translations'
+    folder: 'src/translations'
+    format: 'json'
     delete: false
     editor:
       preview: false
-    files:
-      - name: 'french'
-        label: 'French'
-        file: 'src/translations/fr.json'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'hidden' }
+      - label: 'Home'
+        name: 'home'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Show me', name: 'showMe', widget: 'string' }
+      - label: 'events'
+        name: 'events'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Videos'
+        name: 'videos'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Watch playlist', name: 'watchPlaylist', widget: 'string' }
+      - label: 'FAQ'
+        name: 'faq'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Show me', name: 'showMe', widget: 'string' }
+          - {
+              label: 'Search Placeholder',
+              name: 'searchPlaceholder',
+              widget: 'string',
+            }
+          - { label: 'Watch video', name: 'watchVideo', widget: 'string' }
+          - { label: 'Published at', name: 'publishedAt', widget: 'string' }
+          - { label: 'Questions', name: 'questions', widget: 'string' }
+          - { label: 'Time', name: 'time', widget: 'string' }
+      - label: 'Partners'
+        name: 'partners'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Contact'
+        name: 'contact'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - label: 'Form'
+            name: 'form'
+            widget: 'object'
+            fields:
+              - { label: 'Error message', name: 'error', widget: 'string' }
+              - { label: 'Success message', name: 'success', widget: 'string' }
+              - { label: 'Loading message', name: 'loading', widget: 'string' }
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Age', name: 'age', widget: 'string' }
+              - { label: 'Mail', name: 'mail', widget: 'string' }
+              - { label: 'Message', name: 'message', widget: 'string' }
+              - { label: 'Required', name: 'required', widget: 'string' }
+              - { label: 'Invalid Age', name: 'invalidAge', widget: 'string' }
+              - { label: 'Invalid Mail', name: 'invalidMail', widget: 'string' }
+              - { label: 'Submit', name: 'submit', widget: 'string' }
+      - label: 'Not Found'
+        name: 'notFound'
+        widget: 'object'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Footer'
+        name: 'footer'
+        widget: 'object'
+        fields:
+          - {
+              label: 'Mentions légales',
+              name: 'legalNotices',
+              widget: 'string',
+            }
+          - { label: 'Copyright', name: 'copyright', widget: 'string' }
+      - label: 'Page Metadata'
+        name: 'pageMetadata'
+        widget: 'object'
         fields:
           - label: 'Home'
             name: 'home'
             widget: 'object'
             fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
-              - { label: 'Show me', name: 'showMe', widget: 'string' }
-          - label: 'events'
-            name: 'events'
-            widget: 'object'
-            fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'string' }
-          - label: 'Videos'
-            name: 'videos'
-            widget: 'object'
-            fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'string' }
-              - {
-                  label: 'Watch playlist',
-                  name: 'watchPlaylist',
-                  widget: 'string',
-                }
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'
             fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
-              - { label: 'Show me', name: 'showMe', widget: 'string' }
-              - {
-                  label: 'Search Placeholder',
-                  name: 'searchPlaceholder',
-                  widget: 'string',
-                }
-              - { label: 'Watch video', name: 'watchVideo', widget: 'string' }
-              - { label: 'Published at', name: 'publishedAt', widget: 'string' }
-              - { label: 'Questions', name: 'questions', widget: 'string' }
-              - { label: 'Time', name: 'time', widget: 'string' }
-          - label: 'Partners'
-            name: 'partners'
-            widget: 'object'
-            fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'string' }
-          - label: 'Contact'
-            name: 'contact'
-            widget: 'object'
-            fields:
-              - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-              - { label: 'Title', name: 'title', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'string' }
-              - label: 'Form'
-                name: 'form'
-                widget: 'object'
-                fields:
-                  - { label: 'Error message', name: 'error', widget: 'string' }
-                  - {
-                      label: 'Success message',
-                      name: 'success',
-                      widget: 'string',
-                    }
-                  - {
-                      label: 'Loading message',
-                      name: 'loading',
-                      widget: 'string',
-                    }
-                  - { label: 'Name', name: 'name', widget: 'string' }
-                  - { label: 'Age', name: 'age', widget: 'string' }
-                  - { label: 'Mail', name: 'mail', widget: 'string' }
-                  - { label: 'Message', name: 'message', widget: 'string' }
-                  - { label: 'Required', name: 'required', widget: 'string' }
-                  - {
-                      label: 'Invalid Age',
-                      name: 'invalidAge',
-                      widget: 'string',
-                    }
-                  - {
-                      label: 'Invalid Mail',
-                      name: 'invalidMail',
-                      widget: 'string',
-                    }
-                  - { label: 'Submit', name: 'submit', widget: 'string' }
-          - label: 'Not Found'
-            name: 'notFound'
+          - label: 'Legal Notices'
+            name: 'legalNotices'
             widget: 'object'
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
-          - label: 'Footer'
-            name: 'footer'
-            widget: 'object'
-            fields:
-              - {
-                  label: 'Mentions légales',
-                  name: 'legalNotices',
-                  widget: 'string',
-                }
-              - { label: 'Copyright', name: 'copyright', widget: 'string' }
-          - label: 'Page Metadata'
-            name: 'pageMetadata'
-            widget: 'object'
-            fields:
-              - label: 'Home'
-                name: 'home'
-                widget: 'object'
-                fields:
-                  - { label: 'Title', name: 'title', widget: 'string' }
-                  - {
-                      label: 'Description',
-                      name: 'description',
-                      widget: 'string',
-                    }
-              - label: 'FAQ'
-                name: 'faq'
-                widget: 'object'
-                fields:
-                  - { label: 'Title', name: 'title', widget: 'string' }
-                  - {
-                      label: 'Description',
-                      name: 'description',
-                      widget: 'string',
-                    }
-              - label: 'Legal Notices'
-                name: 'legalNotices'
-                widget: 'object'
-                fields:
-                  - { label: 'Title', name: 'title', widget: 'string' }
-                  - {
-                      label: 'Description',
-                      name: 'description',
-                      widget: 'string',
-                    }
   - name: 'events'
     label: 'Events'
     label_singular: 'event'

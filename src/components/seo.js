@@ -15,7 +15,7 @@ const SEO = ({ lang, image, pathname }) => {
       siteMetadata: {
         defaultTitle,
         defaultDescription,
-        headline,
+        jobTitle,
         author,
         logo,
         siteUrl,
@@ -45,7 +45,7 @@ const SEO = ({ lang, image, pathname }) => {
           name: author,
           url: siteUrl,
           image: seo.image,
-          jobTitle: headline,
+          jobTitle,
           worksFor: {
             '@type': 'Organization',
             name: defaultTitle,
@@ -60,11 +60,6 @@ const SEO = ({ lang, image, pathname }) => {
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
 
-      {/* <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:creator" content="tessigroupe" />
-            <meta name="twitter:title" content={seo.title} />
-            <meta name="twitter:description" content={seo.description} />
-            <meta name="twitter:image" content={seo.image} /> */}
     </Helmet>
   );
 };
@@ -89,7 +84,7 @@ const query = graphql`
       siteMetadata {
         defaultTitle
         defaultDescription
-        headline
+        jobTitle
         author
         logo
         siteUrl
