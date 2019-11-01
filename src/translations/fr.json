@@ -1,38 +1,5 @@
 {
   "title": "Français",
-  "home": {
-    "nav": "Accueil",
-    "title": "Bienvenue sur le site de Neo035",
-    "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
-    "showMe": "Ici, vous retrouverez mes activités en marge de mes vidéos YouTube !"
-  },
-  "events": {
-    "nav": "Evénements",
-    "title": "Evénements",
-    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
-  },
-  "videos": {
-    "nav": "Vidéos",
-    "title": "Vidéos",
-    "description": "Voici une sélection de mes meilleurs vidéos !",
-    "watchPlaylist": "Voir la playlist complète"
-  },
-  "faq": {
-    "nav": "FAQ",
-    "title": "FAQ",
-    "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !",
-    "showMe": "Toutes les FAQ sont ici !",
-    "searchPlaceholder": "Tape ta recherche ici",
-    "watchVideo": "Voir la vidéo complète",
-    "publishedAt": "Publiée le",
-    "questions": "Questions",
-    "time": "Temps (min:sec)"
-  },
-  "partners": {
-    "nav": "Partenaires",
-    "title": "Mes partenaires",
-    "description": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
-  },
   "contact": {
     "nav": "Contact",
     "title": "Contacte-moi !",
@@ -51,9 +18,36 @@
       "required": "Requis"
     }
   },
+  "partners": {
+    "nav": "Partenaires",
+    "title": "Mes partenaires",
+    "description": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
+  },
   "notFound": {
     "title": "Page introuvable !",
     "description": "Oups... Retourne à l'accueil ! Tu te sentiras mieux."
+  },
+  "faq": {
+    "publishedAt": "Publiée le",
+    "nav": "FAQ",
+    "searchPlaceholder": "Tape ta recherche ici",
+    "watchVideo": "Voir la vidéo complète",
+    "questions": "Questions",
+    "time": "Temps (min:sec)",
+    "showMe": "Toutes les FAQ sont ici !",
+    "title": "FAQ",
+    "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
+  },
+  "videos": {
+    "nav": "Vidéos",
+    "title": "Vidéos",
+    "description": "Voici une sélection de mes meilleurs vidéos !",
+    "watchPlaylist": "Voir la playlist complète"
+  },
+  "events": {
+    "nav": "Evénements",
+    "title": "Evénements",
+    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
   },
   "footer": {
     "legalNotices": "Mentions légales",
@@ -62,15 +56,21 @@
   "pageMetadata": {
     "home": {
       "title": "Accueil",
-      "description": "Page de Neo035"
+      "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2"
     },
     "faq": {
       "title": "FAQ",
-      "description": "Page de Neo035"
+      "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
     },
     "legalNotices": {
       "title": "Mentions légales",
       "description": "Mentions légales"
     }
+  },
+  "home": {
+    "nav": "Accueil",
+    "title": "Bienvenue sur le site de Neo035",
+    "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
+    "showMe": "Ici, vous retrouverez mes activités en marge de mes vidéos YouTube !"
   }
 }
