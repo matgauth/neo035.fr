@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { map, path, prop, toLower } from 'ramda';
+import { map, path, prop, toLower, split, pipe, without, last } from 'ramda';
+import camelCase from 'lodash.camelcase';
 import config from '@config';
 
 const normalizePlaylistRecord = rec => ({
@@ -114,8 +115,7 @@ export const getVideosFromPlaylistId = async (
   });
   videos.push(...videoResp.data.items);
 
-  while (videoResp.data.nextPageToken && videos.length < maxVideos) {
-    pageSize = maxVideos - videos.length;
+  while (videoResp.data.nextPageToken) {
     let nextPageToken = videoResp.data.nextPageToken;
     videoResp = await api.get('playlistItems', {
       params: {
@@ -128,9 +128,15 @@ export const getVideosFromPlaylistId = async (
     });
     videos.push(...videoResp.data.items);
   }
-  console.log(videos);
 
   return normalizeVideoRecords(videos);
 };
 
 export const str = JSON.stringify;
+
+export const parsePath = pipe(
+  split(`/`),
+  without([``]),
+  last,
+  camelCase
+);

@@ -11,10 +11,10 @@ const findTranslations = locale =>
   );
 
 const useTranslations = () => {
-  const { locale, dateFormat } = useContext(LocaleContext);
+  const locale = useContext(LocaleContext);
   const getFromQuery = findTranslations(locale);
   const { rawData } = useStaticQuery(query);
-  return [getFromQuery(rawData.edges), dateFormat];
+  return getFromQuery(rawData.edges);
 };
 
 export default useTranslations;
@@ -41,6 +41,7 @@ const query = graphql`
               nav
               title
               description
+              watchPlaylist
             }
             faq {
               nav
@@ -48,6 +49,7 @@ const query = graphql`
               description
               showMe
               publishedAt
+              watchVideo
               searchPlaceholder
               questions
               time
@@ -75,12 +77,20 @@ const query = graphql`
                 submit
               }
             }
+            notFound {
+              title
+              description
+            }
             footer {
               legalNotices
               copyright
             }
             pageMetadata {
               home {
+                title
+                description
+              }
+              faq {
                 title
                 description
               }

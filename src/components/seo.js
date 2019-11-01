@@ -6,10 +6,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { socialLinks } from '@config';
 
 import useTranslations from '@hooks/use-translations';
-import { str } from '@utils';
+import { str, parsePath } from '@utils';
 
 const SEO = ({ lang, image, pathname }) => {
-  const [t] = useTranslations();
+  const t = useTranslations();
   const {
     site: {
       siteMetadata: {
@@ -22,7 +22,10 @@ const SEO = ({ lang, image, pathname }) => {
       },
     },
   } = useStaticQuery(query);
-  const digMetadata = attr => path(['pageMetadata', `home`, attr], t);
+  const digMetadata = attr => {
+    const pageMetadata = pathname !== `/` ? parsePath(pathname) : `home`;
+    return path(['pageMetadata', pageMetadata, attr], t);
+  };
   const seo = {
     title: digMetadata('title') || defaultTitle,
     description: digMetadata('description') || defaultDescription,

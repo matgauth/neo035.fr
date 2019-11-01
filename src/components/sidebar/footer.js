@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { LocaleContext } from '../layout';
 
 export default function Footer({ socialLinks = [] }) {
-  const { locale } = React.useContext(LocaleContext);
   return (
     <div className="bottom">
       <ul className="icons">
@@ -28,16 +26,13 @@ export default function Footer({ socialLinks = [] }) {
           ];
         })}
         <li>
-          {locale !== `fr` && (
-            <Link to="/" className="icon">
-              Français
-            </Link>
-          )}
-          {locale !== `en` && (
-            <Link to="/en" className="icon">
-              English
-            </Link>
-          )}
+          <Link to="/" className="icon" hrefLang="fr">
+            FR
+          </Link>{' '}
+          /{' '}
+          <Link to="/en" className="icon" hrefLang="en">
+            EN
+          </Link>
         </li>
       </ul>
     </div>

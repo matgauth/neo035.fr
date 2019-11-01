@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import useForm from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import PageFooter from '@components/footer';
 import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
 import HTML from '@components/inner-html';
+import LocalizedLink from '@components/localized-link';
 import useTranslations from '@hooks/use-translations';
 
 import { getPlaylistsFromChannelId } from '@utils';
@@ -45,7 +46,7 @@ const reducer = (state, action) => {
 };
 
 const Videos = () => {
-  const [{ videos, contact }] = useTranslations();
+  const { videos, contact } = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
     isError: false,
@@ -107,6 +108,7 @@ const Videos = () => {
                   href={`https://www.youtube.com/playlist?list=${playlist.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={playlist.title}
                 >
                   <img
                     src={playlist.thumbnail}
@@ -119,8 +121,9 @@ const Videos = () => {
                   href={`https://www.youtube.com/playlist?list=${playlist.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={`${videos.watchPlaylist} ${playlist.title}`}
                 >
-                  Voir la playlist complète{' '}
+                  {videos.watchPlaylist}{' '}
                   <span className="icon fa-arrow-right" />
                 </a>
               </article>
@@ -132,7 +135,7 @@ const Videos = () => {
 };
 
 const Events = ({ data }) => {
-  const [{ events }] = useTranslations();
+  const { events } = useTranslations();
   return (
     <div className="container">
       <header>
@@ -143,18 +146,27 @@ const Events = ({ data }) => {
         return (
           <article key={id} className="item">
             <span className="ribbon">{frontmatter.date}</span>
-            <a
-              href={frontmatter.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Img
-                style={{ maxWidth: 600, margin: `24px auto` }}
-                fluid={frontmatter.thumbnail.childImageSharp.fluid}
-                alt={frontmatter.title}
-              />
-            </a>
-            <span dangerouslySetInnerHTML={{ __html: html }} />
+            <div className="inner-item">
+              {frontmatter.thumbnail && (
+                <a
+                  href={frontmatter.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={frontmatter.title}
+                >
+                  <Img
+                    style={{
+                      maxWidth: 600,
+                      margin: `0 auto 1.5em auto`,
+                      borderRadius: `0.35em`,
+                    }}
+                    fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                    alt={frontmatter.title}
+                  />
+                </a>
+              )}
+              <span dangerouslySetInnerHTML={{ __html: html }} />
+            </div>
           </article>
         );
       })}
@@ -163,16 +175,20 @@ const Events = ({ data }) => {
 };
 
 const Faq = () => {
-  const [{ faq }] = useTranslations();
+  const { faq } = useTranslations();
   return (
     <div className="container">
       <header>
         <h2>{faq.title}</h2>
       </header>
       <HTML markdown={faq.description} />
-      <Link to="/faq" className="button primary">
+      <LocalizedLink
+        to="/faq"
+        className="button primary"
+        aria-label={faq.description}
+      >
         {faq.showMe}
-      </Link>
+      </LocalizedLink>
     </div>
   );
 };
@@ -180,7 +196,7 @@ const Faq = () => {
 const getLink = name => `http://${name.split(/[0-9]{2}_/)[1]}`;
 
 const Partners = ({ data }) => {
-  const [{ partners }] = useTranslations();
+  const { partners } = useTranslations();
   return (
     <div className="container">
       <header>
@@ -191,7 +207,12 @@ const Partners = ({ data }) => {
         {data.map(({ node: { childImageSharp, id, name } }) => (
           <div key={id} className="col-3 col-12-mobile">
             <article className="item">
-              <a href={getLink(name)} target="_blank" rel="noopener noreferrer">
+              <a
+                href={getLink(name)}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={name}
+              >
                 <Img fluid={childImageSharp.fluid} alt={name} />
               </a>
             </article>
@@ -208,11 +229,11 @@ const encode = data =>
     .join('&');
 
 const ContactForm = () => {
-  const [{ contact }] = useTranslations();
+  const { contact } = useTranslations();
   const { register, handleSubmit, errors } = useForm();
 
   const setError = id => err => {
-    console.log('Error for DEV: ', err);
+    console.log('Error for DEV: ', err.message);
     toast.update(id, {
       render: contact.form.error,
       type: toast.TYPE.ERROR,
@@ -322,7 +343,7 @@ const IndexPage = ({
     partners: { edges: partnerItems },
   },
 }) => {
-  const [{ home, events, videos, faq, partners, contact }] = useTranslations();
+  const { home, events, videos, faq, partners, contact } = useTranslations();
   const sections = [
     { id: 'top', name: home.nav, icon: 'fa-home' },
     { id: 'events', name: events.nav, icon: 'fa-calendar' },

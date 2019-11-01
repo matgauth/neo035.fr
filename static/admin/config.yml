@@ -104,6 +104,19 @@ collections:
               - { label: 'Icon', name: 'icon', widget: 'string' }
               - { label: 'Name', name: 'name', widget: 'string' }
               - { label: 'URL', name: 'url', widget: 'string' }
+          - label: 'Playlists'
+            name: 'playlists'
+            widget: 'list'
+          - {
+              label: 'FAQ Playlist ID',
+              name: 'faqPlaylistId',
+              widget: 'string',
+            }
+          - {
+              label: 'Easter Egg Link (KONAMI Code)',
+              name: 'easterEggLink',
+              widget: 'string',
+            }
   - name: 'translations'
     label: 'Translations'
     delete: false
@@ -136,6 +149,11 @@ collections:
               - { label: 'Sidebar title', name: 'nav', widget: 'string' }
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
+              - {
+                  label: 'Watch playlist',
+                  name: 'watchPlaylist',
+                  widget: 'string',
+                }
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'
@@ -144,6 +162,13 @@ collections:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
               - { label: 'Show me', name: 'showMe', widget: 'string' }
+              - {
+                  label: 'Search Placeholder',
+                  name: 'searchPlaceholder',
+                  widget: 'string',
+                }
+              - { label: 'Watch video', name: 'watchVideo', widget: 'string' }
+              - { label: 'Published at', name: 'publishedAt', widget: 'string' }
               - { label: 'Questions', name: 'questions', widget: 'string' }
               - { label: 'Time', name: 'time', widget: 'string' }
           - label: 'Partners'
@@ -191,6 +216,12 @@ collections:
                       widget: 'string',
                     }
                   - { label: 'Submit', name: 'submit', widget: 'string' }
+          - label: 'Not Found'
+            name: 'notFound'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'Footer'
             name: 'footer'
             widget: 'object'
@@ -215,6 +246,16 @@ collections:
                       name: 'description',
                       widget: 'string',
                     }
+              - label: 'FAQ'
+                name: 'faq'
+                widget: 'object'
+                fields:
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - {
+                      label: 'Description',
+                      name: 'description',
+                      widget: 'string',
+                    }
               - label: 'Legal Notices'
                 name: 'legalNotices'
                 widget: 'object'
@@ -230,29 +271,23 @@ collections:
     label_singular: 'event'
     folder: 'src/data/events'
     create: true
+    slug: '{{title}.{{lang}}'
     editor:
       preview: false
     fields:
+      - {
+          label: 'Lang',
+          name: 'lang',
+          widget: 'select',
+          default: 'fr',
+          options:
+            [
+              { label: 'Français', value: 'fr' },
+              { label: 'English', value: 'en' },
+            ],
+        }
       - { label: 'Date', name: 'date', widget: 'date' }
       - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'External link', name: 'link', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
-  - name: 'faq'
-    label: 'FAQ'
-    label_singular: 'faq'
-    folder: 'src/data/faq'
-    create: true
-    editor:
-      preview: false
-    fields:
-      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Youtube Link', name: 'link', widget: 'string' }
-      - { label: 'Description', name: 'body', widget: 'markdown' }
-      - label: 'Questions'
-        name: 'questions'
-        widget: 'list'
-        fields:
-          - { label: 'Label', name: 'label', widget: 'string' }
-          - { label: 'Time', name: 'time', widget: 'string' }

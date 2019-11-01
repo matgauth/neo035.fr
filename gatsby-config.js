@@ -154,6 +154,7 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
+          '@i18n': path.resolve(__dirname, 'src/i18n'),
           '@config': path.resolve(__dirname, 'config'),
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@assets': path.resolve(__dirname, 'src/assets'),
@@ -179,7 +180,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/`],
+        precachePages: [`/`, `/faq`, `/legal-notices`],
       },
     },
     {

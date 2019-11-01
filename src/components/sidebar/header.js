@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import LocalizedLink from '../localized-link';
+import useTranslations from '../hooks/use-translations';
 
-export default function Footer({ title, heading, avatar }) {
+export default function Header({ title, heading, avatar }) {
+  const { home } = useTranslations();
   return (
     <div id="logo">
-      <Link to="/">
+      <LocalizedLink to="/" aria-label={home.showMe}>
         <span className="image avatar48">
-          <img height="128px" src={avatar} alt="" />
+          <img height="128px" src={avatar} alt="Avatar" />
         </span>
 
         <h1 id="title">{title}</h1>
         <p>{heading}</p>
-      </Link>
+      </LocalizedLink>
     </div>
   );
 }

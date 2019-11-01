@@ -1,23 +1,27 @@
 import React from 'react';
 
+import useTranslations from '@hooks/use-translations';
 import SideBar from '@components/sidebar';
 
-const IndexPage = () => (
-  <>
-    <SideBar />
-    <div id="wrapper">
-      <div id="main">
-        <section>
-          <div className="container">
-            <section>
-              <h1>NOT FOUND</h1>
-              <p>Not a valid URL</p>
-            </section>
-          </div>
-        </section>
+const IndexPage = () => {
+  const { notFound } = useTranslations();
+  return (
+    <>
+      <SideBar />
+      <div id="wrapper">
+        <div id="main">
+          <section>
+            <div className="container">
+              <section>
+                <h1>{notFound.title}</h1>
+                <p>{notFound.descrription}</p>
+              </section>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 export default IndexPage;

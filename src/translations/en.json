@@ -13,14 +13,16 @@
   "videos": {
     "nav": "Vidéos",
     "title": "Vidéos",
-    "description": "Voici une sélection de mes meilleurs vidéos !"
+    "description": "Voici une sélection de mes meilleurs vidéos !",
+    "watchPlaylist": "Voir la playlist complète"
   },
   "faq": {
     "nav": "FAQ",
     "title": "FAQ",
     "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !",
     "showMe": "Toutes les FAQ sont ici !",
-    "searchPlaceholder": "Tape ta recherche ici",
+    "searchPlaceholder": "Your search here",
+    "watchVideo": "Voir la vidéo complète",
     "publishedAt": "Published at",
     "questions": "Questions",
     "time": "Temps"
@@ -48,6 +50,10 @@
       "required": "Requis"
     }
   },
+  "notFound": {
+    "title": "Page introuvable !",
+    "description": "Oups... Retourne à l'accueil ! Tu te sentiras mieux."
+  },
   "footer": {
     "legalNotices": "Mentions légales",
     "copyright": "Tous droits réservés, images, vidéos et textes. Toute reproduction partielle ou complète est interdite."
@@ -55,6 +61,10 @@
   "pageMetadata": {
     "home": {
       "title": "Accueil",
+      "description": "Page de Neo035"
+    },
+    "faq": {
+      "title": "FAQ",
       "description": "Page de Neo035"
     },
     "legalNotices": {
