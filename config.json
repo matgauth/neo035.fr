@@ -1,8 +1,16 @@
 {
+  "playlists": [
+    "Airsoft guns videos review",
+    "Uniforms videos review",
+    "Luftwaffe uniforms",
+    "DENIX",
+    "Les tutos de Neo",
+    "Court métrages"
+  ],
   "heading": "Découvrez mes activités airsoft et reconstitution sur YouTube",
-  "jobTitle": "Youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
+  "faqPlaylistId": "PLMrEpvgeaYU17y8se3HRw-M7gdXt1qQFn",
   "manifestIcon": "/img/avatar.png",
-  "manifestThemeColor": "#663399",
+  "manifestThemeColor": "#888888",
   "socialLinks": [
     {
       "icon": "fa-youtube",
@@ -22,20 +30,12 @@
   ],
   "siteTitle": "Site de Neo035",
   "manifestDisplay": "standalone",
+  "easterEggLink": "https://www.youtube.com/watch?v=mwJyRXvXdqA",
   "pathPrefix": "/",
   "manifestShortName": "Neo035",
   "manifestName": "Neo035",
+  "jobTitle": "Youtuber (Airsoft & WW2)",
   "manifestStartUrl": "/",
   "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",
-  "ownerName": "Rémi Bourboulon",
-  "playlists": [
-    "Airsoft guns videos review",
-    "Uniforms videos review",
-    "Luftwaffe uniforms",
-    "DENIX",
-    "Les tutos de Neo",
-    "Court métrages"
-  ],
-  "faqPlaylistId": "PLMrEpvgeaYU17y8se3HRw-M7gdXt1qQFn",
-  "easterEggLink": "https://www.youtube.com/watch?v=mwJyRXvXdqA"
+  "ownerName": "Rémi Bourboulon"
 }
