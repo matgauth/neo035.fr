@@ -1,5 +1,4 @@
 {
-  "title": "Français",
   "contact": {
     "nav": "Contact",
     "title": "Contacte-moi !",
@@ -38,6 +37,7 @@
     "title": "FAQ",
     "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
   },
+  "title": "Français",
   "videos": {
     "nav": "Vidéos",
     "title": "Vidéos",
@@ -70,7 +70,7 @@
   "home": {
     "nav": "Accueil",
     "title": "Bienvenue sur le site de Neo035",
-    "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
-    "showMe": "Ici, vous retrouverez mes activités en marge de mes vidéos YouTube !"
+    "description": "**Neo035**, youtubeur spécialisé dans l'**airsoft** et la reconstitution **WW2**.\n\nIci, vous retrouverez mes activités en marge de mes vidéos YouTube !",
+    "showMe": "La suite c'est ici !"
   }
 }
