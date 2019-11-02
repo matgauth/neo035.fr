@@ -33,7 +33,7 @@ const reducer = (state, action) => {
   }
 };
 
-const FAQ = ({ pageContext: { dateFormat } }) => {
+const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
   const { faq } = useTranslations();
   const [input, setInput] = React.useState('');
   const [state, dispatch] = React.useReducer(reducer, {
@@ -52,7 +52,7 @@ const FAQ = ({ pageContext: { dateFormat } }) => {
         if (!didCancel) dispatch({ type: 'FETCH_SUCCESS', payload: result });
       } catch (e) {
         console.error('Error for DEV', e.message);
-        navigate(`/`);
+        navigate(`/${isDefault ? `` : locale}#faq`);
       }
     };
     fetchVideos();
@@ -66,7 +66,6 @@ const FAQ = ({ pageContext: { dateFormat } }) => {
       i => (i.questions.length > 0 ? i.questions.map(prop`label`) : undefined),
     ],
   });
-  const locale = require(`date-fns/locale/${dateFormat}`).default;
   return (
     <>
       <div className="container">
@@ -91,7 +90,9 @@ const FAQ = ({ pageContext: { dateFormat } }) => {
         {filteredFaqItems.length > 0 && !state.isLoading ? (
           filteredFaqItems.map(
             ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
-              const date = format(new Date(publishedAt), 'PPPPp', { locale });
+              const date = format(new Date(publishedAt), 'PPPPp', {
+                locale: require(`date-fns/locale/${dateFormat}`).default,
+              });
               return (
                 <article key={id}>
                   <div className="row">

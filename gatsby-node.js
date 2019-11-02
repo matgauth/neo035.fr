@@ -1,4 +1,4 @@
-const path = require(`path`);
+const { basename } = require(`path`);
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const locales = require(`./src/i18n`);
@@ -28,17 +28,18 @@ exports.onCreatePage = ({ page, actions }) => {
   deletePage(page);
 
   Object.keys(locales).map(lang => {
-    const localizedPath = locales[lang].default
+    const { default: isDefault, locale, path } = locales[lang];
+    const localizedPath = isDefault
       ? removeTrailingSlash(page.path)
-      : `${locales[lang].path}${page.path}`;
-
+      : `${path}${page.path}`;
     return createPage({
       ...page,
       path: localizedPath,
       context: {
         ...page.context,
         locale: lang,
-        dateFormat: locales[lang].locale,
+        dateFormat: locale,
+        isDefault: isDefault,
       },
     });
   });
@@ -50,7 +51,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node);
 
   if (node.internal.type === `MarkdownRemark`) {
-    const name = path.basename(node.fileAbsolutePath, `.md`);
+    const name = basename(node.fileAbsolutePath, `.md`);
     const splittedName = name.split(`.`);
     const isDefault = splittedName.length === 1;
     const defaultKey = findKey(locales, o => o.default === true);

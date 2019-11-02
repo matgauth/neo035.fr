@@ -15,23 +15,24 @@ const normalizePlaylistRecord = rec => ({
 
 const normalizePlaylistRecords = map(normalizePlaylistRecord);
 
-const parseQuestions = (description, videoId) => {
-  const getYoutubeLink = (sec, min) =>
-    `https://www.youtube.com/watch?v=${videoId}&t=${
-      min ? `${min}m` : ``
-    }${sec}s`;
-  return description
-    .split('\n')
-    .filter(line => line.match(/[0-9]{1,2}:[0-9]{1,2}$/))
-    .map(line => {
-      const [label, time] = line.split`? `;
-      const [min, sec] = time.split`:`;
-      return {
-        label: `${label} ?`,
-        time: { text: time, link: getYoutubeLink(sec, min) },
-      };
-    });
-};
+const parseQuestions = (description, videoId) =>
+  description.split`\n`.reduce((acc, prev) => {
+    const pattern = prev.match(/[0-9]{1,2}:[0-9]{1,2}$/);
+    if (pattern !== null) {
+      const [time] = pattern,
+        [min, sec] = time.split`:`;
+      acc.push({
+        label: prev.replace(time, ``).trim(),
+        time: {
+          text: time,
+          link: `https://www.youtube.com/watch?v=${videoId}&t=${
+            min ? `${min}m` : ``
+          }${sec}s`,
+        },
+      });
+    }
+    return acc;
+  }, []);
 
 const normalizeVideoRecord = rec => {
   const videoId = path(['contentDetails', 'videoId'], rec);
@@ -53,7 +54,7 @@ const getApi = () => {
   let lastCalled = null;
 
   const rateLimiter = call => {
-    const now = Date.now();
+    const now = new Date().getTime();
     if (lastCalled) {
       lastCalled += rateLimit;
       const wait = lastCalled - now;

@@ -126,6 +126,7 @@ collections:
     label: 'Translations'
     folder: 'src/translations'
     format: 'json'
+    identifier_field: 'title'
     delete: false
     editor:
       preview: false
