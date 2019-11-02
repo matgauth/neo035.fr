@@ -221,8 +221,8 @@ body {
     *,
     *:before,
     *:after {
-      @include vendor('animation', 'none !important');
-      @include vendor('transition', 'none !important');
+      @include vendor('animation', 'none');
+      @include vendor('transition', 'none');
     }
   }
 }
@@ -1049,7 +1049,7 @@ input[type='submit'],
     width: 100%;
     padding: 24px;
     margin: 3em auto;
-    font-size: 24pt;
+    font-size: 20pt;
 
     background-color: transparent;
     transition: transform 250ms ease-in-out;
@@ -1066,7 +1066,6 @@ input[type='submit'],
     &::placeholder {
       color: #575756;
       letter-spacing: 2px;
-      font-weight: 300 !important;
     }
 
     &:hover,

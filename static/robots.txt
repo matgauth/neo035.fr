@@ -1,0 +1,3 @@
+User-agent: *
+
+sitemap: https://www.neo035.fr/sitemap.xml

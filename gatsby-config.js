@@ -79,6 +79,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-catch-links`,
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -191,9 +192,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        headers: {
-          '/*': [`X-UA-Compatible: IE=Edge`],
-        },
+        '/*': [
+          `X-UA-Compatible: IE=Edge`,
+          `Content-Security-Policy: block-all-mixed-content; base-uri 'self'; default-src 'self' data: raw.githubusercontent.com i.ytimg.com; script-src 'self'; style-src 'self'; object-src 'none'; form-action 'self'; font-src 'self' data: fonts.googleapis.com; connect-src 'self' www.googleapis.com`,
+        ],
+        '/icons/*.png': [`cache-control: public, max-age=31536000,immutable`],
       },
     },
     `gatsby-plugin-netlify-cache`,

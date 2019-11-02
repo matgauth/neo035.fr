@@ -281,6 +281,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="name"
+            aria-label={contact.form.name}
             placeholder={contact.form.name}
             ref={register({ required: contact.form.required })}
           />
@@ -290,6 +291,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="age"
+            aria-label={contact.form.age}
             placeholder={contact.form.age}
             ref={register({
               required: contact.form.required,
@@ -305,6 +307,7 @@ const ContactForm = () => {
           <input
             type="text"
             name="email"
+            aria-label={contact.form.mail}
             placeholder={contact.form.mail}
             ref={register({
               required: contact.form.required,
@@ -321,6 +324,7 @@ const ContactForm = () => {
         <div className="col-12">
           <textarea
             name="message"
+            aria-label={contact.form.message}
             placeholder={contact.form.message}
             ref={register({ required: contact.form.required })}
           />
