@@ -1,76 +1,76 @@
 {
-  "title": "English", 
-  "home": {
-    "nav": "Accueil",
-    "title": "Bienvenue sur le site de Neo035",
-    "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2",
-    "showMe": "Ici, vous retrouverez mes activités en marge de mes vidéos YouTube !"
-  },
-  "events": {
-    "nav": "Evénements",
-    "title": "Evénements",
-    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
-  },
-  "videos": {
-    "nav": "Vidéos",
-    "title": "Vidéos",
-    "description": "Voici une sélection de mes meilleurs vidéos !",
-    "watchPlaylist": "Voir la playlist complète"
-  },
-  "faq": {
-    "nav": "FAQ",
-    "title": "FAQ",
-    "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !",
-    "showMe": "Toutes les FAQ sont ici !",
-    "searchPlaceholder": "Your search here",
-    "watchVideo": "Voir la vidéo complète",
-    "publishedAt": "Published at",
-    "questions": "Questions",
-    "time": "Temps"
-  },
-  "partners": {
-    "nav": "Partenaires",
-    "title": "Mes partenaires",
-    "description": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
-  },
   "contact": {
     "nav": "Contact",
-    "title": "Contacte-moi !",
-    "description": "Tu veux me soumettre une info, me poser une question ou tout simplement me donner ton soutien?",
+    "title": "Contact me!",
+    "description": "You want to ask me, propose me something or just contact me?",
     "form": {
-      "success": "J'ai bien reçu ton message ;-)",
-      "message": "Écris-moi un petit mot...",
-      "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
-      "invalidAge": "Âge invalide, il faut des CHIFFRES !",
-      "name": "Ton nom",
-      "invalidMail": "Email invalide",
-      "mail": "Ton adresse mail",
-      "submit": "Et hop envoyé !",
-      "loading": "Chargement de l'infini...",
-      "age": "Age",
-      "required": "Requis"
+      "success": "I've got your message !",
+      "message": "Write me something :)",
+      "error": "Oops... An error has occured ! Try later...",
+      "invalidAge": "Invalid age, we need some NUMERAL !",
+      "name": "Your name",
+      "invalidMail": "Invalide email ",
+      "mail": "Your email address",
+      "submit": "Sent ! :)",
+      "loading": "Infinity loading...",
+      "age": "Your age",
+      "required": "Required"
     }
   },
+  "partners": {
+    "nav": "Partners",
+    "title": "My partners",
+    "description": "Here are all the partners with whom I enjoy collaborating"
+  },
   "notFound": {
-    "title": "Page introuvable !",
-    "description": "Oups... Retourne à l'accueil ! Tu te sentiras mieux."
+    "title": "Page not found",
+    "description": "Oops, go back to home page, you'll feel better!"
+  },
+  "faq": {
+    "publishedAt": "Published at",
+    "nav": "Questions",
+    "searchPlaceholder": "Your search here",
+    "watchVideo": "See the complete video",
+    "questions": "Questions",
+    "time": "Time",
+    "showMe": "All the questions are here !",
+    "title": "Questions",
+    "description": "You've some questions? Perpahs I already answered ! (in french only, sorry)"
+  },
+  "title": "English",
+  "videos": {
+    "nav": "Videos",
+    "title": "Videos",
+    "description": "Here is a selection of my best videos !",
+    "watchPlaylist": "See the complete playlist"
+  },
+  "events": {
+    "nav": "Events",
+    "title": "Events",
+    "description": "Find here all the dates where you can meet me !"
   },
   "footer": {
-    "legalNotices": "Mentions légales",
-    "copyright": "Tous droits réservés, images, vidéos et textes. Toute reproduction partielle ou complète est interdite."
+    "legalNotices": "Legal notice",
+    "copyright": "All rights reserved, images, video, texts. Any partial or complete reproduction is prohibited."
   },
   "pageMetadata": {
     "home": {
-      "title": "Accueil",
-      "description": "Page de Neo035"
+      "title": "Home",
+      "description": "Neo035's Page"
     },
     "faq": {
-      "title": "FAQ",
-      "description": "Page de Neo035"
+      "title": "Questions",
+      "description": "Questions for Neo035"
     },
     "legalNotices": {
-      "title": "Mentions légales",
-      "description": "Mentions légales"
+      "title": "Legal notice",
+      "description": "Legal notice"
     }
+  },
+  "home": {
+    "nav": "Home",
+    "title": "Welcome on the Neo035's website",
+    "description": "Neo035, WW2 airsoft and reenactment specialist",
+    "showMe": "Here, you can discover all my activities !"
   }
 }
