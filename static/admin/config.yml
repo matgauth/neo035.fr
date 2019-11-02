@@ -138,7 +138,7 @@ collections:
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
       - label: 'events'
         name: 'events'
@@ -146,14 +146,14 @@ collections:
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
       - label: 'Videos'
         name: 'videos'
         widget: 'object'
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Watch playlist', name: 'watchPlaylist', widget: 'string' }
       - label: 'FAQ'
         name: 'faq'
@@ -161,7 +161,7 @@ collections:
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
           - {
               label: 'Search Placeholder',
@@ -178,14 +178,14 @@ collections:
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
       - label: 'Contact'
         name: 'contact'
         widget: 'object'
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
           - label: 'Form'
             name: 'form'
             widget: 'object'
@@ -206,7 +206,7 @@ collections:
         widget: 'object'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
       - label: 'Footer'
         name: 'footer'
         widget: 'object'

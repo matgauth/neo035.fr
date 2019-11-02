@@ -1,6 +1,7 @@
 import React from 'react';
 
 import useTranslations from '@hooks/use-translations';
+import HTML from '@components/inner-html';
 import SideBar from '@components/sidebar';
 
 const IndexPage = () => {
@@ -14,7 +15,7 @@ const IndexPage = () => {
             <div className="container">
               <section>
                 <h1>{notFound.title}</h1>
-                <p>{notFound.descrription}</p>
+                <HTML markdown={notFound.description} />
               </section>
             </div>
           </section>
