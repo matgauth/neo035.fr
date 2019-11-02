@@ -992,6 +992,12 @@ input[type='submit'],
 
 /* Main */
 
+#main-faq {
+  & h2 {
+    text-align: center;
+  }
+}
+
 #main {
   margin-left: 375px;
 

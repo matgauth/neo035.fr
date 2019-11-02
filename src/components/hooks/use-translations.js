@@ -49,6 +49,8 @@ const query = graphql`
               description
               showMe
               publishedAt
+              noFaqItems
+              goBackHome
               watchVideo
               searchPlaceholder
               questions
