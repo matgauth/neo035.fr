@@ -32,6 +32,11 @@ const query = graphql`
               description
               showMe
             }
+            about {
+              nav
+              title
+              description
+            }
             events {
               nav
               title

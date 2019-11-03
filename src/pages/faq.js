@@ -127,19 +127,21 @@ const FAQ = ({ pageContext: { locale } }) => {
                         </div>
                       </div>
                       <div className="col-8 col-12-mobile">
-                        <h3>{title}</h3>
-                        <p>
-                          <strong>{faq.publishedAt}</strong> {date}
-                        </p>
-                        <a
-                          href={`https://www.youtube.com/watch?v=${videoId}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title="Watch FAQ video"
-                        >
-                          {faq.watchVideo}{' '}
-                          <span className="icon fa-arrow-right" />
-                        </a>
+                        <div className="item">
+                          <h3>{title}</h3>
+                          <p>
+                            <strong>{faq.publishedAt}</strong> {date}
+                          </p>
+                          <a
+                            href={`https://www.youtube.com/watch?v=${videoId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Watch FAQ video"
+                          >
+                            {faq.watchVideo}{' '}
+                            <span className="icon fa-arrow-right" />
+                          </a>
+                        </div>
                       </div>
                     </div>
                     {filteredQuestions.length > 0 && (

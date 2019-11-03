@@ -140,7 +140,14 @@ collections:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
-      - label: 'events'
+      - label: 'About'
+        name: 'about'
+        widget: 'object'
+        fields:
+          - { label: 'Sidebar title', name: 'nav', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
+      - label: 'Events'
         name: 'events'
         widget: 'object'
         fields:

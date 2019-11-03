@@ -348,9 +348,18 @@ const IndexPage = ({
     partners: { edges: partnerItems },
   },
 }) => {
-  const { home, events, videos, faq, partners, contact } = useTranslations();
+  const {
+    home,
+    about,
+    events,
+    videos,
+    faq,
+    partners,
+    contact,
+  } = useTranslations();
   const sections = [
     { id: 'top', name: home.nav, icon: 'fa-home' },
+    { id: 'about', name: about.nav, icon: 'fa-user' },
     { id: 'events', name: events.nav, icon: 'fa-calendar' },
     { id: 'videos', name: videos.nav, icon: 'fa-youtube-play' },
     { id: 'faq', name: faq.nav, icon: 'fa-question' },
@@ -378,14 +387,20 @@ const IndexPage = ({
             </header>
 
             <footer>
-              <Scroll type="id" element="events">
-                <a href="#events" className="button">
+              <Scroll type="id" element="about">
+                <a href="#about" className="button">
                   {home.showMe}
                 </a>
               </Scroll>
             </footer>
           </div>
         </BackgroundImage>
+        <section id="about" className="alt-2">
+          <header>
+            <h2>{about.title}</h2>
+          </header>
+          <HTML markdown={about.description} />
+        </section>
         <section id="events" className="alt-1">
           <Events data={eventItems} />
         </section>

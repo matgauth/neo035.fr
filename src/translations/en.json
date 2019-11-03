@@ -17,6 +17,11 @@
       "required": "Required"
     }
   },
+  "about": {
+    "nav": "Présentation",
+    "title": "A propos",
+    "description": "Lorem ipsum"
+  },
   "partners": {
     "nav": "Partners",
     "title": "My partners",
