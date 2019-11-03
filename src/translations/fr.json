@@ -30,11 +30,11 @@
     "publishedAt": "Publiée le",
     "nav": "FAQ",
     "searchPlaceholder": "Tape ta recherche ici",
+    "noFaqItems": "Aucune vidéo trouvée pour cette recherche",
     "watchVideo": "Voir la vidéo complète",
     "questions": "Questions",
-    "goBackHome": "Revenir à l'accueil",
-    "noFaqItems": "Aucune vidéo trouvée pour cette recherche",
     "time": "Temps",
+    "goBackHome": "Revenir à l'accueil",
     "showMe": "Toutes les FAQ sont ici !",
     "title": "FAQ",
     "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
@@ -43,7 +43,7 @@
   "videos": {
     "nav": "Vidéos",
     "title": "Vidéos",
-    "description": "Voici une sélection de mes meilleurs vidéos !",
+    "description": "Voici une sélection de mes meilleures vidéos !",
     "watchPlaylist": "Voir la playlist complète"
   },
   "events": {
