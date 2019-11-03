@@ -1,3 +1,4 @@
+const { ContextReplacementPlugin } = require('webpack');
 const { basename } = require(`path`);
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -39,7 +40,6 @@ exports.onCreatePage = ({ page, actions }) => {
         ...page.context,
         locale: lang,
         dateFormat: locale,
-        isDefault: isDefault,
       },
     });
   });
@@ -65,4 +65,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({ name: `locale`, node, value: lang });
     createNodeField({ name: `isDefault`, node, value: isDefault });
   }
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      new ContextReplacementPlugin(
+        /date-fns[/\\]/,
+        new RegExp(
+          `[/\\\\\](${Object.keys(locales).map(key => locales[key].locale)
+            .join`|`})[/\\\\\]`
+        )
+      ),
+    ],
+  });
 };

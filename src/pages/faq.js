@@ -28,9 +28,13 @@ const reducer = (state, action) => {
   }
 };
 
-const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
+const formatDate = (dateStr, locale) =>
+  format(new Date(dateStr), 'PPPp', { locale });
+
+const FAQ = ({ pageContext: { locale } }) => {
   const { faq } = useTranslations();
   const [input, setInput] = React.useState('');
+  const [localeFile, setLocaleFile] = React.useState(null);
   const [state, dispatch] = React.useReducer(reducer, {
     isLoading: true,
     data: [],
@@ -49,11 +53,21 @@ const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
         if (!didCancel) dispatch({ type: 'FETCH_FAILURE' });
       }
     };
-    fetchVideos();
+
+    const supportedLanguages = {
+      en: async () => await import('date-fns/locale/en-GB/index.js'),
+      fr: async () => await import('date-fns/locale/fr/index.js'),
+    };
+
+    const fetchLocaleFile = async locale => {
+      const localeFile = await supportedLanguages[locale]();
+      setLocaleFile(localeFile);
+    };
+    Promise.all([fetchVideos(), fetchLocaleFile(locale)]);
     return () => {
       didCancel = true;
     };
-  }, []);
+  }, [locale]);
   const filteredFaqItems = matchSorter(state.data, input, {
     keys: [
       'title',
@@ -88,8 +102,11 @@ const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
           {filteredFaqItems.length > 0 &&
             filteredFaqItems.map(
               ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
-                const date = format(new Date(publishedAt), 'PPPPp', {
-                  locale: require(`date-fns/locale/${dateFormat}`).default,
+                const date = formatDate(publishedAt, localeFile);
+                const filteredQuestions = matchSorter(questions, input, {
+                  keys: [
+                    { threshold: matchSorter.rankings.CONTAINS, key: 'label' },
+                  ],
                 });
                 return (
                   <article key={id}>
@@ -126,7 +143,7 @@ const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
                         </a>
                       </div>
                     </div>
-                    {questions.length > 0 && (
+                    {filteredQuestions.length > 0 && (
                       <table>
                         <thead>
                           <tr>
@@ -135,7 +152,7 @@ const FAQ = ({ pageContext: { dateFormat, locale, isDefault } }) => {
                           </tr>
                         </thead>
                         <tbody>
-                          {questions.map(({ label, time }, i) => (
+                          {filteredQuestions.map(({ label, time }, i) => (
                             <tr key={`${title}_${i}`}>
                               <td>{label}</td>
                               <td>
