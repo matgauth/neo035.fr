@@ -30,11 +30,11 @@
     "publishedAt": "Published at",
     "nav": "Questions",
     "searchPlaceholder": "Your search here",
+    "noFaqItems": "Didn't found FAQ videos !",
     "watchVideo": "See the complete video",
     "questions": "Questions",
-    "goBackHome": "Back to home",
-    "noFaqItems": "Didn't found FAQ videos !",
     "time": "Time",
+    "goBackHome": "Back to home",
     "showMe": "All the questions are here !",
     "title": "Questions",
     "description": "You've some questions? Perpahs I already answered ! (in french only, sorry)"
@@ -72,7 +72,7 @@
   "home": {
     "nav": "Home",
     "title": "Welcome on the Neo035's website",
-    "description": "Neo035, WW2 airsoft and reenactment specialist",
-    "showMe": "Here, you can discover all my activities !"
+    "description": "Neo035, WW2 airsoft and reenactment specialist\n\nHere, you can discover all my activities !",
+    "showMe": "Show me"
   }
 }
