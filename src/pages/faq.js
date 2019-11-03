@@ -31,6 +31,12 @@ const reducer = (state, action) => {
 const formatDate = (dateStr, locale) =>
   format(new Date(dateStr), 'PPPp', { locale });
 
+const matchQuery = (data, query, key) =>
+  matchSorter(data, query, {
+    keys: [key],
+    threshold: matchSorter.rankings.CONTAINS,
+  });
+
 const FAQ = ({ pageContext: { locale } }) => {
   const { faq } = useTranslations();
   const [input, setInput] = React.useState('');
@@ -68,12 +74,9 @@ const FAQ = ({ pageContext: { locale } }) => {
       didCancel = true;
     };
   }, [locale]);
-  const filteredFaqItems = matchSorter(state.data, input, {
-    keys: [
-      'title',
-      i => (i.questions.length > 0 ? i.questions.map(prop`label`) : undefined),
-    ],
-  });
+  const filteredFaqItems = matchQuery(state.data, input, item =>
+    item.questions.length > 0 ? item.questions.map(prop`label`) : undefined
+  );
   return (
     <div id="main-faq">
       <section className="alt-1">
@@ -103,11 +106,7 @@ const FAQ = ({ pageContext: { locale } }) => {
             filteredFaqItems.map(
               ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
                 const date = formatDate(publishedAt, localeFile);
-                const filteredQuestions = matchSorter(questions, input, {
-                  keys: [
-                    { threshold: matchSorter.rankings.CONTAINS, key: 'label' },
-                  ],
-                });
+                const filteredQuestions = matchQuery(questions, input, 'label');
                 return (
                   <article key={id}>
                     <div className="row">
