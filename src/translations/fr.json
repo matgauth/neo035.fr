@@ -4,25 +4,25 @@
     "title": "Contacte-moi !",
     "description": "Tu veux me soumettre une info, me poser une question ou tout simplement me donner ton soutien?",
     "form": {
-      "success": "J'ai bien reçu ton message ;-)",
-      "message": "Écris-moi un petit mot...",
       "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
-      "name": "Ton nom",
-      "mail": "Ton adresse mail",
-      "submit": "Et hop envoyé !",
+      "success": "J'ai bien reçu ton message ;-)",
       "loading": "Chargement de l'infini...",
-      "age": "Age"
+      "name": "Ton nom",
+      "age": "Age",
+      "mail": "Ton adresse mail",
+      "message": "Écris-moi un petit mot...",
+      "submit": "Et hop envoyé !"
     }
-  },
-  "about": {
-    "nav": "Présentation",
-    "title": "A propos",
-    "description": "Lorem ipsum"
   },
   "partners": {
     "nav": "Partenaires",
     "title": "Mes partenaires",
     "description": "Voici toutes les enseignes avec lesquelles j'ai toujours plaisir à collaborer !"
+  },
+  "about": {
+    "nav": "Présentation",
+    "title": "A propos",
+    "description": "Bonjour à tous!\n\nLaissez-moi tout d'abord me présenter. Je suis Neo035, passionné d'airsoft et reconstitution seconde guerre mondiale (WW2). J'ai commencé les vidéos officiellement en 2011 et depuis cette période, je passe tout mon temps libre à créer du contenu pour vous présenter des répliques d'airsoft, Denix, des uniformes et des VIP.\n\nVous découvrirez sur ce site mes activités, mes événements, mes vidéos, et de quoi me contacter !\n\nDe plus, si vous souhaitez me soutenir pour que je reste au maximum indépendant, vous pourrez suivre les deux liens ci-dessous :\n\n![]()"
   },
   "notFound": {
     "title": "Page introuvable !",
