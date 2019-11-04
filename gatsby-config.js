@@ -1,6 +1,56 @@
 const path = require('path');
 const config = require('./config.json');
 
+const setFeed = (locale, title) => {
+  return {
+    serialize: ({ query: { site, allMarkdownRemark } }) =>
+      allMarkdownRemark.edges.map(
+        ({ node: { frontmatter, html, excerpt } }) => ({
+          title: frontmatter.title,
+          description: excerpt,
+          date: frontmatter.date,
+          url: site.siteMetadata.siteUrl + `${locale}/events`,
+          guid: site.siteMetadata.siteUrl + `/${locale}/events`,
+          custom_elements: [{ 'content:encoded': html }],
+        })
+      ),
+    query: `
+{
+  allMarkdownRemark(
+    sort: { fields: [frontmatter___date], order: DESC }
+    filter: { frontmatter: { date: { ne: null } }, fields: { locale: { eq:"${locale}" } } }
+    limit: 2000
+  ) {
+    edges {
+      node {
+        html
+        excerpt(pruneLength: 150)
+        frontmatter {
+          title
+          link
+          date(formatString: "DD MMMM YYYY", locale: "${locale}")
+        }
+      }
+    }
+  }
+}
+`,
+    title,
+    output: `/${locale}/events.xml`,
+    setup: ({
+      query: {
+        site: { siteMetadata },
+      },
+    }) => ({
+      title: siteMetadata.defaultTitle,
+      description: siteMetadata.defaultDescription,
+      feed_url: siteMetadata.siteUrl + `/${locale}/events.xml`,
+      site_url: siteMetadata.siteUrl,
+      generator: siteMetadata.defaultTitle,
+    }),
+  };
+};
+
 module.exports = {
   siteMetadata: {
     defaultTitle: config.siteTitle,
@@ -96,57 +146,8 @@ module.exports = {
           }
         `,
         feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(
-                ({ node: { frontmatter, html, excerpt, fields } }) => ({
-                  title: frontmatter.title,
-                  description: excerpt,
-                  date: frontmatter.date,
-                  url: site.siteMetadata.siteUrl + fields.slug,
-                  guid: site.siteMetadata.siteUrl + fields.slug,
-                  custom_elements: [{ 'content:encoded': html }],
-                })
-              ),
-            query: `
-            {
-              allMarkdownRemark(
-                sort: { fields: [frontmatter___date], order: DESC }
-                filter: { fields: { slug: { regex: "/^(/events/)/" } } }
-                limit: 2000
-              ) {
-                edges {
-                  node {
-                    html
-                    excerpt(pruneLength: 150)
-                    fields { 
-                      slug
-                      locale 
-                    }
-                    frontmatter {
-                      title
-                      link
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          `,
-            title: `Events feed`,
-            output: `/events.xml`,
-            setup: ({
-              query: {
-                site: { siteMetadata },
-              },
-            }) => ({
-              title: siteMetadata.defaultTitle,
-              description: siteMetadata.defaultDescription,
-              feed_url: siteMetadata.siteUrl + `/events.xml`,
-              site_url: siteMetadata.siteUrl,
-              generator: siteMetadata.defaultTitle,
-            }),
-          },
+          setFeed('fr', 'Flux RSS des événements'),
+          setFeed('en', 'Events RSS Feed'),
         ],
       },
     },

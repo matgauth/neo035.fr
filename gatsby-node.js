@@ -1,8 +1,11 @@
+/* eslint-disable no-useless-escape */
 const { ContextReplacementPlugin } = require('webpack');
-const { basename } = require(`path`);
+const { basename, resolve } = require(`path`);
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-const { createFilePath } = require(`gatsby-source-filesystem`);
 const locales = require(`./src/i18n`);
+
+const localizeSlug = (isDefault, locale, slug) =>
+  isDefault ? slug : `/${locale}/${slug}`;
 
 const removeTrailingSlash = path =>
   path === `/` ? path : path.replace(/\/$/, ``);
@@ -56,12 +59,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const isDefault = splittedName.length === 1;
     const defaultKey = findKey(locales, o => o.default === true);
     const lang = isDefault ? defaultKey : splittedName[1];
-    const value = createFilePath({ node, getNode });
-    const slug = isDefault
-      ? removeTrailingSlash(value)
-      : value.replace(/.[a-z]{2}\/$/, ``);
 
-    createNodeField({ name: `slug`, node, value: slug });
     createNodeField({ name: `locale`, node, value: lang });
     createNodeField({ name: `isDefault`, node, value: isDefault });
   }
@@ -78,5 +76,51 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         )
       ),
     ],
+  });
+};
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  return graphql(
+    `
+      {
+        notices: allFile(filter: { relativeDirectory: { eq: "notices" } }) {
+          edges {
+            node {
+              relativeDirectory
+              childMarkdownRemark {
+                frontmatter {
+                  title
+                }
+                fields {
+                  locale
+                  isDefault
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()));
+      return Promise.reject(result.errors);
+    }
+
+    const notices = result.data.notices.edges;
+
+    notices.forEach(({ node }) => {
+      const slug = node.relativeDirectory;
+      const title = node.childMarkdownRemark.frontmatter.title;
+      const { locale, isDefault } = node.childMarkdownRemark.fields;
+
+      createPage({
+        path: localizeSlug(isDefault, locale, slug),
+        component: resolve(`src/templates/notice.js`),
+        context: { title, locale },
+      });
+    });
   });
 };

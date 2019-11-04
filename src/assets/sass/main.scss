@@ -997,28 +997,13 @@ input[type='submit'],
 
 /* Main */
 
-#main-faq {
-  > section {
-    margin: 0;
-    overflow: hidden;
-    padding: 0 0 3em 0;
-  }
-  & h3 {
-    font-weight: 500;
-    color: coral;
-  }
-  & h2 {
-    text-align: center;
-  }
-}
-
 #main {
   margin-left: 375px;
 
   > section {
     margin: 0;
     overflow: hidden;
-    padding: 4em 0;
+    padding: 3.25em 0;
     text-align: center;
 
     &.dark {
@@ -1062,13 +1047,25 @@ input[type='submit'],
       background-color: #fefefe;
     }
   }
+  &.faq-wrapper {
+    > section {
+      text-align: left;
+    }
+    & h3 {
+      font-weight: 500;
+      color: coral;
+    }
+    & h2 {
+      text-align: center;
+    }
+  }
 }
 
 .search {
   input[type='search'] {
     width: 100%;
     padding: 24px;
-    margin: 3em auto;
+    margin-bottom: 2em;
     font-size: 20pt;
 
     background-color: transparent;
@@ -1087,7 +1084,6 @@ input[type='submit'],
       color: #575756;
     }
 
-    &:hover,
     &:focus {
       padding: 12px 0;
       outline: 0;
@@ -1466,7 +1462,7 @@ input[type='submit'],
 
   #main {
     > section {
-      padding: 2em 0;
+      padding: 2.75em 0;
     }
 
     section {

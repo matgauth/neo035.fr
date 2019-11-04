@@ -1,24 +1,40 @@
 import React from 'react';
+import { graphql } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
 
 import useTranslations from '@hooks/use-translations';
-import HTML from '@components/inner-html';
+import LocalizedLink from '@components/localized-link';
 import SideBar from '@components/sidebar';
+import HTML from '@components/inner-html';
 
-const IndexPage = () => {
-  const { notFound } = useTranslations();
+const IndexPage = ({ data: { notFoundBg } }) => {
+  const { notFound, faq } = useTranslations();
   return (
     <>
       <SideBar />
       <div id="wrapper">
         <div id="main">
-          <section>
+          <BackgroundImage
+            Tag="section"
+            id="top"
+            title="background"
+            className="dark cover"
+            role="img"
+            aria-label="not found background"
+            fluid={notFoundBg.childImageSharp.fluid}
+          >
             <div className="container">
-              <section>
+              <header>
                 <h1>{notFound.title}</h1>
                 <HTML markdown={notFound.description} />
-              </section>
+              </header>
+              <footer>
+                <LocalizedLink to="/" className="button">
+                  {faq.goBackHome}
+                </LocalizedLink>
+              </footer>
             </div>
-          </section>
+          </BackgroundImage>
         </div>
       </div>
     </>
@@ -26,3 +42,15 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query NotFound {
+    notFoundBg: file(relativePath: { eq: "404.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;

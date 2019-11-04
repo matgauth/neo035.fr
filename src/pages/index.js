@@ -7,10 +7,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import ContentLoader from 'react-content-loader';
 
-import PageFooter from '@components/footer';
-import SideBar from '@components/sidebar';
 import Scroll from '@components/scroll';
 import HTML from '@components/inner-html';
+import SideBar from '@components/sidebar';
 import LocalizedLink from '@components/localized-link';
 import useTranslations from '@hooks/use-translations';
 
@@ -339,7 +338,6 @@ const ContactForm = () => {
 const IndexPage = ({
   data: {
     bg,
-    avatar,
     events: { edges: eventItems },
     partners: { edges: partnerItems },
   },
@@ -365,7 +363,6 @@ const IndexPage = ({
   return (
     <>
       <SideBar sections={sections} />
-
       <div id="main">
         <BackgroundImage
           Tag="section"
@@ -419,8 +416,6 @@ const IndexPage = ({
           </div>
         </section>
       </div>
-
-      <PageFooter />
     </>
   );
 };
@@ -431,8 +426,8 @@ export const query = graphql`
   query Events($locale: String!) {
     bg: file(relativePath: { eq: "bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920, traceSVG: { color: "#222629" }) {
-          ...GatsbyImageSharpFluid_tracedSVG
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -456,7 +451,8 @@ export const query = graphql`
     events: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        fields: { slug: { regex: "/^(/events/)/" }, locale: { eq: $locale } }
+        frontmatter: { date: { ne: null } },
+        fields: { locale: { eq: $locale } }
       }
     ) {
       edges {

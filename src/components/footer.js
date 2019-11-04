@@ -9,9 +9,7 @@ export default function PageFooter() {
       <ul className="copyright">
         <li>{footer.copyright}</li>
         <li>
-          <LocalizedLink to="/legal-notices">
-            {footer.legalNotices}
-          </LocalizedLink>
+          <LocalizedLink to="/notices">{footer.legalNotices}</LocalizedLink>
         </li>
       </ul>
     </div>

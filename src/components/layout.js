@@ -4,6 +4,7 @@ import { toast, Slide } from 'react-toastify';
 import Konami from 'konami';
 
 import SEO from './seo';
+import PageFooter from './footer';
 import config from '@config';
 
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -23,7 +24,10 @@ const Layout = ({
   return (
     <LocaleContext.Provider value={locale}>
       <SEO lang={locale} pathname={pathname} />
-      <main className="main-body">{children}</main>
+      <main className="main-body">
+        {children}
+        <PageFooter />
+      </main>
     </LocaleContext.Provider>
   );
 };
