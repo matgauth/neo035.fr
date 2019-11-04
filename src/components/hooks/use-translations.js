@@ -78,9 +78,6 @@ const query = graphql`
                 age
                 mail
                 message
-                required
-                invalidAge
-                invalidMail
                 submit
               }
             }
