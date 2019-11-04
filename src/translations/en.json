@@ -7,14 +7,11 @@
       "success": "I've got your message !",
       "message": "Write me something :)",
       "error": "Oops... An error has occured ! Try later...",
-      "invalidAge": "Invalid age, we need some NUMERAL !",
       "name": "Your name",
-      "invalidMail": "Invalide email ",
       "mail": "Your email address",
       "submit": "Sent ! :)",
       "loading": "Infinity loading...",
-      "age": "Your age",
-      "required": "Required"
+      "age": "Your age"
     }
   },
   "about": {

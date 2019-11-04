@@ -230,7 +230,7 @@ const encode = data =>
 
 const ContactForm = () => {
   const { contact } = useTranslations();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
   const setError = id => err => {
     console.log('Error for DEV: ', err.message);
@@ -241,13 +241,14 @@ const ContactForm = () => {
     });
   };
 
-  const setSuccess = id => () =>
+  const setSuccess = (id, name) => () => {
     toast.update(id, {
-      render: contact.form.success,
+      render: `${name ? `Thanks ${name} !\n` : ``}${contact.form.success}`,
       type: toast.TYPE.SUCCESS,
       autoClose: 3000,
     });
-
+    reset();
+  };
   const setLoading = () =>
     toast(contact.form.loading, {
       type: toast.TYPE.WARNING,
@@ -260,7 +261,7 @@ const ContactForm = () => {
       .post('/', encode({ 'form-name': 'contact', ...data }), {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       })
-      .then(setSuccess(toastId))
+      .then(setSuccess(toastId, data.name))
       .catch(setError(toastId));
   };
   return (
@@ -283,9 +284,9 @@ const ContactForm = () => {
             name="name"
             aria-label={contact.form.name}
             placeholder={contact.form.name}
-            ref={register({ required: contact.form.required })}
+            {...(errors.name ? { className: 'error' } : {})}
+            ref={register({ required: true })}
           />
-          {errors.name && <span className="error">{errors.name.message}</span>}
         </div>
         <div className="col-4 col-12-mobile">
           <input
@@ -293,11 +294,11 @@ const ContactForm = () => {
             name="age"
             aria-label={contact.form.age}
             placeholder={contact.form.age}
+            {...(errors.age ? { className: 'error' } : {})}
             ref={register({
-              required: contact.form.required,
+              required: true,
               pattern: {
                 value: /^[0-9]{2}$/,
-                message: contact.form.invalidAge,
               },
             })}
           />
@@ -309,28 +310,23 @@ const ContactForm = () => {
             name="email"
             aria-label={contact.form.mail}
             placeholder={contact.form.mail}
+            {...(errors.email ? { className: 'error' } : {})}
             ref={register({
-              required: contact.form.required,
+              required: true,
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: contact.form.invalidMail,
               },
             })}
           />
-          {errors.email && (
-            <span className="error">{errors.email.message}</span>
-          )}
         </div>
         <div className="col-12">
           <textarea
             name="message"
             aria-label={contact.form.message}
             placeholder={contact.form.message}
-            ref={register({ required: contact.form.required })}
+            {...(errors.message ? { className: 'error' } : {})}
+            ref={register({ required: true })}
           />
-          {errors.message && (
-            <span className="error">{errors.message.message}</span>
-          )}
         </div>
         <div className="col-12">
           <input type="submit" value={contact.form.submit} />

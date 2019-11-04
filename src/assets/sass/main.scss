@@ -558,6 +558,11 @@ form {
       border-color: orange;
       background: #fff;
     }
+
+    &.error {
+      border: 2px solid orangered;
+      border-left: 15px solid orangered;
+    }
   }
 
   input[type='text'],
@@ -993,6 +998,15 @@ input[type='submit'],
 /* Main */
 
 #main-faq {
+  > section {
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 3em 0;
+  }
+  & h3 {
+    font-weight: 500;
+    color: coral;
+  }
   & h2 {
     text-align: center;
   }
@@ -1051,7 +1065,7 @@ input[type='submit'],
 }
 
 .search {
-  input[type='text'] {
+  input[type='search'] {
     width: 100%;
     padding: 24px;
     margin: 3em auto;
@@ -1071,7 +1085,6 @@ input[type='submit'],
 
     &::placeholder {
       color: #575756;
-      letter-spacing: 2px;
     }
 
     &:hover,
@@ -1431,6 +1444,9 @@ input[type='submit'],
     font-size: 1.5em;
     letter-spacing: 0;
     font-weight: 300;
+  }
+  h3 {
+    font-size: 1.25em;
   }
 
   .container {

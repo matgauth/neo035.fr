@@ -47,7 +47,7 @@
     "react-content-loader": "^4.3.2",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
-    "react-hook-form": "^3.26.4",
+    "react-hook-form": "^3.26.5",
     "react-scrollspy": "^3.4.0",
     "react-toastify": "^5.4.0",
     "showdown": "^1.9.1",

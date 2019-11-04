@@ -206,9 +206,6 @@ collections:
               - { label: 'Age', name: 'age', widget: 'string' }
               - { label: 'Mail', name: 'mail', widget: 'string' }
               - { label: 'Message', name: 'message', widget: 'string' }
-              - { label: 'Required', name: 'required', widget: 'string' }
-              - { label: 'Invalid Age', name: 'invalidAge', widget: 'string' }
-              - { label: 'Invalid Mail', name: 'invalidMail', widget: 'string' }
               - { label: 'Submit', name: 'submit', widget: 'string' }
       - label: 'Not Found'
         name: 'notFound'

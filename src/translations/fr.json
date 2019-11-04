@@ -7,14 +7,11 @@
       "success": "J'ai bien reçu ton message ;-)",
       "message": "Écris-moi un petit mot...",
       "error": "Oups... Une erreur est survenue. Réessaye plus tard !",
-      "invalidAge": "Âge invalide, il faut des CHIFFRES !",
       "name": "Ton nom",
-      "invalidMail": "Email invalide",
       "mail": "Ton adresse mail",
       "submit": "Et hop envoyé !",
       "loading": "Chargement de l'infini...",
-      "age": "Age",
-      "required": "Requis"
+      "age": "Age"
     }
   },
   "about": {

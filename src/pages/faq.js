@@ -87,8 +87,7 @@ const FAQ = ({ pageContext: { locale } }) => {
           <div className="search">
             <input
               name="search"
-              type="text"
-              autoFocus
+              type="search"
               placeholder={faq.searchPlaceholder}
               onChange={e => setInput(e.currentTarget.value)}
               value={input}
@@ -109,9 +108,9 @@ const FAQ = ({ pageContext: { locale } }) => {
                 const filteredQuestions = matchQuery(questions, input, 'label');
                 return (
                   <article key={id}>
-                    <div className="row">
-                      <div className="col-4 col-12-mobile">
-                        <div className="item">
+                    <div className="item">
+                      <div className="row">
+                        <div className="col-4 col-12-mobile">
                           <a
                             href={`https://www.youtube.com/watch?v=${videoId}`}
                             target="_blank"
@@ -125,12 +124,10 @@ const FAQ = ({ pageContext: { locale } }) => {
                             />
                           </a>
                         </div>
-                      </div>
-                      <div className="col-8 col-12-mobile">
-                        <div className="item">
+                        <div className="col-8 col-12-mobile">
                           <h3>{title}</h3>
                           <p>
-                            <strong>{faq.publishedAt}</strong> {date}
+                            <strong>{faq.publishedAt}</strong> <em>{date}</em>
                           </p>
                           <a
                             href={`https://www.youtube.com/watch?v=${videoId}`}
