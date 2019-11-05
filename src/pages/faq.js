@@ -2,8 +2,6 @@ import React from 'react';
 import prop from 'ramda/src/prop';
 import matchSorter from 'match-sorter';
 import { format } from 'date-fns';
-import LocalizedLink from '@components/localized-link';
-import SideBar from '@components/sidebar';
 import useTranslations from '@hooks/use-translations';
 import { getVideosFromPlaylistId } from '@utils';
 import config from '@config';
@@ -78,116 +76,106 @@ const FAQ = ({ pageContext: { locale } }) => {
     item.questions.length > 0 ? item.questions.map(prop`label`) : undefined
   );
   return (
-    <>
-      <SideBar />
-      <div id="main" className="faq-wrapper">
-        <section className="alt-2">
-          <div className="container">
-            <LocalizedLink to="/#faq">
-              <span className="icon fa-close" /> {faq.goBackHome}
-            </LocalizedLink>
-            <div className="search">
-              <input
-                name="search"
-                type="search"
-                placeholder={faq.searchPlaceholder}
-                onChange={e => setInput(e.currentTarget.value)}
-                value={input}
-              />
-            </div>
+    <div id="main" className="faq-wrapper">
+      <section className="alt-2">
+        <div className="container">
+          <div className="search">
+            <input
+              name="search"
+              type="search"
+              placeholder={faq.searchPlaceholder}
+              onChange={e => setInput(e.currentTarget.value)}
+              value={input}
+            />
+          </div>
 
-            {state.isLoading && (
-              <div className="folding-cube">
-                <div className="cube1 cube"></div>
-                <div className="cube2 cube"></div>
-                <div className="cube4 cube"></div>
-                <div className="cube3 cube"></div>
-              </div>
-            )}
-            {filteredFaqItems.length > 0 &&
-              filteredFaqItems.map(
-                ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
-                  const date = formatDate(publishedAt, localeFile);
-                  const filteredQuestions = matchQuery(
-                    questions,
-                    input,
-                    'label'
-                  );
-                  return (
-                    <article key={id}>
-                      <div className="item">
-                        <div className="row">
-                          <div className="col-4 col-12-mobile">
-                            <a
-                              href={`https://www.youtube.com/watch?v=${videoId}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title="Watch FAQ video"
-                            >
-                              <img
-                                src={thumbnail}
-                                alt={title}
-                                className="image fit"
-                              />
-                            </a>
-                          </div>
-                          <div className="col-8 col-12-mobile">
-                            <h3>{title}</h3>
-                            <p>
-                              <strong>{faq.publishedAt}</strong> <em>{date}</em>
-                            </p>
-                            <a
-                              href={`https://www.youtube.com/watch?v=${videoId}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title="Watch FAQ video"
-                            >
-                              {faq.watchVideo}{' '}
-                              <span className="icon fa-arrow-right" />
-                            </a>
-                          </div>
+          {state.isLoading && (
+            <div className="folding-cube">
+              <div className="cube1 cube"></div>
+              <div className="cube2 cube"></div>
+              <div className="cube4 cube"></div>
+              <div className="cube3 cube"></div>
+            </div>
+          )}
+          {filteredFaqItems.length > 0 &&
+            filteredFaqItems.map(
+              ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
+                const date = formatDate(publishedAt, localeFile);
+                const filteredQuestions = matchQuery(questions, input, 'label');
+                return (
+                  <article key={id}>
+                    <div className="item">
+                      <div className="row">
+                        <div className="col-4 col-12-mobile">
+                          <a
+                            href={`https://www.youtube.com/watch?v=${videoId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Watch FAQ video"
+                          >
+                            <img
+                              src={thumbnail}
+                              alt={title}
+                              className="image fit"
+                            />
+                          </a>
+                        </div>
+                        <div className="col-8 col-12-mobile">
+                          <h3>{title}</h3>
+                          <p>
+                            <strong>{faq.publishedAt}</strong> <em>{date}</em>
+                          </p>
+                          <a
+                            href={`https://www.youtube.com/watch?v=${videoId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Watch FAQ video"
+                          >
+                            {faq.watchVideo}{' '}
+                            <span className="icon fa-arrow-right" />
+                          </a>
                         </div>
                       </div>
-                      {filteredQuestions.length > 0 && (
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>{faq.questions}</th>
-                              <th>{faq.time}</th>
+                    </div>
+                    {filteredQuestions.length > 0 && (
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>{faq.questions}</th>
+                            <th>{faq.time}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredQuestions.map(({ label, time }, i) => (
+                            <tr key={`${title}_${i}`}>
+                              <td>{label}</td>
+                              <td>
+                                <a
+                                  href={time.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title={`Watch FAQ video at ${time.text}`}
+                                >
+                                  {time.text}
+                                </a>
+                              </td>
                             </tr>
-                          </thead>
-                          <tbody>
-                            {filteredQuestions.map(({ label, time }, i) => (
-                              <tr key={`${title}_${i}`}>
-                                <td>{label}</td>
-                                <td>
-                                  <a
-                                    href={time.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title={`Watch FAQ video at ${time.text}`}
-                                  >
-                                    {time.text}
-                                  </a>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      )}
-                    </article>
-                  );
-                }
-              )}
-            {!state.isLoading && !filteredFaqItems.length && (
-              <header>
-                <h2>{faq.noFaqItems}</h2>
-              </header>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </article>
+                );
+              }
             )}
-          </div>
-        </section>
-      </div>
-    </>
+          {!state.isLoading && !filteredFaqItems.length && (
+            <header>
+              <h2>{faq.noFaqItems}</h2>
+            </header>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };
 

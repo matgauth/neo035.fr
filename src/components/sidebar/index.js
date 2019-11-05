@@ -2,10 +2,9 @@ import React from 'react';
 
 import Footer from './footer';
 import Header from './header';
-import Nav from './nav';
 import TopNav from './top-nav';
 
-export default function SideBar({ sections = [] }) {
+export default function SideBar({ pathname, children }) {
   const [headerOpen, toggleHeader] = React.useState(false);
 
   return (
@@ -14,9 +13,9 @@ export default function SideBar({ sections = [] }) {
       <div id="header">
         <div className="top">
           <Header />
-          <Nav sections={sections} />
+          {children}
         </div>
-        <Footer />
+        <Footer pathname={pathname} />
       </div>
     </div>
   );

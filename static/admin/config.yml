@@ -274,21 +274,27 @@ collections:
     label: 'Notices'
     label_singular: 'notice'
     folder: 'src/data/notices'
-    create: true
-    slug: '{{title}.{{lang}}'
+    create: false
     editor:
       preview: false
     fields:
-      - {
-          label: 'Lang',
-          name: 'lang',
-          widget: 'select',
-          default: 'fr',
-          options:
-            [
-              { label: 'Français', value: 'fr' },
-              { label: 'English', value: 'en' },
-            ],
-        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'about'
+    label: 'About'
+    folder: 'src/data/about'
+    create: false
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'home'
+    label: 'Home'
+    folder: 'src/data/home'
+    create: false
+    editor:
+      preview: false
+    fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }

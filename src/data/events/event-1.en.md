@@ -1,5 +1,6 @@
 ---
 lang: en
+key: event
 date: 2020-01-10T23:40:32.169Z
 thumbnail: /img/japanvannesmatsurilogo.jpg
 title: Evénement

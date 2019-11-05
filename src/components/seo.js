@@ -8,7 +8,7 @@ import { socialLinks } from '@config';
 import useTranslations from '@hooks/use-translations';
 import { str, parsePath } from '@utils';
 
-const SEO = ({ lang, image, pathname }) => {
+const SEO = ({ lang, pathname }) => {
   const t = useTranslations();
   const {
     site: {
@@ -23,13 +23,14 @@ const SEO = ({ lang, image, pathname }) => {
     },
   } = useStaticQuery(query);
   const digMetadata = attr => {
-    const pageMetadata = pathname !== `/` ? parsePath(pathname) : `home`;
+    const regex = new RegExp(`^/(${lang})?/?$`);
+    const pageMetadata = pathname.match(regex) ? `home` : parsePath(pathname);
     return path(['pageMetadata', pageMetadata, attr], t);
   };
   const seo = {
     title: digMetadata('title') || defaultTitle,
     description: digMetadata('description') || defaultDescription,
-    image: `${siteUrl}${image || logo}`,
+    image: `${siteUrl}${logo}`,
     author,
     url: `${siteUrl}${pathname || `/`}`,
   };
@@ -59,20 +60,17 @@ const SEO = ({ lang, image, pathname }) => {
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
-
     </Helmet>
   );
 };
 
 SEO.propTypes = {
   lang: PropTypes.string,
-  image: PropTypes.string,
   pathname: PropTypes.string,
 };
 
 SEO.defaultProps = {
   lang: `fr`,
-  image: null,
   pathname: null,
 };
 

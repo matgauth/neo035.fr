@@ -20,9 +20,7 @@
     "description": "Here are all the partners with whom I enjoy collaborating"
   },
   "about": {
-    "nav": "Présentation",
-    "title": "A propos",
-    "description": "# WELCOME !\n\nFirst, let me introduce myself. I'm **Neo035**, WW2 airsoft and reenactment addict. I officially began making videos in 2011 and for this time, I spend all my free time to create content to show you airsoft guns, denix replicas, uniforms and VIP presentations.\n\nCome discover my activites on this website, my events, my videos and a form to contact me !\n\n![Photo para US](/img/novembre_2018_laureen_keravec-6-.jpg \"Picture of this modern hero\")\n\nAt last, if you want to support me for me staying independant, you can follow these 2 links below :\n\n[![MyTip](/img/mytip.png =180x*)](https://www.mytip.co/users/neo035)\n[![Tipeee](/img/tipeee.png =180x*)](https://fr.tipeee.com/neo035)"
+    "nav": "Présentation"
   },
   "notFound": {
     "title": "Page not found",
@@ -36,7 +34,6 @@
     "watchVideo": "See the complete video",
     "questions": "Questions",
     "time": "Time",
-    "goBackHome": "Back to home",
     "showMe": "All the questions are here !",
     "title": "Questions",
     "description": "You've some questions? Perpahs I already answered ! (in french only, sorry)"
@@ -66,15 +63,14 @@
       "title": "Questions",
       "description": "Questions for Neo035"
     },
-    "legalNotices": {
-      "title": "Legal notice",
-      "description": "Legal notice"
+    "notices": {
+      "title": "Legal notices",
+      "description": "Legal notices"
     }
   },
   "home": {
     "nav": "Home",
-    "title": "Welcome on the Neo035's website",
-    "description": "Neo035, WW2 airsoft and reenactment specialist\n\nOn this website, you can discover all my activities !",
+    "goBackHome": "Back to home",
     "showMe": "Show me"
   }
 }

@@ -5,10 +5,10 @@ import { graphql } from 'gatsby';
 import useForm from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Scrollspy from 'react-scrollspy';
 import ContentLoader from 'react-content-loader';
 
 import Scroll from '@components/scroll';
-import HTML from '@components/inner-html';
 import SideBar from '@components/sidebar';
 import LocalizedLink from '@components/localized-link';
 import useTranslations from '@hooks/use-translations';
@@ -76,7 +76,7 @@ const Videos = () => {
       <header>
         <h2>{videos.title}</h2>
       </header>
-      <HTML markdown={videos.description} />
+      <p>{videos.description}</p>
       {state.isError && <p className="error">{contact.form.error}</p>}
       <div className="row">
         {state.isLoading &&
@@ -140,7 +140,7 @@ const Events = ({ data }) => {
       <header>
         <h2>{events.title}</h2>
       </header>
-      <HTML markdown={events.description} />
+      <p>{events.description}</p>
       {data.map(({ node: { frontmatter, id, html } }) => {
         return (
           <article key={id} className="item">
@@ -155,16 +155,16 @@ const Events = ({ data }) => {
                 >
                   <Img
                     style={{
-                      maxWidth: 600,
+                      maxWidth: 500,
                       margin: `0 auto 1.5em auto`,
-                      borderRadius: `0.35em`,
                     }}
                     fluid={frontmatter.thumbnail.childImageSharp.fluid}
                     alt={frontmatter.title}
                   />
                 </a>
               )}
-              <span dangerouslySetInnerHTML={{ __html: html }} />
+              <h3>{frontmatter.title}</h3>
+              <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
           </article>
         );
@@ -180,7 +180,7 @@ const Faq = () => {
       <header>
         <h2>{faq.title}</h2>
       </header>
-      <HTML markdown={faq.description} />
+      <p>{faq.description}</p>
       <LocalizedLink
         to="/faq"
         className="button primary"
@@ -201,7 +201,7 @@ const Partners = ({ data }) => {
       <header>
         <h2>{partners.title}</h2>
       </header>
-      <HTML markdown={partners.description} />
+      <p>{partners.description}</p>
       <div className="row">
         {data.map(({ node: { childImageSharp, id, name } }) => (
           <div key={id} className="col-3 col-12-mobile">
@@ -335,11 +335,39 @@ const ContactForm = () => {
   );
 };
 
+const Nav = ({ sections = [] }) => {
+  return (
+    <nav id="nav">
+      <ul>
+        <Scrollspy
+          items={sections.map(s => s.id)}
+          currentClassName="active"
+          offset={-300}
+        >
+          {sections.map(s => {
+            return (
+              <li key={s.id}>
+                <Scroll type="id" element={s.id}>
+                  <a href={`#${s.id}`} title={s.name}>
+                    <span className={`icon ${s.icon}`}>{s.name}</span>
+                  </a>
+                </Scroll>
+              </li>
+            );
+          })}
+        </Scrollspy>
+      </ul>
+    </nav>
+  );
+};
+
 const IndexPage = ({
   data: {
     bg,
     events: { edges: eventItems },
     partners: { edges: partnerItems },
+    home: homeMd,
+    about: aboutMd,
   },
 }) => {
   const {
@@ -362,7 +390,9 @@ const IndexPage = ({
   ];
   return (
     <>
-      <SideBar sections={sections} />
+      <SideBar>
+        <Nav sections={sections} />
+      </SideBar>
       <div id="main">
         <BackgroundImage
           Tag="section"
@@ -375,9 +405,9 @@ const IndexPage = ({
         >
           <div className="container">
             <header>
-              <h1 className="alt">{home.title}</h1>
-              <HTML markdown={home.description} />
+              <h1 className="alt">{homeMd.frontmatter.title}</h1>
             </header>
+            <article dangerouslySetInnerHTML={{ __html: homeMd.html }} />
 
             <footer>
               <Scroll type="id" element="about">
@@ -389,10 +419,12 @@ const IndexPage = ({
           </div>
         </BackgroundImage>
         <section id="about" className="alt-2">
-          <header>
-            <h2>{about.title}</h2>
-          </header>
-          <HTML markdown={about.description} />
+          <div className="container">
+            <header>
+              <h2>{aboutMd.frontmatter.title}</h2>
+            </header>
+            <article dangerouslySetInnerHTML={{ __html: aboutMd.html }} />
+          </div>
         </section>
         <section id="events" className="alt-1">
           <Events data={eventItems} />
@@ -411,7 +443,7 @@ const IndexPage = ({
             <header>
               <h2>{contact.title}</h2>
             </header>
-            <HTML markdown={contact.description} />
+            <p>{contact.description}</p>
             <ContactForm />
           </div>
         </section>
@@ -423,7 +455,7 @@ const IndexPage = ({
 export default IndexPage;
 
 export const query = graphql`
-  query Events($locale: String!) {
+  query Index($locale: String!) {
     bg: file(relativePath: { eq: "bg.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
@@ -451,8 +483,8 @@ export const query = graphql`
     events: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
-        frontmatter: { date: { ne: null } },
-        fields: { locale: { eq: $locale } }
+        fields: { locale: { eq: $locale } }, 
+        frontmatter: { key: {eq: "event" } }
       }
     ) {
       edges {
@@ -472,6 +504,18 @@ export const query = graphql`
             link
           }
         }
+      }
+    }
+    home: markdownRemark(fields: {locale: {eq: $locale}}, frontmatter: {key: {eq: "home"}}) {
+      html
+      frontmatter {
+        title
+      }
+    }
+    about: markdownRemark(fields: {locale: {eq: $locale}}, frontmatter: {key: {eq: "about"}}) {
+      html
+      frontmatter {
+        title
       }
     }
   }

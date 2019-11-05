@@ -1,27 +1,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import SideBar from '@components/sidebar';
-
 const Notice = ({
   data: {
     markdownRemark: { frontmatter, html },
   },
 }) => {
   return (
-    <>
-      <SideBar />
-      <div id="main" className="faq-wrapper">
-        <section id="about">
-          <div className="container">
-            <header>
-              <h2>{frontmatter.title}</h2>
-            </header>
-            <article dangerouslySetInnerHTML={{ __html: html }} />
-          </div>
-        </section>
-      </div>
-    </>
+    <div id="main" className="faq-wrapper">
+      <section id="about">
+        <div className="container">
+          <header>
+            <h2>{frontmatter.title}</h2>
+          </header>
+          <article dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
+      </section>
+    </div>
   );
 };
 

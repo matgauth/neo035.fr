@@ -28,14 +28,11 @@ const query = graphql`
           translations: childTranslationsJson {
             home {
               nav
-              title
-              description
+              goBackHome
               showMe
             }
             about {
               nav
-              title
-              description
             }
             events {
               nav
@@ -55,7 +52,6 @@ const query = graphql`
               showMe
               publishedAt
               noFaqItems
-              goBackHome
               watchVideo
               searchPlaceholder
               questions
@@ -98,7 +94,7 @@ const query = graphql`
                 title
                 description
               }
-              legalNotices {
+              notices {
                 title
                 description
               }

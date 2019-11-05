@@ -43,6 +43,8 @@ exports.onCreatePage = ({ page, actions }) => {
         ...page.context,
         locale: lang,
         dateFormat: locale,
+        isDefault,
+        slug: page.path.replace(/^\/+|\/+$/g, ``),
       },
     });
   });
@@ -119,7 +121,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: localizeSlug(isDefault, locale, slug),
         component: resolve(`src/templates/notice.js`),
-        context: { title, locale },
+        context: { title, locale, isDefault, slug },
       });
     });
   });

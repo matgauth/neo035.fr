@@ -14,7 +14,7 @@ export default function Header() {
   } = useStaticQuery(query);
   return (
     <div id="logo">
-      <LocalizedLink to="/" aria-label={home.showMe}>
+      <LocalizedLink to="/" aria-label={home.goBackHome}>
         <span className="image avatar48">
           <Img fluid={avatar.childImageSharp.fluid} alt="Avatar" />
         </span>

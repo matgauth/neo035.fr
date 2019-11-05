@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import l from '@i18n';
 
 const locales = Object.keys(l);
 
-export default function Footer() {
+export default function Footer({ pathname }) {
   const {
     site: {
       siteMetadata: { socialLinks },
@@ -37,7 +38,11 @@ export default function Footer() {
           {locales.map((lang, i) => [
             <Link
               key={lang}
-              to={`/${l[lang].default ? `` : l[lang].path}`}
+              to={`/${
+                l[lang].default
+                  ? pathname
+                  : `${l[lang].path}${pathname ? `/${pathname}` : ``}`
+              }`}
               className="icon"
               hrefLang={lang}
             >
@@ -50,6 +55,14 @@ export default function Footer() {
     </div>
   );
 }
+
+Footer.defaultProps = {
+  pathname: ``,
+};
+
+Footer.propTypes = {
+  pathname: PropTypes.string,
+};
 
 const query = graphql`
   query Footer {
