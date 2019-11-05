@@ -137,16 +137,13 @@ collections:
         widget: 'object'
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
+          - { label: 'Go Back Home', name: 'goBackHome', widget: 'string' }
       - label: 'About'
         name: 'about'
         widget: 'object'
         fields:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'markdown' }
       - label: 'Events'
         name: 'events'
         widget: 'object'
@@ -170,7 +167,6 @@ collections:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
-          - { label: 'Go Back Home', name: 'goBackHome', widget: 'string' }
           - { label: 'FAQ not found', name: 'noFaqItems', widget: 'string' }
           - {
               label: 'Search Placeholder',
@@ -240,7 +236,7 @@ collections:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'Legal Notices'
-            name: 'legalNotices'
+            name: 'notices'
             widget: 'object'
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
@@ -254,6 +250,7 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: 'Key', name: 'key', widget: 'hidden', default: 'event' }
       - {
           label: 'Lang',
           name: 'lang',
@@ -280,15 +277,6 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
-  - name: 'about'
-    label: 'About'
-    folder: 'src/data/about'
-    create: false
-    editor:
-      preview: false
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'home'
     label: 'Home'
     folder: 'src/data/home'
@@ -296,5 +284,16 @@ collections:
     editor:
       preview: false
     fields:
+      - { label: 'Key', name: 'key', widget: 'hidden', default: 'home' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'about'
+    label: 'About'
+    folder: 'src/data/about'
+    create: false
+    editor:
+      preview: false
+    fields:
+      - { label: 'Key', name: 'key', widget: 'hidden', default: 'about' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
