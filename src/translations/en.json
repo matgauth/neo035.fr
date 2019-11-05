@@ -4,25 +4,25 @@
     "title": "Contact me!",
     "description": "You want to ask me, propose me something or just contact me?",
     "form": {
-      "success": "I've got your message !",
-      "message": "Write me something :)",
       "error": "Oops... An error has occured ! Try later...",
-      "name": "Your name",
-      "mail": "Your email address",
-      "submit": "Sent ! :)",
+      "success": "I've got your message !",
       "loading": "Infinity loading...",
-      "age": "Your age"
+      "name": "Your name",
+      "age": "Your age",
+      "mail": "Your email address",
+      "message": "Write me something :)",
+      "submit": "Sent ! :)"
     }
-  },
-  "about": {
-    "nav": "Présentation",
-    "title": "A propos",
-    "description": "Lorem ipsum"
   },
   "partners": {
     "nav": "Partners",
     "title": "My partners",
     "description": "Here are all the partners with whom I enjoy collaborating"
+  },
+  "about": {
+    "nav": "Présentation",
+    "title": "A propos",
+    "description": "# WELCOME !\n\nFirst, let me introduce myself. I'm **Neo035**, WW2 airsoft and reenactment addict. I officially began making videos in 2011 and for this time, I spend all my free time to create content to show you airsoft guns, denix replicas, uniforms and VIP presentations.\n\nCome discover my activites on this website, my events, my videos and a form to contact me !\n\n![Photo para US](/img/novembre_2018_laureen_keravec-6-.jpg \"Photo Para US\")\n\nAt last, if you want to support me for me staying independant, you can follow these 2 links below :\n\n[!\\[MyTip](/img/mytip.png =180x*)](https://www.mytip.co/users/neo035)\n[!\\[Tipeee](/img/tipeee.png =180x*)](https://fr.tipeee.com/neo035)"
   },
   "notFound": {
     "title": "Page not found",
