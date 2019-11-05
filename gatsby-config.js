@@ -95,10 +95,6 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        gfm: true,
-        commonmark: true,
-        pedantic: true,
-        excerpt_separator: `<!-- end -->`,
         plugins: [
           `gatsby-remark-relative-images`,
           {
@@ -107,6 +103,8 @@ module.exports = {
               linkImagesToOriginal: false,
               maxWidth: 1920,
               quality: 90,
+              sizeByPixelDensity: true,
+              wrapperStyle: `margin: 25px;`
             },
           },
           {

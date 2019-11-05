@@ -306,7 +306,7 @@ footer {
 
 strong,
 b {
-  font-weight: 300;
+  font-weight: 400;
   color: #666;
 }
 
@@ -994,7 +994,14 @@ input[type='submit'],
     }
   }
 }
-
+#about {
+  & a {
+    border: 0;
+  }
+  & p > img {
+    border-radius: 0.35em;
+  }
+}
 /* Main */
 
 #main {
@@ -1289,6 +1296,7 @@ input[type='submit'],
     }
   }
 
+  
   /* Header */
 
   #header {
