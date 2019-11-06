@@ -1,10 +1,9 @@
 ---
 title: Mentions légales
 ---
-
 ### Le présent site est édité par :
 
-...
+Mathieu Gauthier
 
 **Responsable de la publication :** Rémi BOURBOULON
 
@@ -14,7 +13,7 @@ Netlify, Inc.
 
 Siège social : 2325 3RD STREET,SUITE 215, SAN FRANCISCO, CA 94107 (USA).
 
-Email : [privacy@netlify.com](mailto:privacy@netlify.com)
+Email : <mailto:privacy@netlify.com>
 
 Adresse du site web de l’hébergeur : [www.netlify.com](https://www.netlify.com/)
 
@@ -22,7 +21,7 @@ Adresse du site web de l’hébergeur : [www.netlify.com](https://www.netlify.co
 
 Le présent site est soumis à la législation française et internationale sur les droits d’auteur et la propriété intellectuelle.
 
-Toute reproduction ou représentation totale ou partielle de ce site par quelque procédé que ce soit et sur quelque support que ce soit, sans l’autorisation expresse et préalable de Rémi Bourboulon (Neo035) est interdite et constituerait une contrefaçon.
+Toute reproduction ou représentation totale ou partielle de ce site par quelque procédé que ce soit et sur quelque support que ce soit, sans l’autorisation expresse et préalable de Rémi Bourboulon est interdite et constituerait une contrefaçon.
 
 ### Liens hypertextes contenus sur le site
 
@@ -30,4 +29,4 @@ Rémi Bourboulon se réserve la possibilité de mettre en place des liens hypert
 
 ### Contact
 
-Pour toute information complémentaire vous pouvez contacter le responsable par courrier électronique à l’adresse : [neo035@live.fr](mailto:neo035@live.fr).
+Pour toute information complémentaire vous pouvez contacter le responsable par courrier électronique à l’adresse : [neo035@outlook.fr](mailto:neo035@live.fr).
