@@ -1,9 +1,12 @@
 ---
 title: Mentions légales
 ---
+
 ### Le présent site est édité par :
 
 Mathieu Gauthier
+
+**Site Web :** [www.mathieugauthier.fr](https://www.mathieugauthier.fr)
 
 **Responsable de la publication :** Rémi BOURBOULON
 
