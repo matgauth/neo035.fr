@@ -13,6 +13,18 @@ Vous découvrirez sur ce site mes activités, mes événements, mes vidéos, et 
 
 De plus, si vous souhaitez me soutenir pour que je reste au maximum indépendant, vous pourrez suivre les deux liens ci-dessous :
 
+<div class="row aln-center aln-middle">
+
+<div class="col-2 col-6-mobile">
+
 [![MyTip](/img/mytip.png 'MyTip')](https://www.mytip.co/users/neo035)
 
+</div>
+
+<div class="col-2 col-6-mobile">
+
 [![Tipeee](/img/tipeee.png 'Tipeee')](https://fr.tipeee.com/neo035)
+
+</div>
+
+</div>
