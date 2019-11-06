@@ -29,4 +29,4 @@ Rémi Bourboulon se réserve la possibilité de mettre en place des liens hypert
 
 ### Contact
 
-Pour toute information complémentaire vous pouvez contacter le responsable par courrier électronique à l’adresse : [neo035@outlook.fr](mailto:neo035@live.fr).
+Pour toute information complémentaire vous pouvez contacter le responsable par courrier électronique à l’adresse : [neo035@outlook.fr](mailto:neo035@outlook.fr).
