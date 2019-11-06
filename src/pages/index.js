@@ -240,9 +240,9 @@ const ContactForm = () => {
     });
   };
 
-  const setSuccess = (id, name) => () => {
+  const setSuccess = id => () => {
     toast.update(id, {
-      render: `${name ? `Thanks ${name} !\n` : ``}${contact.form.success}`,
+      render: contact.form.success,
       type: toast.TYPE.SUCCESS,
       autoClose: 3000,
     });
@@ -260,7 +260,7 @@ const ContactForm = () => {
       .post('/', encode({ 'form-name': 'contact', ...data }), {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       })
-      .then(setSuccess(toastId, data.name))
+      .then(setSuccess(toastId))
       .catch(setError(toastId));
   };
   return (
