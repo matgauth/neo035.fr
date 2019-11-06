@@ -191,7 +191,10 @@ module.exports = {
         headers: {
           '/*': [
             `X-UA-Compatible: IE=Edge`,
-            `Content-Security-Policy: block-all-mixed-content; base-uri 'self'; default-src 'self' data: raw.githubusercontent.com i.ytimg.com; script-src 'self'; style-src 'self'; object-src 'none'; form-action 'self'; font-src 'self' data: fonts.googleapis.com; connect-src 'self' www.googleapis.com`,
+            `Content-Security-Policy: block-all-mixed-content; base-uri 'self'; default-src 'self' data: i.ytimg.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; form-action 'self'; font-src 'self' data: fonts.googleapis.com; connect-src 'self' www.googleapis.com`,
+          ],
+          '/admin/*': [
+            `Content-Security-Policy: block-all-mixed-content; base-uri 'self'; default-src 'self' data: raw.githubusercontent.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; form-action 'self'; font-src 'self' data:; connect-src 'self'`,
           ],
           '/icons/*.png': [`cache-control: public, max-age=31536000,immutable`],
         },
