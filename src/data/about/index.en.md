@@ -2,28 +2,27 @@
 key: about
 title: About
 ---
+### WELCOME !
 
-### BIENVENUE !
+First, let me introduce myself. I'm **Neo035**, WW2 airsoft and reenactment addict. I officially began making videos in 2011 and for this time, I spend all my free time to create content to show you airsoft guns, denix replicas, uniforms and VIP presentations.
 
-Laissez-moi tout d'abord me présenter. Je suis **Neo035**, passionné d'airsoft et reconstitution seconde guerre mondiale (WW2). J'ai commencé les vidéos officiellement en 2011 et depuis cette période, je passe tout mon temps libre à créer du contenu pour vous présenter des répliques d'airsoft, Denix, des uniformes et des VIP.
+Come discover my activites on this website, my events, my videos and a form to contact me !
 
-Vous découvrirez sur ce site mes activités, mes événements, mes vidéos, et de quoi me contacter !
+![Photo para US](/img/novembre_2018_laureen_keravec-6-.jpg "Photo para US")
 
-![Photo para US](/img/novembre_2018_laureen_keravec-6-.jpg 'Photo Para US')
-
-De plus, si vous souhaitez me soutenir pour que je reste au maximum indépendant, vous pourrez suivre les deux liens ci-dessous :
+At last, if you want to support me for me staying independant, you can follow these 2 links below :
 
 <div class="row aln-center aln-middle">
 
 <div class="col-2 col-6-mobile">
 
-[![MyTip](/img/mytip.png 'MyTip')](https://www.mytip.co/users/neo035)
+[![MyTip](/img/mytip.png "MyTip")](https://www.mytip.co/users/neo035)
 
 </div>
 
 <div class="col-2 col-6-mobile">
 
-[![Tipeee](/img/tipeee.png 'Tipeee')](https://fr.tipeee.com/neo035)
+[![Tipeee](/img/tipeee.png "Tipeee")](https://fr.tipeee.com/neo035)
 
 </div>
 
