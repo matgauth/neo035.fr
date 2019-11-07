@@ -1,7 +1,7 @@
 import React from 'react';
 import prop from 'ramda/src/prop';
 import matchSorter from 'match-sorter';
-import { format } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import useTranslations from '@hooks/use-translations';
 import { getVideosFromPlaylistId } from '@utils';
 import config from '@config';
@@ -27,7 +27,11 @@ const reducer = (state, action) => {
 };
 
 const formatDate = (dateStr, locale) =>
-  format(new Date(dateStr), 'PPPp', { locale });
+  formatDistanceToNow(new Date(dateStr), {
+    locale,
+    addSuffix: true,
+    includeSeconds: true,
+  });
 
 const matchQuery = (data, query, key) =>
   matchSorter(data, query, {
@@ -35,8 +39,74 @@ const matchQuery = (data, query, key) =>
     threshold: matchSorter.rankings.CONTAINS,
   });
 
-const FAQ = ({ pageContext: { locale } }) => {
+const FAQItem = ({ videoId, thumbnail, title, publishDate, questions }) => {
   const { faq } = useTranslations();
+  return (
+    <article>
+      <div className="item">
+        <div className="row">
+          <div className="col-4 col-12-mobile">
+            <a
+              href={`https://www.youtube.com/watch?v=${videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Watch FAQ video"
+            >
+              <img src={thumbnail} alt={title} className="image fit" />
+            </a>
+          </div>
+          <div className="col-8 col-12-mobile">
+            <h3>{title}</h3>
+            <p>
+              <span className="icon fa-calendar" />
+              {faq.publishedAt} <em>{publishDate}</em>
+            </p>
+            <a
+              href={`https://www.youtube.com/watch?v=${videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Watch FAQ video"
+            >
+              {faq.watchVideo} <span className="icon fa-arrow-right" />
+            </a>
+          </div>
+        </div>
+      </div>
+      {questions.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>{faq.questions}</th>
+              <th>{faq.time}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {questions.map(({ label, time }, i) => (
+              <tr key={`${title}_${i}`}>
+                <td>{label}</td>
+                <td>
+                  <a
+                    href={time.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Watch FAQ video at ${time.text}`}
+                  >
+                    {time.text}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </article>
+  );
+};
+
+const FAQ = ({ pageContext: { locale } }) => {
+  const {
+    faq: { searchPlaceholder, noFaqItems },
+  } = useTranslations();
   const [input, setInput] = React.useState('');
   const [localeFile, setLocaleFile] = React.useState(null);
   const [state, dispatch] = React.useReducer(reducer, {
@@ -51,7 +121,8 @@ const FAQ = ({ pageContext: { locale } }) => {
           config.faqPlaylistId,
           apiKey
         );
-        if (!didCancel) dispatch({ type: 'FETCH_SUCCESS', payload: result });
+        if (!didCancel)
+          dispatch({ type: 'FETCH_SUCCESS', payload: result.reverse() });
       } catch (e) {
         console.error('Error for DEV', e.message);
         if (!didCancel) dispatch({ type: 'FETCH_FAILURE' });
@@ -83,7 +154,7 @@ const FAQ = ({ pageContext: { locale } }) => {
             <input
               name="search"
               type="search"
-              placeholder={faq.searchPlaceholder}
+              placeholder={searchPlaceholder}
               onChange={e => setInput(e.currentTarget.value)}
               value={input}
             />
@@ -98,79 +169,17 @@ const FAQ = ({ pageContext: { locale } }) => {
             </div>
           )}
           {filteredFaqItems.length > 0 &&
-            filteredFaqItems.map(
-              ({ id, publishedAt, videoId, thumbnail, title, questions }) => {
-                const date = formatDate(publishedAt, localeFile);
-                const filteredQuestions = matchQuery(questions, input, 'label');
-                return (
-                  <article key={id}>
-                    <div className="item">
-                      <div className="row">
-                        <div className="col-4 col-12-mobile">
-                          <a
-                            href={`https://www.youtube.com/watch?v=${videoId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Watch FAQ video"
-                          >
-                            <img
-                              src={thumbnail}
-                              alt={title}
-                              className="image fit"
-                            />
-                          </a>
-                        </div>
-                        <div className="col-8 col-12-mobile">
-                          <h3>{title}</h3>
-                          <p>
-                            <strong>{faq.publishedAt}</strong> <em>{date}</em>
-                          </p>
-                          <a
-                            href={`https://www.youtube.com/watch?v=${videoId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Watch FAQ video"
-                          >
-                            {faq.watchVideo}{' '}
-                            <span className="icon fa-arrow-right" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    {filteredQuestions.length > 0 && (
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>{faq.questions}</th>
-                            <th>{faq.time}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {filteredQuestions.map(({ label, time }, i) => (
-                            <tr key={`${title}_${i}`}>
-                              <td>{label}</td>
-                              <td>
-                                <a
-                                  href={time.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  title={`Watch FAQ video at ${time.text}`}
-                                >
-                                  {time.text}
-                                </a>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
-                  </article>
-                );
-              }
-            )}
+            filteredFaqItems.map(({ id, publishedAt, questions, ...rest }) => (
+              <FAQItem
+                key={id}
+                publishDate={formatDate(publishedAt, localeFile)}
+                questions={matchQuery(questions, input, 'label')}
+                {...rest}
+              />
+            ))}
           {!state.isLoading && !filteredFaqItems.length && (
             <header>
-              <h2>{faq.noFaqItems}</h2>
+              <h2>{noFaqItems}</h2>
             </header>
           )}
         </div>

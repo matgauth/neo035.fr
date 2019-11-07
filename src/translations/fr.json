@@ -27,7 +27,7 @@
     "description": "Oups... Retourne à l'accueil ! Tu te sentiras mieux."
   },
   "faq": {
-    "publishedAt": "Publiée le",
+    "publishedAt": "Publiée",
     "nav": "FAQ",
     "searchPlaceholder": "Tape ta recherche ici",
     "noFaqItems": "Aucune vidéo trouvée pour cette recherche",

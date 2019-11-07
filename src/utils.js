@@ -35,11 +35,11 @@ const parseQuestions = (description, videoId) =>
   }, []);
 
 const normalizeVideoRecord = rec => {
-  const videoId = path(['contentDetails', 'videoId'], rec);
+  const videoId = path(['snippet', 'resourceId', 'videoId'], rec);
   const description = path(['snippet', 'description'], rec);
   return {
     id: prop('id', rec),
-    publishedAt: path(['contentDetails', 'videoPublishedAt'], rec),
+    publishedAt: path(['snippet', 'publishedAt'], rec),
     title: path(['snippet', 'title'], rec),
     questions: parseQuestions(description, videoId),
     videoId,
@@ -68,6 +68,9 @@ const getApi = () => {
 
   const api = axios.create({
     baseURL: 'https://www.googleapis.com/youtube/v3/',
+    params: {
+      prettyPrint: true,
+    },
   });
 
   api.interceptors.request.use(rateLimiter);
@@ -75,15 +78,20 @@ const getApi = () => {
   return api;
 };
 
-export const getPlaylistsFromChannelId = async (channelId, apiKey) => {
+export const getPlaylistsFromChannelId = async (
+  channelId,
+  apiKey,
+  maxResults = 20
+) => {
   const api = getApi();
-  const part = 'snippet,contentDetails';
 
   const res = await api.get('playlists', {
     params: {
-      part,
+      part: 'snippet,contentDetails',
+      fields:
+        'items(id,snippet(publishedAt,thumbnails(high(url)),title),contentDetails(itemCount))',
       channelId,
-      maxResults: 18,
+      maxResults,
       key: apiKey,
     },
   });
@@ -104,26 +112,28 @@ export const getVideosFromPlaylistId = async (
   let videos = [];
 
   let pageSize = maxVideos;
-  const part = 'snippet,contentDetails';
+  const part = 'snippet',
+    fields =
+      'items(id,snippet(publishedAt,title,description,thumbnails(high(url)),resourceId(videoId))),nextPageToken';
 
   let videoResp = await api.get('playlistItems', {
     params: {
       part,
+      fields,
       maxResults: pageSize,
       playlistId,
       key: apiKey,
     },
   });
   videos.push(...videoResp.data.items);
-
   while (videoResp.data.nextPageToken) {
-    let nextPageToken = videoResp.data.nextPageToken;
     videoResp = await api.get('playlistItems', {
       params: {
         part,
+        fields,
         maxResults: pageSize,
         playlistId,
-        pageToken: nextPageToken,
+        pageToken: videoResp.data.nextPageToken,
         key: apiKey,
       },
     });

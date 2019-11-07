@@ -131,7 +131,12 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'hidden' }
+      - {
+          label: 'FileName',
+          name: 'title',
+          widget: 'string',
+          hint: 'Translation title in this CMS application. Examples: "French", "English"',
+        }
       - label: 'Home'
         name: 'home'
         widget: 'object'

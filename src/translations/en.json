@@ -27,7 +27,7 @@
     "description": "Oops, go back to home page, you'll feel better!"
   },
   "faq": {
-    "publishedAt": "Published at",
+    "publishedAt": "Published",
     "nav": "Questions",
     "searchPlaceholder": "Your search here",
     "noFaqItems": "Didn't found FAQ videos !",
