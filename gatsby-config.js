@@ -3,7 +3,7 @@ const config = require('./config.json');
 
 const cloudfrontId = `d33wubrfki0l68`;
 
-const setFeed = (locale, title) => {
+const setFeed = (locale, title, output) => {
   return {
     serialize: ({ query: { site, allMarkdownRemark } }) =>
       allMarkdownRemark.edges.map(
@@ -38,7 +38,7 @@ const setFeed = (locale, title) => {
 }
 `,
     title,
-    output: `/${locale}/events.xml`,
+    output,
     setup: ({
       query: {
         site: { siteMetadata },
@@ -46,7 +46,7 @@ const setFeed = (locale, title) => {
     }) => ({
       title: siteMetadata.defaultTitle,
       description: siteMetadata.defaultDescription,
-      feed_url: siteMetadata.siteUrl + `/${locale}/events.xml`,
+      feed_url: siteMetadata.siteUrl + output,
       site_url: siteMetadata.siteUrl,
       generator: siteMetadata.defaultTitle,
     }),
@@ -139,8 +139,8 @@ module.exports = {
           }
         `,
         feeds: [
-          setFeed('fr', 'Flux RSS des événements'),
-          setFeed('en', 'Events RSS Feed'),
+          setFeed('fr', 'Flux RSS des événements', '/evenements.xml'),
+          setFeed('en', 'Events RSS Feed', '/events.xml'),
         ],
       },
     },
@@ -179,7 +179,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
         htmlFavicon: `static/img/favicon.png`,
-        htmlTitle: `👋 Salut Neo035 !`,
+        htmlTitle: `Oyé oyé, maître Bourboulon 👋`,
       },
     },
     {

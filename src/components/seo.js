@@ -28,7 +28,7 @@ const SEO = ({ lang, pathname }) => {
     return path(['pageMetadata', pageMetadata, attr], t);
   };
   const seo = {
-    title: digMetadata('title') || defaultTitle,
+    title: digMetadata('title') || t.notFound.title,
     description: digMetadata('description') || defaultDescription,
     image: `${siteUrl}${logo}`,
     author,

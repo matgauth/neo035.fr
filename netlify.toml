@@ -5,6 +5,13 @@ YARN_VERSION = "1.19.1"
 
 [[redirects]]
 force = true
+from = "https://neo035.netlify.com/*"
+status = 301
+to = "https://www.neo035.fr/:splat"
+
+
+[[redirects]]
+force = true
 from = "/fr/*"
 status = 301
 to = "/:splat"
