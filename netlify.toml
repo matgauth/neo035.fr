@@ -2,3 +2,9 @@
 NODE_OPTIONS = "--max_old_space_size=4096"
 YARN_FLAGS = "--no-ignore-optional"
 YARN_VERSION = "1.19.1"
+
+[[redirects]]
+force = true
+from = "/fr/*"
+status = 301
+to = "/:splat"

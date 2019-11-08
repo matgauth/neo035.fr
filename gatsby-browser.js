@@ -10,3 +10,7 @@ export const onClientEntry = () => {
     console.log(`# IntersectionObserver is polyfilled!`);
   }
 };
+
+export const onServiceWorkerUpdateReady = () => {
+  window.location.reload();
+};

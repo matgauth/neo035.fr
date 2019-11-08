@@ -9,7 +9,7 @@
   ],
   "heading": "Découvrez mes activités airsoft et reconstitution sur YouTube",
   "faqPlaylistId": "PLMrEpvgeaYU17y8se3HRw-M7gdXt1qQFn",
-  "manifestIcon": "/img/avatar.png",
+  "manifestIcon": "/img/launcher-icon.png",
   "manifestThemeColor": "#888888",
   "socialLinks": [
     {
@@ -30,8 +30,8 @@
   ],
   "siteTitle": "Site de Neo035",
   "manifestDisplay": "standalone",
+  "manifestOrientation": "portrait",
   "easterEggLink": "https://www.youtube.com/watch?v=mwJyRXvXdqA",
-  "pathPrefix": "/",
   "manifestShortName": "Neo035",
   "manifestName": "Neo035",
   "jobTitle": "WW2 Youtuber (Airsoft & Reenactment)",

@@ -11,8 +11,8 @@ const setFeed = (locale, title) => {
           title: frontmatter.title,
           description: excerpt,
           date: frontmatter.date,
-          url: site.siteMetadata.siteUrl + `${locale}/events`,
-          guid: site.siteMetadata.siteUrl + `/${locale}/events`,
+          url: site.siteMetadata.siteUrl + `/${locale}#events`,
+          guid: site.siteMetadata.siteUrl + `/${locale}#events`,
           custom_elements: [{ 'content:encoded': html }],
         })
       ),
@@ -20,8 +20,8 @@ const setFeed = (locale, title) => {
 {
   allMarkdownRemark(
     sort: { fields: [frontmatter___date], order: DESC }
-    filter: { frontmatter: { date: { ne: null } }, fields: { locale: { eq:"${locale}" } } }
-    limit: 2000
+    filter: { frontmatter: { date: { ne: null } }, fields: { locale: { eq: "${locale}" } } }
+    limit: 1000
   ) {
     edges {
       node {
@@ -59,10 +59,9 @@ module.exports = {
     titleAlt: `Neo035`,
     jobTitle: config.jobTitle,
     defaultDescription: config.heading,
-    author: `Mathieu Gauthier <mathieugauthier.fr>`,
+    author: `Mathieu Gauthier <www.mathieugauthier.fr>`,
     logo: `/img/avatar.png`,
     siteUrl: `https://www.neo035.fr`,
-    pathPrefix: config.pathPrefix,
     socialLinks: config.socialLinks,
   },
   plugins: [
@@ -103,12 +102,9 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
+              maxWidth: 600,
               tracedSVG: true,
             },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: { wrapperStyle: `margin-bottom: 1.5rem` },
           },
           `gatsby-remark-external-links`,
           {
@@ -167,10 +163,13 @@ module.exports = {
       options: {
         name: config.manifestName,
         short_name: config.manifestShortName,
-        start_url: config.pathPrefix || config.manifestStartUrl,
+        description: config.heading,
+        start_url: config.manifestStartUrl,
         background_color: config.manifestBackgroundColor,
         theme_color: config.manifestThemeColor,
         display: config.manifestDisplay,
+        orientation: config.manifestOrientation,
+        include_favicon: false,
         icon: `static/${config.manifestIcon}`,
       },
     },
@@ -178,12 +177,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/`, `/en`, `/faq`, `/en/faq`],
+        workboxConfig: {
+          importWorkboxFrom: `cdn`,
+          cacheId: cloudfrontId,
+        }
       },
     },
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {
+        htmlFavicon: `static/img/favicon.png`,
         htmlTitle: `👋 Salut Neo035 !`,
       },
     },

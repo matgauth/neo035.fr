@@ -92,13 +92,12 @@ collections:
               widget: 'string',
             }
           - { label: 'Display', name: 'manifestDisplay', widget: 'string' }
-          - { label: 'Icon', name: 'manifestIcon', widget: 'image' }
           - {
-              label: 'Prefix',
-              name: 'pathPrefix',
-              widget: 'hidden',
-              default: '/',
+              label: 'Orientation',
+              name: 'manifestOrientation',
+              widget: 'string',
             }
+          - { label: 'Icon', name: 'manifestIcon', widget: 'image' }
           - { label: 'Owner Name', name: 'ownerName', widget: 'string' }
           - { label: 'Channel ID', name: 'channelId', widget: 'string' }
           - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -118,9 +117,10 @@ collections:
               widget: 'string',
             }
           - {
-              label: 'Easter Egg Link (KONAMI Code)',
+              label: 'Easter Egg Link',
               name: 'easterEggLink',
               widget: 'string',
+              hint: 'KONAMI Code : up up down down left right left right b a',
             }
   - name: 'translations'
     label: 'Translations'
