@@ -15,12 +15,20 @@ export default function Header() {
   return (
     <div id="logo">
       <LocalizedLink to="/" aria-label={home.goBackHome}>
-        <span className="image avatar48">
-          <Img fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-        </span>
+        <div className="row">
+          <div className="col-2">
+            <Img
+              fluid={avatar.childImageSharp.fluid}
+              alt="Avatar"
+              style={{ width: 48, height: 48 }}
+            />
+          </div>
 
-        <h1 id="title">{titleAlt}</h1>
-        <p>{jobTitle}</p>
+          <div className="col-10">
+            <h1 id="title">{titleAlt}</h1>
+            <p>{jobTitle}</p>
+          </div>
+        </div>
       </LocalizedLink>
     </div>
   );
