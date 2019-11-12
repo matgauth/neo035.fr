@@ -1,8 +1,8 @@
 ---
-lang: fr
 key: event
+lang: fr
 date: 2020-01-10T23:40:32.169Z
-thumbnail: /img/japanvannesmatsurilogo.jpg
+thumbnail: /img/jvm_affiche.png
 title: Evénement
 link: 'http://www.lechorus.com/japan-vannes-matsuri-2020'
 ---
