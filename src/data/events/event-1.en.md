@@ -3,7 +3,7 @@ key: event
 lang: en
 date: 2020-01-10T23:40:32.169Z
 thumbnail: /img/jvm_affiche.png
-title: Evénement
+title: Japan Vannes Matsuri
 link: 'http://www.lechorus.com/japan-vannes-matsuri-2020'
 ---
 Find me the 11nd and 12nd January 2020 at Vannes' Chorus for the Japan Vannes Matsuri! I'll show you a part of my collection of WW2 airsoft guns, and uniforms and equipments !
