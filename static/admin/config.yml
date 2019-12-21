@@ -251,7 +251,7 @@ collections:
     label_singular: 'event'
     folder: 'src/data/events'
     create: true
-    slug: '{{title}.{{lang}}'
+    slug: '{{title}}.{{lang}}'
     editor:
       preview: false
     fields:
