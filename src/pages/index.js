@@ -481,7 +481,7 @@ export const query = graphql`
       }
     }
     events: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: ASC }
       filter: {
         fields: { locale: { eq: $locale } }, 
         frontmatter: { key: {eq: "event" } }
