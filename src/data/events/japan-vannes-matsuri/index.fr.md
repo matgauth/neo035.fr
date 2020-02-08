@@ -3,6 +3,7 @@ key: event
 lang: fr
 date: 2020-01-10T23:40:32.169Z
 thumbnail: ./jvm_affiche.png
+identifier: Japan Vannes Matsuri (Français)
 title: Japan Vannes Matsuri
 link: 'http://www.lechorus.com/japan-vannes-matsuri-2020'
 ---
