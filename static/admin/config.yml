@@ -22,7 +22,7 @@ collections:
     editor:
       preview: false
     files:
-      - name: 'toml'
+      - name: 'netlifyToml'
         label: 'Netlify TOML'
         description: 'The netlify.toml file is your configuration file on how Netlify will build and deploy your site — including redirects, branch and context specific settings, and much more.'
         file: 'netlify.toml'
@@ -72,7 +72,7 @@ collections:
                 widget: 'boolean'
                 default: true
                 hint: "By default, redirects won't be applied if there's a file with the same path as the one defined in the `from` property. Setting `force` to `true` will make the redirect rule take precedence over any existing files."
-      - name: 'json'
+      - name: 'configJson'
         label: 'Configuration'
         file: 'config.json'
         fields:
@@ -251,7 +251,7 @@ collections:
     label_singular: 'event'
     folder: 'src/data/events'
     create: true
-    slug: '{{title}}.{{lang}}'
+    path: '{{title}}/index.{{lang}}'
     editor:
       preview: false
     fields:
@@ -276,6 +276,7 @@ collections:
     label: 'Notices'
     label_singular: 'notice'
     folder: 'src/data/notices'
+    path: 'index.{{lang}}'
     create: false
     editor:
       preview: false
@@ -285,6 +286,7 @@ collections:
   - name: 'home'
     label: 'Home'
     folder: 'src/data/home'
+    path: 'index.{{lang}}'
     create: false
     editor:
       preview: false
@@ -295,6 +297,7 @@ collections:
   - name: 'about'
     label: 'About'
     folder: 'src/data/about'
+    path: 'index.{{lang}}'
     create: false
     editor:
       preview: false

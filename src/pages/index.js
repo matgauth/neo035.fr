@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
 import { graphql } from 'gatsby';
-import useForm from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Scrollspy from 'react-scrollspy';
@@ -87,8 +87,8 @@ const Videos = () => {
                   height={400}
                   width={400}
                   speed={2}
-                  primaryColor="#fdfdfd"
-                  secondaryColor="#f9f9f9"
+                  foregroundColor="#fdfdfd"
+                  backgroundColor="#f9f9f9"
                 >
                   <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
                 </ContentLoader>
@@ -141,34 +141,38 @@ const Events = ({ data }) => {
         <h2>{events.title}</h2>
       </header>
       <p>{events.description}</p>
-      {data.map(({ node: { frontmatter, id, html } }) => {
-        return (
-          <article key={id} className="item">
-            <span className="ribbon">{frontmatter.date}</span>
-            <div className="inner-item">
-              {frontmatter.thumbnail && (
-                <a
-                  href={frontmatter.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={frontmatter.title}
-                >
-                  <Img
-                    style={{
-                      maxWidth: 500,
-                      margin: `0 auto 1.5em auto`,
-                    }}
-                    fluid={frontmatter.thumbnail.childImageSharp.fluid}
-                    alt={frontmatter.title}
-                  />
-                </a>
-              )}
-              <h3>{frontmatter.title}</h3>
-              <div dangerouslySetInnerHTML={{ __html: html }} />
-            </div>
-          </article>
-        );
-      })}
+      {data
+        .filter(({ node }) => {
+          return node.frontmatter.fromNow.startsWith('-');
+        })
+        .map(({ node: { frontmatter, id, html } }) => {
+          return (
+            <article key={id} className="item">
+              <span className="ribbon">{frontmatter.date}</span>
+              <div className="inner-item">
+                {frontmatter.thumbnail && (
+                  <a
+                    href={frontmatter.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={frontmatter.title}
+                  >
+                    <Img
+                      style={{
+                        maxWidth: 500,
+                        margin: `0 auto 1.5em auto`,
+                      }}
+                      fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                      alt={frontmatter.title}
+                    />
+                  </a>
+                )}
+                <h3>{frontmatter.title}</h3>
+                <div dangerouslySetInnerHTML={{ __html: html }} />
+              </div>
+            </article>
+          );
+        })}
     </div>
   );
 };
@@ -492,6 +496,7 @@ export const query = graphql`
           id
           html
           frontmatter {
+            fromNow: date(difference: "milliseconds")
             date(formatString: "DD MMMM YYYY", locale: $locale)
             thumbnail {
               childImageSharp {

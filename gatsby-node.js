@@ -50,17 +50,16 @@ exports.onCreatePage = ({ page, actions }) => {
   });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
   fmImagesToRelative(node);
 
   if (node.internal.type === `MarkdownRemark`) {
     const name = basename(node.fileAbsolutePath, `.md`);
-    const splittedName = name.split(`.`);
-    const isDefault = splittedName.length === 1;
     const defaultKey = findKey(locales, o => o.default === true);
-    const lang = isDefault ? defaultKey : splittedName[1];
+    const isDefault = name === `index.${defaultKey}`;
+    const lang = isDefault ? defaultKey : name.split(`.`)[1];
 
     createNodeField({ name: `locale`, node, value: lang });
     createNodeField({ name: `isDefault`, node, value: isDefault });
