@@ -252,6 +252,7 @@ collections:
     label: 'Evénements'
     label_singular: 'event'
     folder: 'src/data/events'
+    identifier_field: 'identifier'
     create: true
     path: '{{title}}/index.{{lang}}'
     editor:
