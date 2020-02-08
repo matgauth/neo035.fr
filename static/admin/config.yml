@@ -11,6 +11,8 @@ publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
 
+locale: fr
+
 slug:
   encoding: 'ascii'
   clean_accents: true
@@ -123,7 +125,7 @@ collections:
               hint: 'KONAMI Code : up up down down left right left right b a',
             }
   - name: 'translations'
-    label: 'Translations'
+    label: 'Traductions'
     folder: 'src/translations'
     format: 'json'
     identifier_field: 'title'
@@ -247,7 +249,7 @@ collections:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
   - name: 'events'
-    label: 'Events'
+    label: 'Evénements'
     label_singular: 'event'
     folder: 'src/data/events'
     create: true
@@ -256,6 +258,7 @@ collections:
       preview: false
     fields:
       - { label: 'Key', name: 'key', widget: 'hidden', default: 'event' }
+      - { label: 'Identifiant', name: 'identifier', widget: 'string' }
       - {
           label: 'Lang',
           name: 'lang',
@@ -273,7 +276,7 @@ collections:
       - { label: 'External link', name: 'link', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'notices'
-    label: 'Notices'
+    label: 'Mentions'
     label_singular: 'notice'
     folder: 'src/data/notices'
     path: 'index.{{lang}}'
@@ -284,7 +287,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'home'
-    label: 'Home'
+    label: 'Accueil'
     folder: 'src/data/home'
     path: 'index.{{lang}}'
     create: false
@@ -295,7 +298,7 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'about'
-    label: 'About'
+    label: 'A propos'
     folder: 'src/data/about'
     path: 'index.{{lang}}'
     create: false

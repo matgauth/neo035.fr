@@ -3,6 +3,7 @@ key: event
 lang: fr
 date: 2020-02-28T22:05:23.064Z
 thumbnail: ./logo_jtf.png
+identifier: Japan Tours Festival (Français)
 title: Japan Tours Festival
 link: 'https://www.japantoursfestival.com/'
 ---
