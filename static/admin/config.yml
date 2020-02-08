@@ -271,7 +271,7 @@ collections:
               { label: 'English', value: 'en' },
             ],
         }
-      - { label: 'Date', name: 'date', widget: 'date' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'External link', name: 'link', widget: 'string' }
