@@ -38,6 +38,7 @@ const query = graphql`
               nav
               title
               description
+              noEventScheduled
             }
             videos {
               nav

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import Scrollspy from 'react-scrollspy';
 import ContentLoader from 'react-content-loader';
+import isFuture from 'date-fns/isFuture';
 
 import Scroll from '@components/scroll';
 import SideBar from '@components/sidebar';
@@ -135,20 +136,20 @@ const Videos = () => {
 
 const Events = ({ data }) => {
   const { events } = useTranslations();
+  const futureEvents = data.filter(({ node }) =>
+    isFuture(new Date(node.frontmatter.date))
+  );
   return (
     <div className="container">
       <header>
         <h2>{events.title}</h2>
       </header>
       <p>{events.description}</p>
-      {data
-        .filter(({ node }) => {
-          return node.frontmatter.fromNow.startsWith('-');
-        })
-        .map(({ node: { frontmatter, id, html } }) => {
+      {!!futureEvents.length ? (
+        futureEvents.map(({ node: { frontmatter, id, html } }) => {
           return (
             <article key={id} className="item">
-              <span className="ribbon">{frontmatter.date}</span>
+              <span className="ribbon">{frontmatter.formattedDate}</span>
               <div className="inner-item">
                 {frontmatter.thumbnail && (
                   <a
@@ -172,7 +173,14 @@ const Events = ({ data }) => {
               </div>
             </article>
           );
-        })}
+        })
+      ) : (
+        <article className="item">
+          <div className="inner-item">
+            <h3>{events.noEventScheduled}</h3>
+          </div>
+        </article>
+      )}
     </div>
   );
 };
@@ -496,8 +504,8 @@ export const query = graphql`
           id
           html
           frontmatter {
-            fromNow: date(difference: "milliseconds")
-            date(formatString: "DD MMMM YYYY", locale: $locale)
+            date
+            formattedDate: date(formatString: "DD MMMM YYYY", locale: $locale)
             thumbnail {
               childImageSharp {
                 fluid(maxWidth: 600, traceSVG: { color: "#222629" }) {

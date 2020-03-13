@@ -48,7 +48,8 @@
   "events": {
     "nav": "Events",
     "title": "Events",
-    "description": "Find here all the dates where you can meet me !"
+    "description": "Find here all the dates where you can meet me !",
+    "noEventScheduled": "No event scheduled at the moment 😕"
   },
   "footer": {
     "legalNotices": "Legal notice",

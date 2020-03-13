@@ -48,7 +48,8 @@
   "events": {
     "nav": "Evénements",
     "title": "Evénements",
-    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !"
+    "description": "Retrouvez ici toutes les dates où vous pourrez me rencontrer en public !",
+    "noEventScheduled": "Pas d'événement prévu pour le moment 😕"
   },
   "footer": {
     "legalNotices": "Mentions légales",
