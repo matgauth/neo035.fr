@@ -158,6 +158,7 @@ collections:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
+          - { label: 'No event scheduled (message)', name: 'noEventScheduled', widget: 'string' }
       - label: 'Videos'
         name: 'videos'
         widget: 'object'
