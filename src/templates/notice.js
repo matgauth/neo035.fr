@@ -7,7 +7,7 @@ const Notice = ({
   },
 }) => {
   return (
-    <div id="main" className="faq-wrapper">
+    <div id="main" className="article-wrapper">
       <section id="about">
         <div className="container">
           <header>

@@ -38,9 +38,13 @@
     "title": "Questions",
     "description": "You've some questions? Perpahs I already answered ! (in french only, sorry)"
   },
+  "errata": {
+    "title": "ERRATA",
+    "showMe": "Show me ERRATA page"
+  },
   "title": "English",
   "videos": {
-    "nav": "Videos",
+    "nav": "Videos & Errata",
     "title": "Videos",
     "description": "Here is a selection of my best videos !",
     "watchPlaylist": "See the complete playlist"
@@ -59,6 +63,10 @@
     "home": {
       "title": "Home",
       "description": "Neo035's Page"
+    },
+    "errata": {
+      "title": "ERRATA",
+      "description": "Des erreurs ? On en commet tous ! Voici ma page ERRATA."
     },
     "faq": {
       "title": "Questions",

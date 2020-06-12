@@ -38,9 +38,13 @@
     "title": "FAQ",
     "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
   },
+  "errata": {
+    "title": "Page ERRATA",
+    "showMe": "Voir la page ERRATA"
+  },
   "title": "Français",
   "videos": {
-    "nav": "Vidéos",
+    "nav": "Vidéos & Errata",
     "title": "Vidéos",
     "description": "Voici une sélection de mes meilleures vidéos !",
     "watchPlaylist": "Voir la playlist complète"
@@ -59,6 +63,10 @@
     "home": {
       "title": "Accueil",
       "description": "Neo035, youtubeur spécialisé dans l'airsoft et la reconstitution WW2"
+    },
+    "errata": {
+      "title": "ERRATA",
+      "description": "Des erreurs ? On en commet tous ! Voici ma page ERRATA."
     },
     "faq": {
       "title": "FAQ",

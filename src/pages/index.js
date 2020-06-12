@@ -46,7 +46,7 @@ const reducer = (state, action) => {
 };
 
 const Videos = () => {
-  const { videos, contact } = useTranslations();
+  const { videos, contact, errata } = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
     isError: false,
@@ -78,58 +78,70 @@ const Videos = () => {
         <h2>{videos.title}</h2>
       </header>
       <p>{videos.description}</p>
-      {state.isError && <p className="error">{contact.form.error}</p>}
-      <div className="row">
-        {state.isLoading &&
-          config.playlists.map(item => {
-            return (
-              <div key={item} className="col-4 col-6-wide col-12-mobile">
-                <ContentLoader
-                  height={400}
-                  width={400}
-                  speed={2}
-                  foregroundColor="#fdfdfd"
-                  backgroundColor="#f9f9f9"
-                >
-                  <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
-                </ContentLoader>
+      <p>
+        <LocalizedLink
+          to="/errata"
+          className="button primary"
+          aria-label={errata.description}
+        >
+          <span className="icon fa-exclamation" /> {errata.showMe}
+        </LocalizedLink>
+      </p>
+      {state.isError ? (
+        <p className="error">{contact.form.error}</p>
+      ) : (
+        <div className="row">
+          {state.isLoading &&
+            config.playlists.map((item) => {
+              return (
+                <div key={item} className="col-4 col-6-wide col-12-mobile">
+                  <ContentLoader
+                    height={400}
+                    width={400}
+                    speed={2}
+                    foregroundColor="#fdfdfd"
+                    backgroundColor="#f9f9f9"
+                  >
+                    <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
+                  </ContentLoader>
+                </div>
+              );
+            })}
+          {state.data.length > 0 &&
+            state.data.map((playlist) => (
+              <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
+                <article className="item">
+                  <span className="ribbon">
+                    {playlist.videoCount}{' '}
+                    <span className="icon fa-video-camera" />
+                  </span>
+                  <a
+                    href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={playlist.title}
+                  >
+                    <img
+                      src={playlist.thumbnail}
+                      alt={playlist.title}
+                      className="image fit"
+                    />
+                  </a>
+                  <h3>{playlist.title}</h3>
+                  <a
+                    href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${videos.watchPlaylist} ${playlist.title}`}
+                  >
+                    {videos.watchPlaylist}{' '}
+                    <span className="icon fa-arrow-right" />
+                  </a>
+                </article>
               </div>
-            );
-          })}
-        {state.data.length > 0 &&
-          state.data.map(playlist => (
-            <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
-              <article className="item">
-                <span className="ribbon">
-                  {playlist.videoCount}{' '}
-                  <span className="icon fa-video-camera" />
-                </span>
-                <a
-                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={playlist.title}
-                >
-                  <img
-                    src={playlist.thumbnail}
-                    alt={playlist.title}
-                    className="image fit"
-                  />
-                </a>
-                <h3>{playlist.title}</h3>
-                <a
-                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`${videos.watchPlaylist} ${playlist.title}`}
-                >
-                  {videos.watchPlaylist}{' '}
-                  <span className="icon fa-arrow-right" />
-                </a>
-              </article>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -204,7 +216,7 @@ const Faq = () => {
   );
 };
 
-const getLink = name => `http://${name.split(/[0-9]{2}_/)[1]}`;
+const getLink = (name) => `http://${name.split(/[0-9]{2}_/)[1]}`;
 
 const Partners = ({ data }) => {
   const { partners } = useTranslations();
@@ -215,36 +227,38 @@ const Partners = ({ data }) => {
       </header>
       <p>{partners.description}</p>
       <div className="row">
-        {data.map(({ node: { childImageSharp, id, name } }) => (
-          <div key={id} className="col-3 col-12-mobile">
-            <article className="item">
-              <a
-                href={getLink(name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={name}
-              >
-                <Img fluid={childImageSharp.fluid} alt={name} />
-              </a>
-            </article>
-          </div>
-        ))}
+        {data.map(({ node: { childImageSharp, id, name } }) => {
+          const link = getLink(name);
+          return (
+            <div key={id} className="col-3 col-12-mobile">
+              <article className="item">
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link}
+                >
+                  <Img fluid={childImageSharp.fluid} alt={name} />
+                </a>
+              </article>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-const encode = data =>
+const encode = (data) =>
   Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
 
 const ContactForm = () => {
   const { contact } = useTranslations();
   const { register, handleSubmit, errors, reset } = useForm();
 
-  const setError = id => err => {
-    console.log('Error for DEV: ', err.message);
+  const setError = (id) => (err) => {
     toast.update(id, {
       render: contact.form.error,
       type: toast.TYPE.ERROR,
@@ -252,7 +266,7 @@ const ContactForm = () => {
     });
   };
 
-  const setSuccess = id => () => {
+  const setSuccess = (id) => () => {
     toast.update(id, {
       render: contact.form.success,
       type: toast.TYPE.SUCCESS,
@@ -266,7 +280,7 @@ const ContactForm = () => {
       autoClose: false,
     });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     let toastId = setLoading();
     axios
       .post('/', encode({ 'form-name': 'contact', ...data }), {
@@ -352,11 +366,11 @@ const Nav = ({ sections = [] }) => {
     <nav id="nav">
       <ul>
         <Scrollspy
-          items={sections.map(s => s.id)}
+          items={sections.map((s) => s.id)}
           currentClassName="active"
           offset={-300}
         >
-          {sections.map(s => {
+          {sections.map((s) => {
             return (
               <li key={s.id}>
                 <Scroll type="id" element={s.id}>
