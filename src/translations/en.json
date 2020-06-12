@@ -38,6 +38,12 @@
     "title": "Questions",
     "description": "You've some questions? Perpahs I already answered ! (in french only, sorry)"
   },
+  "errata": {
+    "nav": "Errata",
+    "title": "Page Errata",
+    "description": "Mes erreurs et ouais je me corrige",
+    "showMe": "Voir la page Errata"
+  },
   "title": "English",
   "videos": {
     "nav": "Videos",

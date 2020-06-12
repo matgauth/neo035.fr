@@ -38,6 +38,12 @@
     "title": "FAQ",
     "description": "Vous avez des questions? Peut-être j'y ai déjà répondu !"
   },
+  "errata": {
+    "nav": "Errata",
+    "title": "Page Errata",
+    "description": "Mes erreurs et ouais je me corrige",
+    "showMe": "Voir la page Errata"
+  },
   "title": "Français",
   "videos": {
     "nav": "Vidéos",

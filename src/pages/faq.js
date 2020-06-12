@@ -124,7 +124,6 @@ const FAQ = ({ pageContext: { locale } }) => {
         if (!didCancel)
           dispatch({ type: 'FETCH_SUCCESS', payload: result.reverse() });
       } catch (e) {
-        console.error('Error for DEV', e.message);
         if (!didCancel) dispatch({ type: 'FETCH_FAILURE' });
       }
     };

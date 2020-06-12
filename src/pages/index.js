@@ -46,7 +46,7 @@ const reducer = (state, action) => {
 };
 
 const Videos = () => {
-  const { videos, contact } = useTranslations();
+  const { videos, contact, errata } = useTranslations();
   const [state, dispatch] = useReducer(reducer, {
     isLoading: false,
     isError: false,
@@ -81,7 +81,7 @@ const Videos = () => {
       {state.isError && <p className="error">{contact.form.error}</p>}
       <div className="row">
         {state.isLoading &&
-          config.playlists.map(item => {
+          config.playlists.map((item) => {
             return (
               <div key={item} className="col-4 col-6-wide col-12-mobile">
                 <ContentLoader
@@ -97,7 +97,7 @@ const Videos = () => {
             );
           })}
         {state.data.length > 0 &&
-          state.data.map(playlist => (
+          state.data.map((playlist) => (
             <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
               <article className="item">
                 <span className="ribbon">
@@ -130,6 +130,13 @@ const Videos = () => {
             </div>
           ))}
       </div>
+      <LocalizedLink
+        to="/errata"
+        className="button primary"
+        aria-label={errata.description}
+      >
+        {errata.showMe}
+      </LocalizedLink>
     </div>
   );
 };
@@ -204,7 +211,7 @@ const Faq = () => {
   );
 };
 
-const getLink = name => `http://${name.split(/[0-9]{2}_/)[1]}`;
+const getLink = (name) => `http://${name.split(/[0-9]{2}_/)[1]}`;
 
 const Partners = ({ data }) => {
   const { partners } = useTranslations();
@@ -218,12 +225,7 @@ const Partners = ({ data }) => {
         {data.map(({ node: { childImageSharp, id, name } }) => (
           <div key={id} className="col-3 col-12-mobile">
             <article className="item">
-              <a
-                href={getLink(name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={name}
-              >
+              <a href={getLink(name)} target="_blank" rel="noopener noreferrer">
                 <Img fluid={childImageSharp.fluid} alt={name} />
               </a>
             </article>
@@ -234,17 +236,16 @@ const Partners = ({ data }) => {
   );
 };
 
-const encode = data =>
+const encode = (data) =>
   Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
 
 const ContactForm = () => {
   const { contact } = useTranslations();
   const { register, handleSubmit, errors, reset } = useForm();
 
-  const setError = id => err => {
-    console.log('Error for DEV: ', err.message);
+  const setError = (id) => (err) => {
     toast.update(id, {
       render: contact.form.error,
       type: toast.TYPE.ERROR,
@@ -252,7 +253,7 @@ const ContactForm = () => {
     });
   };
 
-  const setSuccess = id => () => {
+  const setSuccess = (id) => () => {
     toast.update(id, {
       render: contact.form.success,
       type: toast.TYPE.SUCCESS,
@@ -266,7 +267,7 @@ const ContactForm = () => {
       autoClose: false,
     });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     let toastId = setLoading();
     axios
       .post('/', encode({ 'form-name': 'contact', ...data }), {
@@ -352,11 +353,11 @@ const Nav = ({ sections = [] }) => {
     <nav id="nav">
       <ul>
         <Scrollspy
-          items={sections.map(s => s.id)}
+          items={sections.map((s) => s.id)}
           currentClassName="active"
           offset={-300}
         >
-          {sections.map(s => {
+          {sections.map((s) => {
             return (
               <li key={s.id}>
                 <Scroll type="id" element={s.id}>
@@ -486,7 +487,7 @@ export const query = graphql`
           ext
           childImageSharp {
             fluid(maxWidth: 500, traceSVG: { color: "#222629" }) {
-              ...GatsbyImageSharpFluid_tracedSVG
+              src
             }
           }
         }
