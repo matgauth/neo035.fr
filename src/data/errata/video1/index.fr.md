@@ -1,11 +1,8 @@
 ---
 key: errata
-lang: fr
 identifier: Video 1 (Français)
-title: Video 1
-link: 'https://www.lienverslavideo.com/'
+lang: fr
+title: Panzer Afrika Korps - Libye 1941 - Présentation d'uniforme Panzer
+link: https://www.youtube.com/watch?v=Y0DDfbozGm4
 ---
-
-## Hello world
-
-Mes erreurs
+##### Le pays dans le titre n'est pas bon : C'est Libye et non Lybie.
