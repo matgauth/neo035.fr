@@ -222,15 +222,23 @@ const Partners = ({ data }) => {
       </header>
       <p>{partners.description}</p>
       <div className="row">
-        {data.map(({ node: { childImageSharp, id, name } }) => (
-          <div key={id} className="col-3 col-12-mobile">
-            <article className="item">
-              <a href={getLink(name)} target="_blank" rel="noopener noreferrer">
-                <Img fluid={childImageSharp.fluid} alt={name} />
-              </a>
-            </article>
-          </div>
-        ))}
+        {data.map(({ node: { childImageSharp, id, name } }) => {
+          const link = getLink(name);
+          return (
+            <div key={id} className="col-3 col-12-mobile">
+              <article className="item">
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link}
+                >
+                  <Img fluid={childImageSharp.fluid} alt={name} />
+                </a>
+              </article>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
