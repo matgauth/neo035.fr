@@ -9,7 +9,7 @@ First, let me introduce myself. I'm **Neo035**, WW2 airsoft and reenactment addi
 
 Come discover my activites on this website, my events, my videos and a form to contact me !
 
-![Photo para US](./novembre_2018_laureen_keravec-6-.jpg "Photo para US")
+![Photo para US](./novembre_2018_laureen_keravec-6-.jpg 'Photo para US')
 
 At last, if you want to support me for me staying independant, you can follow these 2 links below :
 

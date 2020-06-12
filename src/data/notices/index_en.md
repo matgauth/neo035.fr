@@ -22,7 +22,7 @@ Host website: [www.netlify.com](https://www.netlify.com/)
 
 ### Copyright and intellectual property
 
-This site is subject to French and international legislation on copyright and intellectual property. 
+This site is subject to French and international legislation on copyright and intellectual property.
 
 Any total or partial reproduction of this website by any process whatsoever and on any medium whatsoever, without the authorization express and prior to Rémi Bourboulon is prohibited and would constitute an infringement.
 

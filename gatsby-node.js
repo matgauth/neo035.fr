@@ -7,7 +7,7 @@ const locales = require(`./src/i18n`);
 const localizeSlug = (isDefault, locale, slug) =>
   isDefault ? slug : `/${locale}/${slug}`;
 
-const removeTrailingSlash = path =>
+const removeTrailingSlash = (path) =>
   path === `/` ? path : path.replace(/\/$/, ``);
 
 const findKey = (object, predicate) => {
@@ -15,7 +15,7 @@ const findKey = (object, predicate) => {
   if (object == null) {
     return result;
   }
-  Object.keys(object).some(key => {
+  Object.keys(object).some((key) => {
     const value = object[key];
     if (predicate(value, key, object)) {
       result = key;
@@ -31,7 +31,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
   deletePage(page);
 
-  Object.keys(locales).map(lang => {
+  Object.keys(locales).map((lang) => {
     const { default: isDefault, locale, path } = locales[lang];
     const localizedPath = isDefault
       ? removeTrailingSlash(page.path)
@@ -50,6 +50,10 @@ exports.onCreatePage = ({ page, actions }) => {
   });
 };
 
+const getLang = (filename) => {
+  return filename.slice(((filename.lastIndexOf('_') - 1) >>> 0) + 2);
+};
+
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
 
@@ -57,10 +61,9 @@ exports.onCreateNode = ({ node, actions }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const name = basename(node.fileAbsolutePath, `.md`);
-    const defaultKey = findKey(locales, o => o.default === true);
-    const isDefault = name === `index.${defaultKey}`;
-    const lang = isDefault ? defaultKey : name.split(`.`)[1];
-
+    const defaultKey = findKey(locales, (o) => o.default === true);
+    const isDefault = name === `index_${defaultKey}`;
+    const lang = isDefault ? defaultKey : getLang(name);
     createNodeField({ name: `locale`, node, value: lang });
     createNodeField({ name: `isDefault`, node, value: isDefault });
   }
@@ -72,7 +75,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       new ContextReplacementPlugin(
         /date-fns[/\\]/,
         new RegExp(
-          `[/\\\\\](${Object.keys(locales).map(key => locales[key].locale)
+          `[/\\\\\](${Object.keys(locales).map((key) => locales[key].locale)
             .join`|`})[/\\\\\]`
         )
       ),
@@ -104,9 +107,9 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => {
+  ).then((result) => {
     if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()));
+      result.errors.forEach((e) => console.error(e.toString()));
       return Promise.reject(result.errors);
     }
 
@@ -116,9 +119,10 @@ exports.createPages = ({ graphql, actions }) => {
       const slug = node.relativeDirectory;
       const title = node.childMarkdownRemark.frontmatter.title;
       const { locale, isDefault } = node.childMarkdownRemark.fields;
-
+      const path = localizeSlug(isDefault, locale, slug);
+      console.log(path);
       createPage({
-        path: localizeSlug(isDefault, locale, slug),
+        path,
         component: resolve(`src/templates/notice.js`),
         context: { title, locale, isDefault, slug },
       });

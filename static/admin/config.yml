@@ -267,11 +267,19 @@ collections:
               - { label: 'Description', name: 'description', widget: 'string' }
   - name: 'events'
     label: 'Evénements'
-    label_singular: 'event'
+    label_singular: 'événement'
     folder: 'src/data/events'
     identifier_field: 'identifier'
     create: true
-    path: '{{title}}/index.{{lang}}'
+    path: '{{title}}/index_{{lang}}'
+    summary: '[{{lang}}] {{identifier}}'
+    view_filters:
+      - label: 'Français'
+        field: lang
+        pattern: 'fr'
+      - label: 'Anglais'
+        field: lang
+        pattern: 'en'
     editor:
       preview: false
     fields:
@@ -298,7 +306,15 @@ collections:
     folder: 'src/data/errata'
     identifier_field: 'identifier'
     create: true
-    path: '{{title}}/index.{{lang}}'
+    path: '{{title}}/index_{{lang}}'
+    summary: '[{{lang}}] {{identifier}}'
+    view_filters:
+      - label: 'Français'
+        field: lang
+        pattern: 'fr'
+      - label: 'Anglais'
+        field: lang
+        pattern: 'en'
     editor:
       preview: false
     fields:
@@ -322,7 +338,7 @@ collections:
     label: 'Mentions'
     label_singular: 'notice'
     folder: 'src/data/notices'
-    path: 'index.{{lang}}'
+    path: 'index_{{lang}}'
     create: false
     editor:
       preview: false
@@ -332,7 +348,7 @@ collections:
   - name: 'home'
     label: 'Accueil'
     folder: 'src/data/home'
-    path: 'index.{{lang}}'
+    path: 'index_{{lang}}'
     create: false
     editor:
       preview: false
@@ -343,7 +359,7 @@ collections:
   - name: 'about'
     label: 'A propos'
     folder: 'src/data/about'
-    path: 'index.{{lang}}'
+    path: 'index_{{lang}}'
     create: false
     editor:
       preview: false
