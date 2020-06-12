@@ -1068,9 +1068,10 @@ input[type='submit'],
       background-color: #fefefe;
     }
   }
-  &.faq-wrapper {
+  &.article-wrapper {
     > section {
       text-align: left;
+      font-size: 14pt;
     }
     & h3 {
       font-weight: 500;

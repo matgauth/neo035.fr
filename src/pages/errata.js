@@ -9,7 +9,7 @@ function ErrataPage({
 }) {
   const { errata, faq } = useTranslations();
   return (
-    <div id="main" className="errata-wrapper">
+    <div id="main" className="article-wrapper">
       <section className="alt-2">
         <div className="container">
           <header>

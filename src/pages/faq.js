@@ -146,7 +146,7 @@ const FAQ = ({ pageContext: { locale } }) => {
     item.questions.length > 0 ? item.questions.map(prop`label`) : undefined
   );
   return (
-    <div id="main" className="faq-wrapper">
+    <div id="main" className="article-wrapper">
       <section className="alt-2">
         <div className="container">
           <div className="search">
