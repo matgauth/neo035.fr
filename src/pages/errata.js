@@ -15,7 +15,6 @@ function ErrataPage({
           <header>
             <h2>{errata.title}</h2>
           </header>
-          <p>{errata.description}</p>
           {!!videoItems.length ? (
             videoItems.map(({ node: { frontmatter, id, html } }) => {
               return (
@@ -56,6 +55,7 @@ export default ErrataPage;
 export const query = graphql`
   query Errata($locale: String!) {
     videos: allMarkdownRemark(
+      sort: { fields: [frontmatter___title], order: ASC }
       filter: {
         fields: { locale: { eq: $locale } }
         frontmatter: { key: { eq: "errata" } }

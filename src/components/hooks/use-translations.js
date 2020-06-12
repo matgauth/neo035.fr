@@ -57,7 +57,6 @@ const query = graphql`
             }
             errata {
               title
-              description
               showMe
             }
             partners {

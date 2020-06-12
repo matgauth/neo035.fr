@@ -194,7 +194,6 @@ collections:
         widget: 'object'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Show me', name: 'showMe', widget: 'string' }
       - label: 'Partners'
         name: 'partners'
@@ -303,7 +302,7 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: 'Key', name: 'key', widget: 'hidden', default: 'event' }
+      - { label: 'Key', name: 'key', widget: 'hidden', default: 'errata' }
       - { label: 'Identifiant', name: 'identifier', widget: 'string' }
       - {
           label: 'Lang',
