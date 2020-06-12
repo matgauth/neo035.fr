@@ -56,7 +56,6 @@ const query = graphql`
               time
             }
             errata {
-              nav
               title
               description
               showMe
@@ -91,6 +90,10 @@ const query = graphql`
             }
             pageMetadata {
               home {
+                title
+                description
+              }
+              errata {
                 title
                 description
               }

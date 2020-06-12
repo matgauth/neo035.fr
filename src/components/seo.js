@@ -22,7 +22,7 @@ const SEO = ({ lang, pathname }) => {
       },
     },
   } = useStaticQuery(query);
-  const digMetadata = attr => {
+  const digMetadata = (attr) => {
     const regex = new RegExp(`^/(${lang})?/?$`);
     const pageMetadata = pathname.match(regex) ? `home` : parsePath(pathname);
     return path(['pageMetadata', pageMetadata, attr], t);
@@ -51,7 +51,7 @@ const SEO = ({ lang, pathname }) => {
             '@type': 'Organization',
             name: defaultTitle,
           },
-          sameAs: socialLinks.map(link => link.url),
+          sameAs: socialLinks.map((link) => link.url),
         })}
       </script>
       {/* OpenGraph  */}
@@ -60,6 +60,13 @@ const SEO = ({ lang, pathname }) => {
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="LeNeo035" />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.image} />
     </Helmet>
   );
 };

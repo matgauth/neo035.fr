@@ -158,7 +158,11 @@ collections:
           - { label: 'Sidebar title', name: 'nav', widget: 'string' }
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
-          - { label: 'No event scheduled (message)', name: 'noEventScheduled', widget: 'string' }
+          - {
+              label: 'No event scheduled (message)',
+              name: 'noEventScheduled',
+              widget: 'string',
+            }
       - label: 'Videos'
         name: 'videos'
         widget: 'object'
@@ -185,6 +189,13 @@ collections:
           - { label: 'Published at', name: 'publishedAt', widget: 'string' }
           - { label: 'Questions', name: 'questions', widget: 'string' }
           - { label: 'Time', name: 'time', widget: 'string' }
+      - label: 'ERRATA Page'
+        name: 'errata'
+        widget: 'object'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Description', name: 'description', widget: 'markdown' }
+          - { label: 'Show me', name: 'showMe', widget: 'string' }
       - label: 'Partners'
         name: 'partners'
         widget: 'object'
@@ -237,6 +248,12 @@ collections:
             fields:
               - { label: 'Title', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
+          - label: 'ERRATA'
+            name: 'errata'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
           - label: 'FAQ'
             name: 'faq'
             widget: 'object'
@@ -277,6 +294,31 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'External link', name: 'link', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
+  - name: 'errata'
+    label: 'ERRATA'
+    folder: 'src/data/errata'
+    identifier_field: 'identifier'
+    create: true
+    path: '{{title}}/index.{{lang}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Key', name: 'key', widget: 'hidden', default: 'event' }
+      - { label: 'Identifiant', name: 'identifier', widget: 'string' }
+      - {
+          label: 'Lang',
+          name: 'lang',
+          widget: 'select',
+          default: 'fr',
+          options:
+            [
+              { label: 'Français', value: 'fr' },
+              { label: 'English', value: 'en' },
+            ],
+        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Video link', name: 'link', widget: 'string' }
+      - { label: 'Errors', name: 'body', widget: 'markdown' }
   - name: 'notices'
     label: 'Mentions'
     label_singular: 'notice'

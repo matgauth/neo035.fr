@@ -78,65 +78,70 @@ const Videos = () => {
         <h2>{videos.title}</h2>
       </header>
       <p>{videos.description}</p>
-      <LocalizedLink
-        to="/errata"
-        className="button primary"
-        aria-label={errata.description}
-      >
-        <span className="icon fa-exclamation" /> {errata.showMe}
-      </LocalizedLink>
-      {state.isError && <p className="error">{contact.form.error}</p>}
-      <div className="row">
-        {state.isLoading &&
-          config.playlists.map((item) => {
-            return (
-              <div key={item} className="col-4 col-6-wide col-12-mobile">
-                <ContentLoader
-                  height={400}
-                  width={400}
-                  speed={2}
-                  foregroundColor="#fdfdfd"
-                  backgroundColor="#f9f9f9"
-                >
-                  <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
-                </ContentLoader>
+      <p>
+        <LocalizedLink
+          to="/errata"
+          className="button primary"
+          aria-label={errata.description}
+        >
+          <span className="icon fa-exclamation" /> {errata.showMe}
+        </LocalizedLink>
+      </p>
+      {state.isError ? (
+        <p className="error">{contact.form.error}</p>
+      ) : (
+        <div className="row">
+          {state.isLoading &&
+            config.playlists.map((item) => {
+              return (
+                <div key={item} className="col-4 col-6-wide col-12-mobile">
+                  <ContentLoader
+                    height={400}
+                    width={400}
+                    speed={2}
+                    foregroundColor="#fdfdfd"
+                    backgroundColor="#f9f9f9"
+                  >
+                    <rect x="0" y="0" width="400" height="400" rx="8" ry="8" />
+                  </ContentLoader>
+                </div>
+              );
+            })}
+          {state.data.length > 0 &&
+            state.data.map((playlist) => (
+              <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
+                <article className="item">
+                  <span className="ribbon">
+                    {playlist.videoCount}{' '}
+                    <span className="icon fa-video-camera" />
+                  </span>
+                  <a
+                    href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={playlist.title}
+                  >
+                    <img
+                      src={playlist.thumbnail}
+                      alt={playlist.title}
+                      className="image fit"
+                    />
+                  </a>
+                  <h3>{playlist.title}</h3>
+                  <a
+                    href={`https://www.youtube.com/playlist?list=${playlist.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${videos.watchPlaylist} ${playlist.title}`}
+                  >
+                    {videos.watchPlaylist}{' '}
+                    <span className="icon fa-arrow-right" />
+                  </a>
+                </article>
               </div>
-            );
-          })}
-        {state.data.length > 0 &&
-          state.data.map((playlist) => (
-            <div key={playlist.id} className="col-4 col-6-wide col-12-mobile">
-              <article className="item">
-                <span className="ribbon">
-                  {playlist.videoCount}{' '}
-                  <span className="icon fa-video-camera" />
-                </span>
-                <a
-                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={playlist.title}
-                >
-                  <img
-                    src={playlist.thumbnail}
-                    alt={playlist.title}
-                    className="image fit"
-                  />
-                </a>
-                <h3>{playlist.title}</h3>
-                <a
-                  href={`https://www.youtube.com/playlist?list=${playlist.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`${videos.watchPlaylist} ${playlist.title}`}
-                >
-                  {videos.watchPlaylist}{' '}
-                  <span className="icon fa-arrow-right" />
-                </a>
-              </article>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };
