@@ -487,7 +487,7 @@ export const query = graphql`
           ext
           childImageSharp {
             fluid(maxWidth: 500, traceSVG: { color: "#222629" }) {
-              src
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }
