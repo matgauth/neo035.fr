@@ -1,6 +1,6 @@
 ---
 key: errata
-identifier: Video 1 (Français)
+identifier: Panzer Afrika Korps - Libye 1941 - Présentation d'uniforme Panzer
 lang: fr
 title: Panzer Afrika Korps - Libye 1941 - Présentation d'uniforme Panzer
 link: https://www.youtube.com/watch?v=Y0DDfbozGm4
