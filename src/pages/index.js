@@ -78,6 +78,13 @@ const Videos = () => {
         <h2>{videos.title}</h2>
       </header>
       <p>{videos.description}</p>
+      <LocalizedLink
+        to="/errata"
+        className="button primary"
+        aria-label={errata.description}
+      >
+        <span className="icon fa-exclamation" /> {errata.showMe}
+      </LocalizedLink>
       {state.isError && <p className="error">{contact.form.error}</p>}
       <div className="row">
         {state.isLoading &&
@@ -130,13 +137,6 @@ const Videos = () => {
             </div>
           ))}
       </div>
-      <LocalizedLink
-        to="/errata"
-        className="button primary"
-        aria-label={errata.description}
-      >
-        {errata.showMe}
-      </LocalizedLink>
     </div>
   );
 };

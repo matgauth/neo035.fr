@@ -330,6 +330,13 @@ a {
   }
 }
 
+a.disabled-hover {
+  border-bottom: none;
+  &:hover {
+    color: inherit;
+  }
+}
+
 sub {
   position: relative;
   top: 0.5em;
@@ -667,6 +674,7 @@ input[type='submit'],
 }
 
 .error {
+  margin-top: 2em;
   color: coral;
 }
 

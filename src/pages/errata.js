@@ -4,10 +4,10 @@ import useTranslations from '@hooks/use-translations';
 
 function ErrataPage({
   data: {
-    errata: { edges: videoItems },
+    videos: { edges: videoItems },
   },
 }) {
-  const { errata } = useTranslations();
+  const { errata, faq } = useTranslations();
   return (
     <div id="main" className="errata-wrapper">
       <section className="alt-2">
@@ -21,7 +21,15 @@ function ErrataPage({
               return (
                 <article key={id} className="item">
                   <span className="ribbon">
-                    <span className="icon link" />
+                    <a
+                      href={frontmatter.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="disabled-hover"
+                      title={`${faq.watchVideo} ${frontmatter.title}`}
+                    >
+                      <span className="icon fa-youtube-play" /> {faq.watchVideo}
+                    </a>
                   </span>
                   <div className="inner-item">
                     <h3>{frontmatter.title}</h3>
@@ -44,8 +52,9 @@ function ErrataPage({
 }
 
 export default ErrataPage;
+
 export const query = graphql`
-  query Index($locale: String!) {
+  query Errata($locale: String!) {
     videos: allMarkdownRemark(
       filter: {
         fields: { locale: { eq: $locale } }
