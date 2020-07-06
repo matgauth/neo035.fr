@@ -1,5 +1,4 @@
 {
-  "manifestOrientation": "portrait",
   "playlists": [
     "Airsoft guns videos review",
     "Uniforms videos review",
@@ -11,8 +10,6 @@
   ],
   "heading": "Découvrez mes activités airsoft et reconstitution sur YouTube",
   "faqPlaylistId": "PLMrEpvgeaYU17y8se3HRw-M7gdXt1qQFn",
-  "manifestIcon": "/img/launcher-icon.png",
-  "manifestThemeColor": "#888888",
   "socialLinks": [
     {
       "icon": "fa-youtube",
@@ -30,13 +27,11 @@
       "url": "http://instagram.com/neo035"
     }
   ],
+  "themeColor": "#888888",
+  "siteName": "Neo035",
   "siteTitle": "Site de Neo035",
-  "manifestDisplay": "standalone",
   "easterEggLink": "https://www.youtube.com/watch?v=iZLdUO--QQ8",
-  "manifestShortName": "Neo035",
-  "manifestName": "Neo035",
   "jobTitle": "WW2 Youtuber (Airsoft & Reenactment)",
-  "manifestStartUrl": "/",
   "channelId": "UCGd3WlRm5s_NVLIqCefLMpA",
   "ownerName": "Rémi Bourboulon"
 }

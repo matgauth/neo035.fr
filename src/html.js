@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { manifestName, manifestThemeColor } from '../config.json';
+import { siteName, themeColor } from '../config.json';
 
 const HTML = ({
   htmlAttributes,
@@ -15,13 +15,13 @@ const HTML = ({
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="application-name" content={manifestName} />
+      <meta name="application-name" content={siteName} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
-        content={manifestThemeColor}
+        content={themeColor}
       />
-      <meta name="apple-mobile-web-app-title" content={manifestName} />
+      <meta name="apple-mobile-web-app-title" content={siteName} />
       <link rel="shortcut icon" href="/img/favicon.png" />
       {headComponents}
     </head>

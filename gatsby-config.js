@@ -158,31 +158,8 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: config.manifestName,
-        short_name: config.manifestShortName,
-        description: config.heading,
-        start_url: config.manifestStartUrl,
-        background_color: config.manifestBackgroundColor,
-        theme_color: config.manifestThemeColor,
-        display: config.manifestDisplay,
-        orientation: config.manifestOrientation,
-        include_favicon: false,
-        icon: `static/${config.manifestIcon}`,
-        cache_busting_mode: 'none',
-      },
-    },
     'gatsby-plugin-sass',
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/*'],
-        },
-      },
-    },
+    'gatsby-plugin-remove-serviceworker',
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {

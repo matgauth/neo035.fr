@@ -80,26 +80,12 @@ collections:
         fields:
           - { label: 'Site Title', name: 'siteTitle', widget: 'string' }
           - { label: 'Job Title', name: 'jobTitle', widget: 'string' }
-          - { label: 'Name', name: 'manifestName', widget: 'string' }
-          - { label: 'Short Name', name: 'manifestShortName', widget: 'string' }
+          - { label: 'Name', name: 'siteName', widget: 'string' }
           - {
-              label: 'Start Url',
-              name: 'manifestStartUrl',
-              widget: 'hidden',
-              default: '/',
-            }
-          - {
-              label: 'Theme Color',
-              name: 'manifestThemeColor',
+              label: 'Theme Color (App bar on mobile)',
+              name: 'themeColor',
               widget: 'string',
             }
-          - { label: 'Display', name: 'manifestDisplay', widget: 'string' }
-          - {
-              label: 'Orientation',
-              name: 'manifestOrientation',
-              widget: 'string',
-            }
-          - { label: 'Icon', name: 'manifestIcon', widget: 'image' }
           - { label: 'Owner Name', name: 'ownerName', widget: 'string' }
           - { label: 'Channel ID', name: 'channelId', widget: 'string' }
           - { label: 'Heading', name: 'heading', widget: 'string' }
