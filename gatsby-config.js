@@ -171,10 +171,18 @@ module.exports = {
         orientation: config.manifestOrientation,
         include_favicon: false,
         icon: `static/${config.manifestIcon}`,
+        cache_busting_mode: 'none',
       },
     },
     'gatsby-plugin-sass',
-    'gatsby-plugin-remove-serviceworker',
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        workboxConfig: {
+          globPatterns: ['**/*'],
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-netlify-cms`,
       options: {

@@ -120,7 +120,6 @@ exports.createPages = ({ graphql, actions }) => {
       const title = node.childMarkdownRemark.frontmatter.title;
       const { locale, isDefault } = node.childMarkdownRemark.fields;
       const path = localizeSlug(isDefault, locale, slug);
-      console.log(path);
       createPage({
         path,
         component: resolve(`src/templates/notice.js`),

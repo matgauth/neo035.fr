@@ -3,7 +3,7 @@ import { map, path, prop, toLower, split, pipe, without, last } from 'ramda';
 import camelCase from 'lodash.camelcase';
 import config from '@config';
 
-const normalizePlaylistRecord = rec => ({
+const normalizePlaylistRecord = (rec) => ({
   id: prop('id', rec),
   publishedAt: path(['snippet', 'publishedAt'], rec),
   title: path(['snippet', 'title'], rec),
@@ -17,24 +17,25 @@ const normalizePlaylistRecords = map(normalizePlaylistRecord);
 
 const parseQuestions = (description, videoId) =>
   description.split`\n`.reduce((acc, prev) => {
-    const pattern = prev.match(/[0-9]{1,2}:[0-9]{1,2}$/);
+    const pattern = prev.match(/[0-9]{1,2}:[0-9]{2}$/);
     if (pattern !== null) {
       const [time] = pattern,
         [min, sec] = time.split`:`;
-      acc.push({
-        label: prev.replace(time, ``).trim(),
-        time: {
-          text: time,
-          link: `https://www.youtube.com/watch?v=${videoId}&t=${
-            min ? `${min}m` : ``
-          }${sec}s`,
-        },
-      });
+      if (time !== "00:00")
+        acc.push({
+          label: prev.replace(time, ``).trim(),
+          time: {
+            text: time,
+            link: `https://www.youtube.com/watch?v=${videoId}&t=${
+              min ? `${min}m` : ``
+            }${sec}s`,
+          },
+        });
     }
     return acc;
   }, []);
 
-const normalizeVideoRecord = rec => {
+const normalizeVideoRecord = (rec) => {
   const videoId = path(['snippet', 'resourceId', 'videoId'], rec);
   const description = path(['snippet', 'description'], rec);
   return {
@@ -53,13 +54,13 @@ const getApi = () => {
   const rateLimit = 500;
   let lastCalled = null;
 
-  const rateLimiter = call => {
+  const rateLimiter = (call) => {
     const now = new Date().getTime();
     if (lastCalled) {
       lastCalled += rateLimit;
       const wait = lastCalled - now;
       if (wait > 0) {
-        return new Promise(resolve => setTimeout(() => resolve(call), wait));
+        return new Promise((resolve) => setTimeout(() => resolve(call), wait));
       }
     }
     lastCalled = now;
@@ -96,7 +97,7 @@ export const getPlaylistsFromChannelId = async (
     },
   });
   const playlistsFromConfig = config.playlists.map(toLower);
-  const filteredRecords = res.data.items.filter(item => {
+  const filteredRecords = res.data.items.filter((item) => {
     const title = toLower(item.snippet.title);
     return playlistsFromConfig.includes(title);
   });
@@ -145,9 +146,4 @@ export const getVideosFromPlaylistId = async (
 
 export const str = JSON.stringify;
 
-export const parsePath = pipe(
-  split(`/`),
-  without([``]),
-  last,
-  camelCase
-);
+export const parsePath = pipe(split(`/`), without([``]), last, camelCase);
