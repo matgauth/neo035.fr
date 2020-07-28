@@ -62,12 +62,12 @@ collections:
               - label: 'Status'
                 name: 'status'
                 widget: 'select'
-                default: 301
+                default: '301'
                 options:
-                  - { label: 'Moved Permanently (301)', value: 301 }
-                  - { label: 'Found (302)', value: 302 }
-                  - { label: 'Not Found (404)', value: 404 }
-                  - { label: 'OK (200)', value: 200 }
+                  - { label: 'Moved Permanently (301)', value: '301' }
+                  - { label: 'Found (302)', value: '302' }
+                  - { label: 'Not Found (404)', value: '404' }
+                  - { label: 'OK (200)', value: '200' }
                 hint: 'The default HTTP status code is 301, but you can define a different one.'
               - label: 'Force'
                 name: 'force'
