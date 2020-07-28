@@ -25,7 +25,7 @@ collections:
       preview: false
     files:
       - name: 'configJson'
-        label: 'Configuration'
+        label: 'Paramètres et métadonnées'
         file: 'config.json'
         fields:
           - { label: 'Site Title', name: 'siteTitle', widget: 'string' }
