@@ -484,7 +484,7 @@ export const query = graphql`
   query Index($locale: String!) {
     bg: file(relativePath: { eq: "bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1600) {
+        fluid(maxWidth: 1600, quality: 90) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
