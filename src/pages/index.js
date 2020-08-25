@@ -230,7 +230,7 @@ const Partners = ({ data }) => {
         {data.map(({ node: { childImageSharp, id, name } }) => {
           const link = getLink(name);
           return (
-            <div key={id} className="col-3 col-12-mobile">
+            <div key={id} className="col-2 col-3-wide col-4-mobile">
               <article className="item">
                 <a
                   href={link}
@@ -484,8 +484,8 @@ export const query = graphql`
   query Index($locale: String!) {
     bg: file(relativePath: { eq: "bg.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 1600) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
@@ -499,8 +499,8 @@ export const query = graphql`
           name
           ext
           childImageSharp {
-            fluid(maxWidth: 500, traceSVG: { color: "#222629" }) {
-              ...GatsbyImageSharpFluid_tracedSVG
+            fluid(maxWidth: 240, quality: 90) {
+              ...GatsbyImageSharpFluid_withWebp_noBase64
             }
           }
         }
@@ -522,8 +522,8 @@ export const query = graphql`
             formattedDate: date(formatString: "DD MMMM YYYY", locale: $locale)
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 600, traceSVG: { color: "#222629" }) {
-                  ...GatsbyImageSharpFluid_tracedSVG
+                fluid(maxWidth: 600, traceSVG: { color: "#222629" }, quality: 90) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }

@@ -45,7 +45,7 @@ const query = graphql`
     avatar: file(relativePath: { eq: "avatar.png" }) {
       childImageSharp {
         fluid(maxWidth: 48, traceSVG: { color: "#222629" }) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
