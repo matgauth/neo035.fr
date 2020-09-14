@@ -27,12 +27,12 @@
     "gatsby-plugin-sitemap": "^2.4.10",
     "gatsby-remark-copy-linked-files": "^2.3.10",
     "gatsby-remark-external-links": "^0.0.4",
-    "gatsby-remark-images": "^3.3.17",
+    "gatsby-remark-images": "^3.3.29",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-remark-smartypants": "^2.3.9",
     "gatsby-source-filesystem": "^2.3.18",
     "gatsby-transformer-json": "^2.4.10",
-    "gatsby-transformer-remark": "^2.8.23",
+    "gatsby-transformer-remark": "^2.8.34",
     "gatsby-transformer-sharp": "^2.5.10",
     "intersection-observer": "^0.11.0",
     "konami": "^1.6.2",
@@ -60,8 +60,8 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^5.2.1",
-    "netlify-cli": "^2.57.0",
-    "prettier": "^2.0.5"
+    "netlify-cli": "^2.62.0",
+    "prettier": "^2.1.1"
   },
   "license": "MIT"
 }
