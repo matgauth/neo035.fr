@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-escape */
 const { ContextReplacementPlugin } = require('webpack');
 const { basename, resolve } = require(`path`);
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const locales = require(`./src/i18n`);
 
 const localizeSlug = (isDefault, locale, slug) =>
@@ -56,8 +55,6 @@ const getLang = (filename) => {
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
-
-  fmImagesToRelative(node);
 
   if (node.internal.type === `MarkdownRemark`) {
     const name = basename(node.fileAbsolutePath, `.md`);
