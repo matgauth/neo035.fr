@@ -103,17 +103,13 @@ module.exports = {
             options: {
               linkImagesToOriginal: true,
               withWebp: true,
-              quality: 90
+              quality: 90,
             },
           },
           `gatsby-remark-external-links`,
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: { destinationDir: `static` },
-          },
-          {
-            resolve: `gatsby-remark-smartypants`,
-            options: { dashes: `oldschool` },
           },
         ],
       },
@@ -182,6 +178,5 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-netlify-cache`,
   ],
 };
