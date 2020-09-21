@@ -31,7 +31,7 @@
     "gatsby-source-filesystem": "^2.3.29",
     "gatsby-transformer-json": "^2.4.12",
     "gatsby-transformer-remark": "^2.8.35",
-    "gatsby-transformer-sharp": "^2.5.14",
+    "gatsby-transformer-sharp": "^2.5.15",
     "intersection-observer": "^0.11.0",
     "konami": "^1.6.2",
     "lodash.camelcase": "^4.3.0",
