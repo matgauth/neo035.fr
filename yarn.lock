@@ -14945,10 +14945,10 @@ react-codemirror2@^6.0.0:
   resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-6.0.1.tgz#7daba40795eb2a52637926b6fe0b73a6e9090723"
   integrity sha512-rutEKVgvFhWcy/GeVA1hFbqrO89qLqgqdhUr7YhYgIzdyICdlRQv+ztuNvOFQMXrO0fLt0VkaYOdMdYdQgsSUA==
 
-react-content-loader@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.1.1.tgz#0e0ac1d582c5535f4006dcec4c7d3378df427d37"
-  integrity sha512-PZ9J8B3i/w8bs32xZfGjJDPEOfo8CYBpwOVwklAR1FZ/ymMkZHbTK2ccuaHP9KrlixkBNpNZw5vsim97lsOCMA==
+react-content-loader@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-5.1.2.tgz#75dcff30f2651c166c21433484081e7e70b44b6a"
+  integrity sha512-Kr4wWisiL0qcdbzVWZx/puyCfTP1PiTTtR7N4B7mikTeY2wf5TMgMykUQyaEUW422IDUU9VJWfewSm9hIRwTiw==
 
 react-datetime@^2.16.3:
   version "2.16.3"
