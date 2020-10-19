@@ -35,7 +35,7 @@
     "intersection-observer": "^0.11.0",
     "konami": "^1.6.2",
     "lodash.camelcase": "^4.3.0",
-    "match-sorter": "^4.2.1",
+    "match-sorter": "^5.0.0",
     "netlify-cms-app": "^2.12.24",
     "node-sass": "^4.14.1",
     "ramda": "^0.27.0",

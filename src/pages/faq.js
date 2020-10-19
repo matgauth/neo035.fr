@@ -1,6 +1,6 @@
 import React from 'react';
 import prop from 'ramda/src/prop';
-import matchSorter from 'match-sorter';
+import { matchSorter } from 'match-sorter';
 import { formatDistanceToNow } from 'date-fns';
 import useTranslations from '@hooks/use-translations';
 import { getVideosFromPlaylistId } from '@utils';
@@ -133,7 +133,7 @@ const FAQ = ({ pageContext: { locale } }) => {
       fr: async () => await import('date-fns/locale/fr/index.js'),
     };
 
-    const fetchLocaleFile = async locale => {
+    const fetchLocaleFile = async (locale) => {
       const localeFile = await supportedLanguages[locale]();
       setLocaleFile(localeFile);
     };
@@ -142,7 +142,7 @@ const FAQ = ({ pageContext: { locale } }) => {
       didCancel = true;
     };
   }, [locale]);
-  const filteredFaqItems = matchQuery(state.data, input, item =>
+  const filteredFaqItems = matchQuery(state.data, input, (item) =>
     item.questions.length > 0 ? item.questions.map(prop`label`) : undefined
   );
   return (
@@ -154,7 +154,7 @@ const FAQ = ({ pageContext: { locale } }) => {
               name="search"
               type="search"
               placeholder={searchPlaceholder}
-              onChange={e => setInput(e.currentTarget.value)}
+              onChange={(e) => setInput(e.currentTarget.value)}
               value={input}
             />
           </div>
