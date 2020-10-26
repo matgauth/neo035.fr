@@ -57,7 +57,7 @@
     "format": "prettier --write '**/*.js'"
   },
   "devDependencies": {
-    "eslint-config-react-app": "^5.2.1",
+    "eslint-config-react-app": "^6.0.0",
     "netlify-cli": "^2.65.0",
     "prettier": "^2.1.2"
   },
