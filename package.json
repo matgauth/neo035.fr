@@ -16,7 +16,7 @@
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^2.3.13",
     "gatsby-plugin-catch-links": "^2.3.15",
-    "gatsby-plugin-feed": "^2.5.12",
+    "gatsby-plugin-feed": "^2.5.20",
     "gatsby-plugin-netlify": "^2.3.24",
     "gatsby-plugin-netlify-cms": "^4.3.14",
     "gatsby-plugin-react-helmet": "^3.3.14",
@@ -31,7 +31,7 @@
     "gatsby-source-filesystem": "^2.3.30",
     "gatsby-transformer-json": "^2.4.12",
     "gatsby-transformer-remark": "^2.8.38",
-    "gatsby-transformer-sharp": "^2.5.15",
+    "gatsby-transformer-sharp": "^2.5.20",
     "intersection-observer": "^0.11.0",
     "konami": "^1.6.2",
     "lodash.camelcase": "^4.3.0",
@@ -40,7 +40,7 @@
     "node-sass": "^4.14.1",
     "ramda": "^0.27.0",
     "react": "^16.14.0",
-    "react-content-loader": "^5.1.2",
+    "react-content-loader": "^5.1.4",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.9.2",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",
-    "netlify-cli": "^2.65.0",
+    "netlify-cli": "^2.67.0",
     "prettier": "^2.1.2"
   },
   "license": "MIT"
