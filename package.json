@@ -8,7 +8,7 @@
     "url": "https://mathieugauthier.fr"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "date-fns": "^2.16.1",
     "gatsby": "^2.24.91",
     "gatsby-background-image": "^1.1.1",
