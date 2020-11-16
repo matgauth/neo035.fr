@@ -19,7 +19,7 @@
     "gatsby-plugin-feed": "^2.5.20",
     "gatsby-plugin-netlify": "^2.4.0",
     "gatsby-plugin-netlify-cms": "^4.3.14",
-    "gatsby-plugin-react-helmet": "^3.3.14",
+    "gatsby-plugin-react-helmet": "^3.4.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sass": "^2.3.13",
     "gatsby-plugin-sharp": "^2.6.40",
