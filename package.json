@@ -43,7 +43,7 @@
     "react-content-loader": "^5.1.4",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^6.9.2",
+    "react-hook-form": "^6.11.5",
     "react-scrollspy": "^3.4.2",
     "react-toastify": "^6.1.0",
     "smoothscroll-polyfill": "^0.4.4"
