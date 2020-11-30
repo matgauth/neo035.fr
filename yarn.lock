@@ -8961,12 +8961,12 @@ gatsby-telemetry@^1.5.0:
     node-fetch "^2.6.1"
     uuid "3.4.0"
 
-gatsby-transformer-json@^2.4.15:
-  version "2.4.15"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.4.15.tgz#2635e121d39bdbd0b20dec8775b8e8e5276ba72d"
-  integrity sha512-3RIulIsySP9AArlwwjrNoGcdo8xdS//zpP+5xD1f7dNu93UrlwgLRI4SIt9BpTv6WCZmM7xUxOlYP/U1ArYGsw==
+gatsby-transformer-json@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.6.0.tgz#99826e1b56ee1d1d299fb24a49cee40e7d38af81"
+  integrity sha512-hSaMk5/rVhTkNrY/xF0W6BIyhKlUdEcRM8te4j2Xw9l7VGduwPo8jHMBanapQwY4mhJqaFODjSfw4OefYH46NQ==
   dependencies:
-    "@babel/runtime" "^7.11.2"
+    "@babel/runtime" "^7.12.5"
     bluebird "^3.7.2"
 
 gatsby-transformer-remark@^2.10.0:
@@ -11932,13 +11932,6 @@ lock@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/lock/-/lock-1.1.0.tgz#53157499d1653b136ca66451071fca615703fa55"
   integrity sha1-UxV0mdFlOxNspmRRBx/KYVcD+lU=
-
-lockfile@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/lockfile/-/lockfile-1.0.4.tgz#07f819d25ae48f87e538e6578b6964a4981a5609"
-  integrity sha512-cvbTwETRfsFh4nHsL1eGWapU1XFi5Ot9E85sWAwia7Y7EgB7vfqcZhTKZ+l7hCGxSPoushMv5GKhT5PdLv03WA==
-  dependencies:
-    signal-exit "^3.0.2"
 
 lodash-es@^4.17.15:
   version "4.17.15"
