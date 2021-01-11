@@ -8,31 +8,31 @@
     "url": "https://mathieugauthier.fr"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.16.1",
-    "gatsby": "^2.27.4",
+    "gatsby": "^2.29.3",
     "gatsby-background-image": "^1.3.1",
     "gatsby-image": "^2.7.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^2.7.0",
-    "gatsby-plugin-catch-links": "^2.3.15",
-    "gatsby-plugin-feed": "^2.9.0",
-    "gatsby-plugin-netlify": "^2.7.0",
+    "gatsby-plugin-catch-links": "^2.7.0",
+    "gatsby-plugin-feed": "^2.10.0",
+    "gatsby-plugin-netlify": "^2.9.0",
     "gatsby-plugin-netlify-cms": "^4.7.0",
     "gatsby-plugin-react-helmet": "^3.6.0",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
-    "gatsby-plugin-sass": "^2.3.13",
-    "gatsby-plugin-sharp": "^2.6.40",
+    "gatsby-plugin-sass": "^2.8.0",
+    "gatsby-plugin-sharp": "^2.11.2",
     "gatsby-plugin-sitemap": "^2.4.13",
     "gatsby-remark-copy-linked-files": "^2.4.0",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "^3.7.1",
     "gatsby-remark-relative-images": "^2.0.2",
-    "gatsby-source-filesystem": "^2.3.30",
-    "gatsby-transformer-json": "^2.7.0",
+    "gatsby-source-filesystem": "^2.9.0",
+    "gatsby-transformer-json": "^2.9.0",
     "gatsby-transformer-remark": "^2.10.0",
     "gatsby-transformer-sharp": "^2.8.0",
-    "intersection-observer": "^0.11.0",
+    "intersection-observer": "^0.12.0",
     "konami": "^1.6.2",
     "lodash.camelcase": "^4.3.0",
     "match-sorter": "^6.0.2",
@@ -45,7 +45,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.12.1",
     "react-scrollspy": "^3.4.2",
-    "react-toastify": "^6.1.0",
+    "react-toastify": "^6.2.0",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "scripts": {
@@ -58,8 +58,8 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",
-    "netlify-cli": "^2.68.5",
-    "prettier": "^2.1.2"
+    "netlify-cli": "^2.69.11",
+    "prettier": "^2.2.1"
   },
   "license": "MIT"
 }
