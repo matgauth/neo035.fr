@@ -104,7 +104,7 @@ collections:
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - {
-              label: 'Pas d'événement prévu (message)',
+              label: "Pas d'événement prévu (message)",
               name: 'noEventScheduled',
               widget: 'string',
             }
