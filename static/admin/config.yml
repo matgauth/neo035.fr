@@ -45,6 +45,7 @@ collections:
           - { label: 'Grand titre', name: 'heading', widget: 'string' }
           - label: 'Réseaux sociaux'
             name: 'socialLinks'
+            label_singular: 'new social link'
             widget: 'list'
             fields:
               - {
@@ -57,6 +58,7 @@ collections:
               - { label: 'URL', name: 'url', widget: 'string' }
           - label: 'Playlists'
             name: 'playlists'
+            label_singular: 'new playlist'
             widget: 'list'
           - {
               label: 'FAQ Playlist ID',
