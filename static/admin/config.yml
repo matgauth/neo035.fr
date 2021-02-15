@@ -276,7 +276,7 @@ collections:
               { label: 'English', value: 'en' },
             ],
         }
-      - { label: 'Titre', name: 'title', widget: 'string', hint: "Attention ! Doit être unique par rapport aux autres erreurs." }
+      - { label: 'Titre (ID)', name: 'title', widget: 'string', hint: "Attention ! Doit être unique par rapport aux autres erreurs." }
       - { label: 'Lien vers la vidéo', name: 'link', widget: 'string' }
       - { label: "Erreurs (sont humaines)", name: 'body', widget: 'markdown' }
   - name: 'notices'
