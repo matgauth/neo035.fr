@@ -244,7 +244,7 @@ collections:
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Vignette', name: 'thumbnail', widget: 'image' }
       - { label: 'Titre (ID)', name: 'title', widget: 'string', hint: "Attention ! Doit être unique par rapport aux autres événements." }
-      - { label: 'Lien vers le site de l'événement', name: 'link', widget: 'string' }
+      - { label: "Lien vers le site de l'événement", name: 'link', widget: 'string' }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'errata'
     label: 'ERRATA'
