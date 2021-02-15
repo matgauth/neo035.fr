@@ -207,7 +207,7 @@ collections:
     folder: 'src/data/events'
     identifier_field: 'identifier'
     create: true
-    path: '{{title}}/index_{{lang}}'
+    path: '{{identifier}}/index_{{lang}}'
     summary: '[{{lang}}] {{identifier}}'
     view_filters:
       - label: 'Français'
@@ -242,7 +242,7 @@ collections:
     folder: 'src/data/errata'
     identifier_field: 'identifier'
     create: true
-    path: '{{title}}/index_{{lang}}'
+    path: '{{identifier}}/index_{{lang}}'
     summary: '[{{lang}}] {{identifier}}'
     view_filters:
       - label: 'Français'
