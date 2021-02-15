@@ -110,7 +110,7 @@ collections:
               name: 'nav',
               widget: 'string',
             }
-      - label: 'Evénements'
+      - label: 'Événements'
         name: 'events'
         widget: 'object'
         fields:
@@ -257,8 +257,8 @@ collections:
               - { label: 'Titre', name: 'title', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'string' }
   - name: 'events'
-    label: 'Evénements'
-    label_singular: 'événement'
+    label: 'Événements'
+    label_singular: 'Événement'
     folder: 'src/data/events'
     identifier_field: 'identifier'
     create: true
@@ -275,7 +275,11 @@ collections:
       preview: false
     fields:
       - { label: 'Key', name: 'key', widget: 'hidden', default: 'event' }
-      - { label: 'Identifiant', name: 'identifier', widget: 'string' }
+      - {
+          label: 'Titre dans la collection Événements',
+          name: 'identifier',
+          widget: 'string',
+        }
       - {
           label: 'Langue',
           name: 'lang',
@@ -290,10 +294,10 @@ collections:
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Vignette', name: 'thumbnail', widget: 'image' }
       - {
-          label: 'Titre (ID)',
+          label: 'Titre sur le site (ID)',
           name: 'title',
           widget: 'string',
-          hint: 'Attention ! Doit être unique par rapport aux autres événements.',
+          hint: 'Attention ! Doit être unique par rapport aux autres entrées dans la collection Événements.',
         }
       - {
           label: "Lien vers le site de l'événement",
@@ -319,7 +323,11 @@ collections:
       preview: false
     fields:
       - { label: 'Key', name: 'key', widget: 'hidden', default: 'errata' }
-      - { label: 'Identifiant', name: 'identifier', widget: 'string' }
+      - {
+          label: 'Titre dans la collection ERRATA',
+          name: 'identifier',
+          widget: 'string',
+        }
       - {
           label: 'Langue',
           name: 'lang',
@@ -332,10 +340,10 @@ collections:
             ],
         }
       - {
-          label: 'Titre (ID)',
+          label: 'Titre sur le site (ID)',
           name: 'title',
           widget: 'string',
-          hint: 'Attention ! Doit être unique par rapport aux autres erreurs.',
+          hint: 'Attention ! Doit être unique par rapport aux autres entrées dans la collection ERRATA.',
         }
       - { label: 'Lien vers la vidéo', name: 'link', widget: 'string' }
       - { label: 'Erreurs (sont humaines)', name: 'body', widget: 'markdown' }
