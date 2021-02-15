@@ -112,7 +112,7 @@ collections:
         name: 'videos'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale, name: 'nav', widget: 'string' }
+          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Watch playlist', name: 'watchPlaylist', widget: 'string' }
