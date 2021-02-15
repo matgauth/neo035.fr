@@ -90,7 +90,7 @@ collections:
         fields:
           - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
           - { label: 'Montre-moi (bouton)', name: 'showMe', widget: 'string' }
-          - { label: 'Bouton "Revenir à l'accueil"', name: 'goBackHome', widget: 'string' }
+          - { label: "Revenir à l'accueil (bouton)", name: 'goBackHome', widget: 'string' }
       - label: 'A propos'
         name: 'about'
         widget: 'object'
