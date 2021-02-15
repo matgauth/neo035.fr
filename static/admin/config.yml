@@ -88,19 +88,35 @@ collections:
         name: 'home'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Montre-moi (bouton)', name: 'showMe', widget: 'string' }
-          - { label: "Revenir à l'accueil (bouton)", name: 'goBackHome', widget: 'string' }
+          - {
+              label: "Revenir à l'accueil (bouton)",
+              name: 'goBackHome',
+              widget: 'string',
+            }
       - label: 'A propos'
         name: 'about'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
       - label: 'Evénements'
         name: 'events'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - {
@@ -112,7 +128,11 @@ collections:
         name: 'videos'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Watch playlist', name: 'watchPlaylist', widget: 'string' }
@@ -120,16 +140,20 @@ collections:
         name: 'faq'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - { label: 'Montre-moi (bouton)', name: 'showMe', widget: 'string' }
-          - { label: 'Aucune FAQ (message)', name: 'noFaqItems', widget: 'string' }
           - {
-              label: 'Rechercher',
-              name: 'searchPlaceholder',
+              label: 'Aucune FAQ (message)',
+              name: 'noFaqItems',
               widget: 'string',
             }
+          - { label: 'Rechercher', name: 'searchPlaceholder', widget: 'string' }
           - { label: 'Regarder la video', name: 'watchVideo', widget: 'string' }
           - { label: 'Publiée à', name: 'publishedAt', widget: 'string' }
           - { label: 'Questions', name: 'questions', widget: 'string' }
@@ -144,23 +168,43 @@ collections:
         name: 'partners'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
       - label: 'Contact'
         name: 'contact'
         widget: 'object'
         fields:
-          - { label: 'Titre de la barre latérale', name: 'nav', widget: 'string' }
+          - {
+              label: 'Titre de la barre latérale',
+              name: 'nav',
+              widget: 'string',
+            }
           - { label: 'Titre', name: 'title', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
           - label: 'Formulaire'
             name: 'form'
             widget: 'object'
             fields:
-              - { label: "Message en case d'erreur", name: 'error', widget: 'string' }
-              - { label: 'Message en cas de succès', name: 'success', widget: 'string' }
-              - { label: 'Message de chargement', name: 'loading', widget: 'string' }
+              - {
+                  label: "Message en case d'erreur",
+                  name: 'error',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Message en cas de succès',
+                  name: 'success',
+                  widget: 'string',
+                }
+              - {
+                  label: 'Message de chargement',
+                  name: 'loading',
+                  widget: 'string',
+                }
               - { label: 'Nom', name: 'name', widget: 'string' }
               - { label: 'Age', name: 'age', widget: 'string' }
               - { label: 'Email', name: 'mail', widget: 'string' }
@@ -243,8 +287,17 @@ collections:
         }
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Vignette', name: 'thumbnail', widget: 'image' }
-      - { label: 'Titre (ID)', name: 'title', widget: 'string', hint: "Attention ! Doit être unique par rapport aux autres événements." }
-      - { label: "Lien vers le site de l'événement", name: 'link', widget: 'string' }
+      - {
+          label: 'Titre (ID)',
+          name: 'title',
+          widget: 'string',
+          hint: 'Attention ! Doit être unique par rapport aux autres événements.',
+        }
+      - {
+          label: "Lien vers le site de l'événement",
+          name: 'link',
+          widget: 'string',
+        }
       - { label: 'Description', name: 'body', widget: 'markdown' }
   - name: 'errata'
     label: 'ERRATA'
@@ -276,9 +329,14 @@ collections:
               { label: 'English', value: 'en' },
             ],
         }
-      - { label: 'Titre (ID)', name: 'title', widget: 'string', hint: "Attention ! Doit être unique par rapport aux autres erreurs." }
+      - {
+          label: 'Titre (ID)',
+          name: 'title',
+          widget: 'string',
+          hint: 'Attention ! Doit être unique par rapport aux autres erreurs.',
+        }
       - { label: 'Lien vers la vidéo', name: 'link', widget: 'string' }
-      - { label: "Erreurs (sont humaines)", name: 'body', widget: 'markdown' }
+      - { label: 'Erreurs (sont humaines)', name: 'body', widget: 'markdown' }
   - name: 'notices'
     label: 'Mentions'
     label_singular: 'notice'
