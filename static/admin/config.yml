@@ -28,10 +28,10 @@ collections:
         label: 'Paramètres et métadonnées'
         file: 'config.json'
         fields:
-          - { label: 'Nom du site', name: 'siteTitre', widget: 'string' }
+          - { label: 'Nom du site', name: 'siteTitle', widget: 'string' }
           - {
               label: 'Ton job (Tutuber en gros)',
-              name: 'jobTitre',
+              name: 'jobTitle',
               widget: 'string',
             }
           - { label: 'Nom', name: 'siteName', widget: 'string' }
