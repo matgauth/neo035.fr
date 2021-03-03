@@ -37,6 +37,7 @@ const matchQuery = (data, query, key) =>
   matchSorter(data, query, {
     keys: [key],
     threshold: matchSorter.rankings.CONTAINS,
+    baseSort: (a, b) => (a.index < b.index ? -1 : 1),
   });
 
 const FAQItem = ({ videoId, thumbnail, title, publishDate, questions }) => {
