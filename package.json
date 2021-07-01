@@ -14,7 +14,7 @@
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.4.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
-    "gatsby-plugin-canonical-urls": "^2.9.0",
+    "gatsby-plugin-canonical-urls": "^2.10.0",
     "gatsby-plugin-catch-links": "^2.8.0",
     "gatsby-plugin-feed": "^2.13.1",
     "gatsby-plugin-netlify": "^2.11.1",
