@@ -16064,10 +16064,10 @@ react-textarea-autosize@^8.0.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-toastify@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-7.0.2.tgz#df7563cd5d24e933542096d2b0d07ba22db9e01f"
-  integrity sha512-hWh5DpJCzDQhFdX7jxjwXbZoIh8V/IMZtVeOtKUiiHgq/Gsw6W/dOGfGj15H/yf4iiU5a5ZH4ivW6SbcenCyUw==
+react-toastify@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-7.0.4.tgz#7d0b743f2b96f65754264ca6eae31911a82378db"
+  integrity sha512-Rol7+Cn39hZp5hQ/k6CbMNE2CKYV9E5OQdC/hBLtIQU2xz7DdAm7xil4NITQTHR6zEbE5RVFbpgSwTD7xRGLeQ==
   dependencies:
     clsx "^1.1.1"
 
