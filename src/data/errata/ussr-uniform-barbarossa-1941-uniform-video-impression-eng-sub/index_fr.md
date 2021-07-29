@@ -1,7 +1,7 @@
 ---
 key: errata
 identifier: USSR uniform - Barbarossa 1941 - Uniform video impression [ENG SUB]
-lang: fr
+lang: en
 title: 🧥 USSR uniform - Barbarossa 1941 - Uniform video impression [ENG SUB]
 link: https://www.youtube.com/watch?v=0o4lGc6Fu-8
 ---
