@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "date-fns": "^2.22.1",
+    "date-fns": "^2.23.0",
     "gatsby": "^2.32.12",
     "gatsby-background-image": "^1.5.3",
     "gatsby-image": "^3.4.0",
