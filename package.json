@@ -59,7 +59,7 @@
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",
     "netlify-cli": "^3.24.3",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.1"
   },
   "license": "MIT"
 }
