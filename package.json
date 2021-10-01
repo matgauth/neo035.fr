@@ -12,7 +12,7 @@
     "date-fns": "^2.23.0",
     "gatsby": "^2.32.13",
     "gatsby-background-image": "^1.5.3",
-    "gatsby-image": "^3.4.0",
+    "gatsby-image": "^3.11.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-canonical-urls": "^2.10.0",
     "gatsby-plugin-catch-links": "^2.10.0",
