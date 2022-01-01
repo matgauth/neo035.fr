@@ -12164,10 +12164,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-konami@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/konami/-/konami-1.6.2.tgz#022a52efc23ba74c5b457cf2755af71386f28b29"
-  integrity sha512-6wljx0YS4Opt7HWiaZFfL2rxn17pqvEFZLyHxeGHgb64QwrS8oRkxYkV22kyciVzs3yqQFKWHqsEvLxuhuQlag==
+konami@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/konami/-/konami-1.6.3.tgz#d952ace6747bc8a35956223f7a719a844e7afb72"
+  integrity sha512-QRr/cWcS4Mm9XswKyLXT9w/ygf9f6gTdFw/gExd0komDbFOdgME/M0pjD59hgh2uNJWpDT/+89l80/xQiK5niA==
 
 kuler@^2.0.0:
   version "2.0.0"
