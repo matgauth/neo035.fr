@@ -38,7 +38,7 @@
     "match-sorter": "^6.3.0",
     "netlify-cms-app": "^2.13.3",
     "node-sass": "^4.14.1",
-    "ramda": "^0.27.0",
+    "ramda": "^0.28.0",
     "react": "^16.14.0",
     "react-content-loader": "^6.1.0",
     "react-dom": "^16.14.0",
@@ -58,8 +58,8 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^6.0.0",
-    "netlify-cli": "^6.14.7",
-    "prettier": "^2.5.0"
+    "netlify-cli": "^8.15.5",
+    "prettier": "^2.5.1"
   },
   "license": "MIT"
 }
