@@ -1,6 +1,6 @@
 ---
 key: event
-identifier: Japan Tours Festival 2021 (Français)
+identifier: Japan Tours Festival 2022 (Français)
 lang: fr
 date: 2022-07-01T08:00:03.752Z
 thumbnail: ./logo_jtf.png
