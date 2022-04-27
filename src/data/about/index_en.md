@@ -2,7 +2,6 @@
 key: about
 title: About
 ---
-
 ### WELCOME !
 
 First, let me introduce myself. I'm **Neo035**, WW2 airsoft and reenactment addict. I officially began making videos in 2011 and for this time, I spend all my free time to create content to show you airsoft guns, denix replicas, uniforms and VIP presentations.
@@ -15,15 +14,9 @@ At last, if you want to support me for me staying independant, you can follow th
 
 <div class="row aln-center aln-middle">
 
-<div class="col-2 col-6-mobile">
+<div class="col-2 col-6-mobile"
 
-[![MyTip](./mytip.png 'MyTip')](https://www.mytip.co/users/neo035)
-
-</div>
-
-<div class="col-2 col-6-mobile">
-
-[![Tipeee](./tipeee.png 'Tipeee')](https://fr.tipeee.com/neo035)
+[![Tipeee](./tipeee.png "Tipeee")](https://fr.tipeee.com/neo035)
 
 </div>
 
