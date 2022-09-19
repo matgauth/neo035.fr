@@ -15,3 +15,9 @@ force = true
 from = "/fr/*"
 status = 301
 to = "/:splat"
+
+[[redirects]]
+force = true
+from = "/atelierleprieur"
+status = 301
+to = "https://www.facebook.com/AtelierLePrieur/"
