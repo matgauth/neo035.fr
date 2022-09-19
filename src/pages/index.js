@@ -490,7 +490,7 @@ export const query = graphql`
       }
     }
     partners: allFile(
-      filter: {name: {regex: "/^[0-9]{2}_www.[^ \"]+$/"}}
+      filter: {name: {regex: "/^[0-9]{2}_[^ \"]+$/"}}
       sort: { fields: name }
     ) {
       edges {
