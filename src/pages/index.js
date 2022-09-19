@@ -216,7 +216,11 @@ const Faq = () => {
   );
 };
 
-const getLink = (name) => `http://${name.split(/[0-9]{2}_/)[1]}`;
+const getLink = (name) => {
+  const [, domainName] = name.split(/[0-9]{2}_/);
+  if (/^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+[A-Za-z]{2,6}$/.test(domainName)) return `http://${domainName}`;
+  return `https://www.neo035.fr/${domainName}`;
+};
 
 const Partners = ({ data }) => {
   const { partners } = useTranslations();
