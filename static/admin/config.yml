@@ -107,9 +107,9 @@ collections:
               - { label: 'To', name: 'to', widget: 'string' }
               - label: 'Status'
                 name: 'status'
-                widget: "number"
+                widget: 'number'
                 default: 301
-                hint: "Statuts autorisés : 301, 302, 404 et 200 (Plus d'infos ici : https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#redirection_messages)",
+                hint: "Statuts autorisés : 301, 302, 404 et 200 (Plus d'infos ici : https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#redirection_messages)"
               - label: 'Force'
                 name: 'force'
                 widget: 'boolean'
