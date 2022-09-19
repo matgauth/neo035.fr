@@ -1,3 +1,5 @@
+[build]
+
 [build.environment]
 NODE_OPTIONS = "--max_old_space_size=4096"
 YARN_FLAGS = "--no-ignore-optional"
@@ -9,7 +11,6 @@ from = "https://neo035.netlify.com/*"
 status = 301
 to = "https://www.neo035.fr/:splat"
 
-
 [[redirects]]
 force = true
 from = "/fr/*"
@@ -19,5 +20,5 @@ to = "/:splat"
 [[redirects]]
 force = true
 from = "/atelierleprieur"
-status = 301
+status = 302
 to = "https://www.facebook.com/AtelierLePrieur/"
