@@ -37,7 +37,7 @@
     "lodash.camelcase": "^4.3.0",
     "match-sorter": "^6.3.0",
     "netlify-cms-app": "^2.13.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "ramda": "^0.28.0",
     "react": "^16.14.0",
     "react-content-loader": "^6.1.0",
