@@ -45,7 +45,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.15.5",
     "react-scrollspy": "^3.4.2",
-    "react-toastify": "^7.0.4",
+    "react-toastify": "^9.1.2",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "scripts": {
