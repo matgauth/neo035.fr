@@ -1,14 +1,13 @@
 ---
 title: Mentions légales
 ---
-
 ### Le présent site est édité par :
 
 Mathieu Gauthier
 
 **Site Web :** [www.mathieugauthier.fr](https://www.mathieugauthier.fr)
 
-**Responsable de la publication :** Rémi BOURBOULON
+**Responsable de la publication :** Neo035
 
 ### Hébergement du site
 
@@ -16,7 +15,7 @@ Netlify, Inc.
 
 Siège social : 2325 3RD STREET,SUITE 215, SAN FRANCISCO, CA 94107 (USA).
 
-Email : <mailto:privacy@netlify.com>
+Email : [privacy@netlify.com](mailto:privacy@netlify.com)
 
 Adresse du site web de l’hébergeur : [www.netlify.com](https://www.netlify.com/)
 
