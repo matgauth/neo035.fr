@@ -23,11 +23,11 @@ Adresse du site web de l’hébergeur : [www.netlify.com](https://www.netlify.co
 
 Le présent site est soumis à la législation française et internationale sur les droits d’auteur et la propriété intellectuelle.
 
-Toute reproduction ou représentation totale ou partielle de ce site par quelque procédé que ce soit et sur quelque support que ce soit, sans l’autorisation expresse et préalable de Rémi Bourboulon est interdite et constituerait une contrefaçon.
+Toute reproduction ou représentation totale ou partielle de ce site par quelque procédé que ce soit et sur quelque support que ce soit, sans l’autorisation expresse et préalable de Neo035 est interdite et constitue une contrefaçon.
 
 ### Liens hypertextes contenus sur le site
 
-Rémi Bourboulon se réserve la possibilité de mettre en place des liens hypertextes sur le présent site donnant accès à des pages web et des sites web édités ou gérés par des tiers pour lesquels Rémi Bourboulon décline toute responsabilité quant au contenu des informations fournies sur ces sites au titre de l’activation de ces liens hypertextes.
+Neo035 se réserve la possibilité de mettre en place des liens hypertextes sur le présent site donnant accès à des pages web et des sites web édités ou gérés par des tiers pour lesquels Neo035 décline toute responsabilité quant au contenu des informations fournies sur ces sites au titre de l’activation de ces liens hypertextes.
 
 ### Contact
 
