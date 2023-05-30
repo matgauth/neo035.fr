@@ -23,11 +23,11 @@ Host website: [www.netlify.com](https://www.netlify.com/)
 
 This site is subject to French and international legislation on copyright and intellectual property.
 
-Any total or partial reproduction of this website by any process whatsoever and on any medium whatsoever, without the authorization express and prior to Rémi Bourboulon is prohibited and would constitute an infringement.
+Any total or partial reproduction of this website by any process whatsoever and on any medium whatsoever, without the authorization express and prior to Neo035 is prohibited and would constitute an infringement.
 
 ### Hypertext links contained on the site
 
-Rémi Bourboulon reserves the right to set up hypertext links on this site giving access to web pages and websites edited or managed by third parties for which Rémi Bourboulon declines all responsibility for the content of the information provided on these sites with the activation of these hypertext links.
+Neo035 reserves the right to set up hypertext links on this site giving access to web pages and websites edited or managed by third parties for which Neo035 declines all responsibility for the content of the information provided on these sites with the activation of these hypertext links.
 
 ### Contact
 
