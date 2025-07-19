@@ -314,7 +314,12 @@ const ContactForm = () => {
             aria-label={contact.form.name}
             placeholder={contact.form.name}
             {...(errors.name ? { className: 'error' } : {})}
-            ref={register({ required: true })}
+            ref={register({
+              required: true,
+              pattern: {
+                value: /\S+/
+              }
+            })}
           />
         </div>
         <div className="col-4 col-12-mobile">
@@ -354,7 +359,11 @@ const ContactForm = () => {
             aria-label={contact.form.message}
             placeholder={contact.form.message}
             {...(errors.message ? { className: 'error' } : {})}
-            ref={register({ required: true })}
+            ref={register({
+              required: true, pattern: {
+                value: /\S+/
+              }
+            })}
           />
         </div>
         <div className="col-12">
